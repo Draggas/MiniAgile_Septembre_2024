@@ -4,10 +4,15 @@ public class Mob extends Entity {
     MobEnum type;
 
     public Mob(MobEnum type) {
+        this.type = type;
         this.nom = type.toString();
         this.pv = type.getPV();
         this.atk = type.getATK();
         this.def = type.getDEF();
+    }
+
+    public String toString(){
+        return this.nom + "|pv: " + this.pv + "|atk: " + this.atk + "|def: " + this.def + "|";
     }
 
     public MobEnum getType() {

@@ -5,13 +5,18 @@ import java.util.ArrayList;
 public class Case {
     private Monde monde;
     private int numCase;
-    private ArrayList<Mob> mobs = new ArrayList<Mob>();
+    private ArrayList<Mob> mobs;
 
 
     public Case(Monde monde, int numCase) {
         this.monde = monde;
         this.numCase = numCase;
-        this.setMobs();
+        this.mobs = new ArrayList<Mob>();
+        for (MobEnum mob:MobEnum.values()) {
+            if(mob.getMonde() == this.monde) {
+                this.mobs.add(new Mob(mob));
+            }
+        }
     }
 
     public String toString(){
@@ -19,14 +24,10 @@ public class Case {
     }
 
     public void setMobs() {
-        for (MobEnum mob:MobEnum.values()) {
-            if(mob.getMonde() == this.monde) {
-                this.mobs.add(new Mob(null, numCase, numCase, numCase));
-            }
-        }
+        
     }
 
-    public Monde getmonde() {
+    public Monde getMonde() {
         return this.monde;
     }
 

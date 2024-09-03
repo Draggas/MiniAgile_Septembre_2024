@@ -23,7 +23,7 @@ public class Map {
             return c;
         } else {
             for(Case ca:map) {
-                if (ca.getNumMonde() == c.getNumMonde() && ca.getNumCase() == (c.getNumCase()-1)) {
+                if (ca.getMonde() == c.getMonde() && ca.getNumCase() == (c.getNumCase()-1)) {
                     return ca;
                 }
             }
@@ -34,12 +34,16 @@ public class Map {
     public Case getRight(Case c) {
         int temp = 0;
         for(Case ca:map) {
-            if(ca==c && !(c.getNumMonde() == Monde.MONDE_3 && c.getNumCase() == Monde.MONDE_3.getNbCases())) {
+            if(ca==c && !(c.getMonde() == Monde.MONDE_3 && c.getNumCase() == Monde.MONDE_3.getNbCases())) {
                 return map.get(temp+1);
             }
             temp++;
         }
         return c;
+    }
+
+    public int getSizeMap(){
+        return this.map.size();
     }
 
 }

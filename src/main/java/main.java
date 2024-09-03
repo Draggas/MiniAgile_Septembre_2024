@@ -2,7 +2,7 @@ package main.java;
 import java.util.Scanner;
 
 public class main {
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException{
 
         System.out.printf("Choississez votre classe :");
         System.out.printf("\n1 : %s (%d d'attaque, %d de défense, %d points de vies", Classe.ASSASSIN.nom,
@@ -28,10 +28,18 @@ public class main {
           }
         }while(badNumber || i < 1 || i > 3);
         Classe classe = Classe.values()[i];
-        Joueur joueur = new Joueur("test", classe);
         System.out.println("Vous avez choisi la classe " + classe.nom);
+        Joueur joueur = new Joueur(Tools.readUser(), classe);
         Map map = new Map();
         Case caseActuel = map.getFirstCase();
-        System.out.println(caseActuel);
+        for(int y = 0; y<map.getSizeMap(); y++){
+          System.out.println(caseActuel);
+          System.out.println("Vous rencontrez un " + caseActuel.mobEncountered());
+          Tools.printEntity(caseActuel.mobEncountered().getType());
+          Thread.sleep(1000);
+          System.out.println("Vous avez battu le monstre, vous passez au prochain");
+          caseActuel = map.getRight(caseActuel);
+        }
+      
     }
 }
