@@ -3,7 +3,7 @@ package main.java;
 import java.util.ArrayList;
 import java.util.List;
 
-class Joueur {
+public class Joueur {
     private String pseudo;
     private int level;
     private int xp;
@@ -23,7 +23,8 @@ class Joueur {
         this(pseudo, 1, 0, 10, null, categorie);
     }
 
-    public void verifLevel(){
+    public void addXp(int valeur){
+        xp = xp + valeur;
         if(xp >= xpmax){
             if(level == 99){
                 xp = xpmax - 1;
