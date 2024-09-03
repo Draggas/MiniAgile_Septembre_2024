@@ -15,8 +15,11 @@ public class UI implements NativeKeyListener {
 
     static Joueur joueur;
     static boolean attack;
+    static Mob mob;
 
-    public static void main(String[] args) {
+    public static void start(Joueur j) {
+
+        joueur = j;
 
         try {
             GlobalScreen.registerNativeHook();
@@ -28,9 +31,6 @@ public class UI implements NativeKeyListener {
         }
 
         GlobalScreen.addNativeKeyListener(new UI());
-
-        joueur = new Joueur("Player", Classe.MAGE);
-        
 
         update();
 
@@ -45,6 +45,12 @@ public class UI implements NativeKeyListener {
         List<String> menuLinesA = readFile("res/overlay_bottomrightA.txt");
         List<String> menuLinesC = readFile("res/overlay_bottomrightC.txt");
 
+        showPlayer(overlayLines);
+
+        if (mob != null) {
+            showMob(overlayLines);
+        }
+
         setStats(overlayLines);
 
         for (int i = 0; i < overlayLines.size(); i++) {
@@ -54,16 +60,46 @@ public class UI implements NativeKeyListener {
                 System.out.println(overlayLines.get(i));
             }
         }
+
     }
 
     public void nativeKeyReleased(NativeKeyEvent e) {
-        System.out.println("Key Released: " + NativeKeyEvent.getKeyText(e.getKeyCode()) + " " + e.getKeyCode());
 
-        if(e.getKeyCode() == 57416){ //arrow up
+
+        if (e.getKeyCode() == 57416) { // arrow up
             attack = !attack;
         }
 
+        if (e.getKeyCode() == 28) { // enter
+            main.caseActuel = main.map.getRight(main.caseActuel);
+            main.newMob();
+
+        }
+
         update();
+
+    }
+
+    private static void showMob(List<String> list) {
+
+        List<String> listmage = readFile("res/ascii/" + mob.getNom());
+        for (int i = 2; i < listmage.size() + 2; i++) {
+            String line = list.get(i);
+            list.remove(i);
+            line = line.substring(0, 50) + listmage.get(i - 2) + line.substring(50 + listmage.get(i - 2).length());
+            list.add(i, line);
+        }
+
+    }
+
+    private static void showPlayer(List<String> list) {
+        List<String> listmage = readFile("res/ascii/" + joueur.getCategorie().toString() + ".txt");
+        for (int i = 2; i < listmage.size() + 2; i++) {
+            String line = list.get(i);
+            list.remove(i);
+            line = "█ " + listmage.get(i - 2) + line.substring(listmage.get(i - 2).length() + 2);
+            list.add(i, line);
+        }
 
     }
 
