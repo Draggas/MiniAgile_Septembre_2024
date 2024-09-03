@@ -1,6 +1,6 @@
 package main.java;
 
-interface Entity {
+abstract class Entity {
 
     int pv, atk, def;
     String nom;
