@@ -1,7 +1,7 @@
 STATISTIQUE DES CLASSES
 
 Combattant :
-PV : 150
+PV : 200
 DEFENSE : 60
 ATTAQUE : 70
 CHANCE D'ESQUIVE : 20
@@ -9,14 +9,14 @@ CHANCE DE COUT CRITIQUE : 10
 
 
 Mage :
-PV : 100
+PV : 150
 DEFENSE : 20
 ATTAQUE : 110
 CHANCE D'ESQUIVE : 20
 CHANCE DE COUT CRITIQUE : 0
 
 Assassin :
-PV : 90
+PV : 140
 DEFENSE : 30
 ATTAQUE 40
 CHANCE D'ESQUIVE : 40
@@ -41,3 +41,21 @@ DEFENSE       REDUCTION DE DEGATS
 200      ->     67%
 250      ->     71%
 300      ->     75%
+
+_____________________________________________________
+
+Explication du système d'xp :
+
+xp nécessaire pour le level suivant = xp nécessaire du level actuel * 1,1
+
+
+Level 1 -> xp nécessaire = 100
+Level 2 -> xp nécessaire = 100 x 1,1 = 110
+Level 3 -> xp nécessaire = 120 x 1,1 = 132
+Level 4 -> xp nécessaire = 144 x 1,1 = 158
+
+
+Chaque classe prend :
++20 PV
++5 defense
++10 attaque
