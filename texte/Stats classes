@@ -1,0 +1,43 @@
+STATISTIQUE DES CLASSES
+
+Combattant :
+PV : 150
+DEFENSE : 60
+ATTAQUE : 70
+CHANCE D'ESQUIVE : 20
+CHANCE DE COUT CRITIQUE : 10
+
+
+Mage :
+PV : 100
+DEFENSE : 20
+ATTAQUE : 110
+CHANCE D'ESQUIVE : 20
+CHANCE DE COUT CRITIQUE : 0
+
+Assassin :
+PV : 90
+DEFENSE : 30
+ATTAQUE 40
+CHANCE D'ESQUIVE : 40
+CHANCE DE COUT CRITIQUE : 50
+
+_____________________________________________________
+
+- Possibilité de récuperer des items pour augmenter les stats
+- Cout critique -> x1.5
+
+
+Explication de reduction de degats :
+
+reduction de degats = defense / (défense + 100)
+
+DEFENSE       REDUCTION DE DEGATS
+
+30       ->     23%
+50       ->     33% 
+100      ->     50%
+150      ->     60%
+200      ->     67%
+250      ->     71%
+300      ->     75%

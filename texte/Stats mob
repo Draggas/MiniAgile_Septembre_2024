@@ -1,0 +1,118 @@
+SI BESOIN, AJUSTER LES PV / DEFENSE / ATTAQUE DES ENNEMIES
+
+SI "Chance d'Activer la Compétence" TROP COMPLIQUER, METTRE PAR DEFAUTS -> 10%-20%
+DROP ITEM = 10% chaque (exemple -> 1-10 = premier item / 11-20 -> deuxieme item)
+
+MONDE 1
+
+SLIME
+    PV : 50
+    Défense : 10
+    Attaque : 20
+    Compétence : Gélatine Collante (Réduit l'attaque du personnage de 10)
+    Chance d'Activer la Compétence : 20%
+    DROP : Gelée Résistante (+10 PV)
+           Peau Slime (+5 DEFENSE)
+ORC
+    PV : 100
+    Défense : 40
+    Attaque : 50
+    Compétence : Coup Écrasant (Inflige un coup critique garanti)
+    Chance d'Activer la Compétence : 15%
+    DROP : Bracelet Orc (+10 DEFENSE)
+           Anneau de Force (+10 attaque)
+
+SLIME GEANT
+    PV : 200
+    Défense : 70
+    Attaque : 80
+    Compétence : Décharge Acide (Inflige 100 de dégats)
+    Chance d'Activer la Compétence : 20%
+    DROP : Essence de force (+20 attaque)
+           Couronne de slime (+10 PV)
+
+MONDE 2
+
+SERPENT
+    PV : 220
+    Défense : 50
+    Attaque : 70
+    Compétence : Poison (Inflige 15 dégâts supplémentaire par tour)  || SI TROP COMPLIQUER -> Enlassement (Attaque 2 fois de suite)
+    Chance d'Activer la Compétence : 20%
+    DROP : Ecaille mineur  (+10 DEFENSE)
+           Poison du Serpent (+10 CHANCE COUT CRITIQUE)
+
+VAMPIRE
+    PV : 250
+    Défense : 40
+    Attaque : 80
+    Compétence : Saignée (Restaure 20% de ses PV)
+    Chance d'Activer la Compétence : 30%
+    DROP : Anneau de Vitalité (+20 PV)
+           Cape de vampire (+20 CHANCE D'ESQUIVE)
+
+KRAKEN
+    PV : 300
+    Défense : 60
+    Attaque : 90
+    Compétence : Tentation des Profondeurs (Inflige 150 de dégats et réduit l'attaque de 20)
+    Chance d'Activer la Compétence : 20%
+    DROP : Fragment de Tentacule (+15 CHANCE COUT CRITIQUE)
+           Force de Kraken (+30 attaque)
+
+MONDE 3
+
+DRAGON
+    PV : 400
+    Défense : 70
+    Attaque : 100
+    Compétence : Souffle du dragon (Inflige 120 dégâts et réduit leur défense de 25)
+    Chance d'Activer la Compétence : 20%
+    DROP : Griffe de dragon (+25 attaque)
+           Ecaille de Dragon (+20 defense)
+
+AMOGUS
+    PV : 350
+    Défense : 65
+    Attaque : 90
+    Compétence : Renforcement (Gagne 99999999999 d'armure pour le prochain tour)
+    Chance d'Activer la Compétence : 30%
+    DROP : Casque de survie (+10 CHANCE ESQUIVE)
+           Gants d'imposteur (+20 attaque)
+
+SHREK
+    PV : 500
+    Défense : 90
+    Attaque : 120
+    Compétence  : Cri Effrayant (Inflige 120 de dégâts et augmente son attaque de 30)
+    Chance d'Activer la Compétence : 20%
+    DROP : Chaussure de Shrek (+10 CHANCE ESQUIVE)
+           Epée de Shrek (+40 attaque)
+
+MONDE 4
+
+DEMON
+    PV : 600
+    Défense : 120
+    Attaque : 130
+    Compétence : Flammes Infernal (Inflige 100 dégâts et récupere 10% de ses pv)
+    Chance d'Activer la Compétence : 35%
+    DROP : Gant du Démon (+40 attaque)
+           Corne du Démon (+10 CHANCE DE COUT CRITIQUE)
+
+SQUELETTE
+    PV : 550
+    Défense : 110
+    Attaque : 110
+    Compétence : Armée des Morts (Inflige 180 degats et réduit la chance d'esquive a 0)
+    Chance d'Activer la Compétence : 40%
+    DROP : Epée en os (+35 attaque)
+           Bouclier du squelette (+50 DEFENSE)
+
+FOURMIE (Boss Final)
+    PV : 1000
+    Défense : 170
+    Attaque : 150
+    Compétence 3 : Piège Mortel (Inflige 200 dégâts et réduit sa defense de 20)
+    Chance d'Activer la Compétence : 10%
+    DROP : AUCUN (car dernier combat du jeu)
