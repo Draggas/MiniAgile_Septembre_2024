@@ -79,6 +79,10 @@ class Joueur {
         return categorie.getNom();
     }
 
+    public Classe getCategorie() {
+        return categorie;
+    }
+
     public void setPseudo(String pseudo) {
         this.pseudo = pseudo;
     }
