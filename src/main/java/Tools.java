@@ -33,7 +33,11 @@ public class Tools {
         }
     }
 
-    public static void main(String[] args) {
-        printEntity(MobEnum.SERPENT);
+    public static String readUser() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Entrez votre pseudo : ");
+        String name = sc.nextLine();
+        sc.close();
+        return name;
     }
 }
