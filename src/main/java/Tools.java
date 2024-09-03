@@ -67,4 +67,22 @@ public class Tools {
             System.out.println("Erreur : Impossible de charger la partie");
         }
     }
+
+    public static void printLeaderboard() {
+        try {
+            System.out.println(Tools.readFile("res/data/leaderboard.csv"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void writeLeaderboard(String name, int score) {
+        try {
+            String content = Tools.readFile("res/data/leaderboard.csv");
+            content += name + "," + score + "\n";
+            Tools.writeFile("res/data/leaderboard.csv", content);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
