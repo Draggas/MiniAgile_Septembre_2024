@@ -3,11 +3,11 @@ package main.java;
 public class Mob extends Entity {
     MobEnum type;
 
-    public Mob(MobEnum type, int pv, int atk, int def) {
+    public Mob(MobEnum type) {
         this.nom = type.toString();
-        this.pv = pv;
-        this.atk = atk;
-        this.def = def;
+        this.pv = type.getPV();
+        this.atk = type.getATK();
+        this.def = type.getDEF();
     }
 
     public MobEnum getType() {

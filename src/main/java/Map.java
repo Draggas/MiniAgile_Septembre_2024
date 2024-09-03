@@ -14,6 +14,10 @@ public class Map {
         }
     }
 
+    public Case getFirstCase(){
+        return map.get(0);
+    }
+
     public Case getLeft(Case c) {
         if(c.getNumCase() == 0) {
             return c;
@@ -37,4 +41,5 @@ public class Map {
         }
         return c;
     }
+
 }

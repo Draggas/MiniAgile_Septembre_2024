@@ -3,35 +3,35 @@ package main.java;
 import java.util.ArrayList;
 
 public class Case {
-    private Monde numMonde;
+    private Monde monde;
     private int numCase;
     private ArrayList<Mob> mobs = new ArrayList<Mob>();
 
-    private final double probaSpawn = 0.75;
 
-    public Case(Monde numMonde, int numCase) {
-        this.numMonde = numMonde;
+    public Case(Monde monde, int numCase) {
+        this.monde = monde;
         this.numCase = numCase;
+        this.setMobs();
+    }
+
+    public String toString(){
+        return "Monde : " + this.monde + "   Niveau : " + this.numCase;
     }
 
     public void setMobs() {
-        for (Mob mob:Mob.values()) {
-            if(mob.getWorld() == this.numMonde) {
-                this.mobs.add(mob);
+        for (MobEnum mob:MobEnum.values()) {
+            if(mob.getMonde() == this.monde) {
+                this.mobs.add(new Mob(null, numCase, numCase, numCase));
             }
         }
     }
 
-    public Monde getNumMonde() {
-        return this.numMonde;
+    public Monde getmonde() {
+        return this.monde;
     }
 
     public int getNumCase() {
         return this.numCase;
-    }
-
-    public boolean encounter() {
-        return Math.random()<0.75;
     }
 
     public Mob mobEncountered() {
