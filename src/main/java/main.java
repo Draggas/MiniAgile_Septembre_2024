@@ -32,10 +32,11 @@ public class main {
         Joueur joueur = new Joueur(Tools.readUser(), classe);
         Map map = new Map();
         Case caseActuel = map.getFirstCase();
-        for(int y = 0; y<map.getSizeMap(); y++){
+        for(int y = 0; y<map.getSizeMap()-1; y++){
           System.out.println(caseActuel);
-          System.out.println("Vous rencontrez un " + caseActuel.mobEncountered());
-          Tools.printEntity(caseActuel.mobEncountered().getType());
+          Mob mob = caseActuel.mobEncountered();
+          System.out.println("Vous rencontrez un " + mob);
+          Tools.printEntity(mob.getType());
           Thread.sleep(1000);
           System.out.println("Vous avez battu le monstre, vous passez au prochain");
           caseActuel = map.getRight(caseActuel);
