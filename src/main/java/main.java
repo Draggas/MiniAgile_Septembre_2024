@@ -1,5 +1,4 @@
-import main.java.Classe;
-
+package main.java;
 import java.util.Scanner;
 
 public class main {
