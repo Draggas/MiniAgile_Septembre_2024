@@ -14,12 +14,14 @@
 
 ### Ce que nous allons faire durant le prochain sprint
 
-
-
+- Class CASE
+- Système de Combat
+- Class DROP
 
 ## Rétrospective
 
 ### Sur quoi avons nous butté ?
+Rien
 
 # Mémo
 ![UML](doc/sprint-1/UML.jpg)
