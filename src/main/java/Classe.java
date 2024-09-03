@@ -16,4 +16,34 @@ public enum Classe  {
         this.def = def;
         this.nom = nom;
     }
+
+    public int getPv() {
+        return pv;
+    }
+
+    public int getAtk() {
+        return atk;
+    }
+
+    public int getDef() {
+        return def;
+    }
+    
+    public String getNom() {
+        return nom;
+    }
+
+    public void setPv(int pv) {
+        this.pv = pv;
+    }
+
+    public void setAtk(int atk) {
+        this.atk = atk;
+    }
+
+    public void setDef(int def) {
+        this.def = def;
+    }
+
+
 }
