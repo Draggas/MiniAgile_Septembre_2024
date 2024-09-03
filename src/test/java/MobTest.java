@@ -9,7 +9,7 @@ import main.java.MobEnum;
 
 
 public class MobTest {
-    private Mob mob1 = new Mob(MobEnum.SLIME, 50, 10, 5);
+    private Mob mob1 = new Mob(MobEnum.SLIME);
 
     @Test
     void testMob() {

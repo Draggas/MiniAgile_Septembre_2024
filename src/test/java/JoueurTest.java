@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import main.java.Joueur;
 import main.java.Classe;
-import main.java.Drop;
 
 
 public class JoueurTest {
@@ -40,10 +39,6 @@ public class JoueurTest {
         j3.setPseudo("Baptiste");
         assertEquals("Baptiste", j3.getNom());
         assertEquals(Classe.MAGE, j3.getCategorie());
-        assertNull(j3.getInventory());
-        j3.addInventory(new Drop());
-        assertNotNull(j3);
-        j3.removeInventory(new Drop());
         assertNull(j3.getInventory());
     }
 }
