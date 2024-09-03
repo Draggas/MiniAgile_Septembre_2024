@@ -14,12 +14,20 @@ public class Case {
         this.numCase = numCase;
     }
 
-    public void getMobs() {
+    public void setMobs() {
         for (Mob mob:Mob.values()) {
             if(mob.getWorld() == this.numMonde) {
                 this.mobs.add(mob);
             }
         }
+    }
+
+    public Monde getNumMonde() {
+        return this.numMonde;
+    }
+
+    public int getNumCase() {
+        return this.numCase;
     }
 
     public boolean encounter() {
