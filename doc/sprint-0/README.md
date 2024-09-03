@@ -21,4 +21,4 @@ Découverte des issues déjà présentes
 Sprint 0, aucune difficulté, bonne communication
 
 # Mémo
-(doc/sprint-0/radiateur.jpg)
+![radiateur](doc/sprint-0/radiateur.jpg)

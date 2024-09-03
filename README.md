@@ -1,1 +1,1 @@
-(doc/sprint-0/README.md)
+[sprint0](doc/sprint-0/README.md)
