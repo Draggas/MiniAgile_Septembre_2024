@@ -9,6 +9,8 @@ public enum Classe  {
     public int atk;
     public int def;
     public String nom;
+    public double critRate;
+    public double critDamage;
 
     Classe(int pv, int atk, int def, String nom){
         this.pv = pv;
@@ -33,6 +35,14 @@ public enum Classe  {
         return nom;
     }
 
+    public double getCritRate() {
+        return this.critRate;
+    }
+
+    public double getCritDamage() {
+        return this.critDamage;
+    }
+
     public void setPv(int pv) {
         this.pv = pv;
     }
@@ -43,6 +53,14 @@ public enum Classe  {
 
     public void setDef(int def) {
         this.def = def;
+    }
+
+    public void setCritRate(double critRate) {
+        this.critRate = critRate;
+    }
+
+    public void setCritDamage(double critDamage) {
+        this.critDamage = critDamage;
     }
 
 
