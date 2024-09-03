@@ -6,11 +6,17 @@ public enum Mob {
     ORC(50),
     SERPENT(50),
     GOBLIN(50),
-    SLIME((50));
+    SLIME((50)),
+    SQUELETTE(50),
+    DEMON(50);
 
     private int pv;
 
     private Mob(int pv) {
         this.pv = pv;
     }
+
+    public int getPv() {return this.pv;}
+
+    public void setPv(int newPv) {this.pv = newPv;}
 }
