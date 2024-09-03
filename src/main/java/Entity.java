@@ -1,6 +1,6 @@
 package main.java;
 
-abstract class Entity {
+interface Entity {
 
     int pv, atk, def;
     String nom;
