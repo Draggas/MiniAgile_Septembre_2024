@@ -14,11 +14,15 @@
 
 ### Ce que nous allons faire durant le prochain sprint
 
+- Class CASE
+- Système de Combat
+- Class DROP
 
 ## Rétrospective
 
 ### Sur quoi avons nous butté ?
-Sprint 0, aucune difficulté, bonne communication
+Rien
 
 # Mémo
-![radiateur](doc/sprint-0/radiateur.jpg)
+![UML](doc/sprint-1/UML.jpg)
+![radiateur](doc/sprint-1/radiateur.jpg)
