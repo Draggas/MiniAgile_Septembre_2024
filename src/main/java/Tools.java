@@ -1,7 +1,11 @@
 package main.java;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class Tools {
@@ -39,5 +43,28 @@ public class Tools {
         String name = sc.nextLine();
         sc.close();
         return name;
+    }
+
+    public static void savePlayer(Joueur j) {
+        try {
+            FileOutputStream fos = new FileOutputStream("res/save");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(j);
+            oos.close();
+        } catch (Exception e) {
+            System.out.println("Erreur : Impossible de sauvegarder la partie");
+        }    
+    }
+
+    public static void loadPlayer() {
+        try {
+            FileInputStream fis = new FileInputStream("res/save");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            Joueur j = (Joueur) ois.readObject();
+            ois.close();
+            System.out.println("Partie chargée");
+        } catch (Exception e) {
+            System.out.println("Erreur : Impossible de charger la partie");
+        }
     }
 }
