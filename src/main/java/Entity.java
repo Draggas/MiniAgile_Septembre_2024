@@ -5,11 +5,20 @@ abstract class Entity {
     int pv, atk, def;
     String nom;
 
-    private Entity(String nom, int pv,int atk,int def){
-        this.nom = nom;
-        this.pv = pv;
-        this.atk = atk;
-        this.def = def;
-    }
+    abstract public int getPv();
+
+    abstract public void setPv(int pv);
+
+    abstract public int getAtk();
+
+    abstract public void setAtk(int atk);
+
+    abstract public int getDef();
+
+    abstract public void setDef(int def);
+
+    abstract public String getNom();
+
+    abstract public void setNom(String nom);
 
 }
