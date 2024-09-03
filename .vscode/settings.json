@@ -1,6 +1,7 @@
 {
     "java.project.referencedLibraries": [
-        "lib/**/*.jar"
+        "lib/**/*.jar",
+        "lib/jnativehook-2.2.2.jar"
     ],
     "java.debug.settings.onBuildFailureProceed": true
 }

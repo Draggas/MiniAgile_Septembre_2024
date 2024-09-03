@@ -1,22 +1,42 @@
 package main.java;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-public class UI {
+import com.github.kwhat.jnativehook.GlobalScreen;
+import com.github.kwhat.jnativehook.NativeHookException;
+import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
+import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
+
+public class UI implements NativeKeyListener {
 
     static Joueur joueur;
     static boolean attack;
 
     public static void main(String[] args) {
 
-        joueur = new Joueur("Player", Classe.MAGE);
+        try {
+            GlobalScreen.registerNativeHook();
+        } catch (NativeHookException ex) {
+            System.err.println("There was a problem registering the native hook.");
+            System.err.println(ex.getMessage());
 
+            System.exit(1);
+        }
+
+        GlobalScreen.addNativeKeyListener(new UI());
+
+        joueur = new Joueur("Player", Classe.MAGE);
+        
+
+        update();
+
+    }
+
+    public static void update() {
         for (int i = 0; i < 50; i++) {
             System.out.println("\n");
         }
@@ -25,20 +45,25 @@ public class UI {
         List<String> menuLinesA = readFile("res/overlay_bottomrightA.txt");
         List<String> menuLinesC = readFile("res/overlay_bottomrightC.txt");
 
-
-
         setStats(overlayLines);
 
         for (int i = 0; i < overlayLines.size(); i++) {
             if (i > 22) {
-                System.out.println(overlayLines.get(i) + (attack ? menuLinesA.get(i-22) : menuLinesC.get(i-22)));
+                System.out.println(overlayLines.get(i) + (attack ? menuLinesA.get(i - 22) : menuLinesC.get(i - 22)));
             } else {
                 System.out.println(overlayLines.get(i));
             }
         }
+    }
 
-        Scanner sc = new Scanner(System.in);
-        int i = sc.nextInt();
+    public void nativeKeyReleased(NativeKeyEvent e) {
+        System.out.println("Key Released: " + NativeKeyEvent.getKeyText(e.getKeyCode()) + " " + e.getKeyCode());
+
+        if(e.getKeyCode() == 57416){ //arrow up
+            attack = !attack;
+        }
+
+        update();
 
     }
 

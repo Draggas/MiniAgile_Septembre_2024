@@ -8,10 +8,10 @@ public class Joueur {
     private int level;
     private int xp;
     private int xpmax;
-    private List<Drop> inventory = new ArrayList<Drop>();
+    private List<Item> inventory = new ArrayList<Item>();
     private Classe categorie;
 
-    public Joueur(String pseudo, int level, int xp, int xpmax, List<Drop> inventory, Classe categorie){
+    public Joueur(String pseudo, int level, int xp, int xpmax, List<Item> inventory, Classe categorie){
         this.pseudo = pseudo;
         this.level = level;
         this.xp = xp;
@@ -37,11 +37,11 @@ public class Joueur {
         }
     }
 
-    public boolean addInventory(Drop object){
+    public boolean addInventory(Item object){
         return inventory.add(object);
     }
 
-    public boolean removeInventory(Drop object){
+    public boolean removeInventory(Item object){
         return inventory.remove(object);
     }
     
@@ -61,7 +61,7 @@ public class Joueur {
         return xpmax;
     }
 
-    public List<Drop> getInventory() {
+    public List<Item> getInventory() {
         return inventory;
     }
     public int getPv() {
