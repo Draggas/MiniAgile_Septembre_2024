@@ -17,4 +17,16 @@ public class ToolsTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    void testWriteFile() {
+        String content = "Ceci est un test.";
+        String path = "res/data_test/testWrite";
+        try {
+            Tools.writeFile(path, content);
+            assertEquals(content, Tools.readFile(path));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

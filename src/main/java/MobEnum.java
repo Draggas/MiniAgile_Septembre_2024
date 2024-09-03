@@ -1,30 +1,30 @@
 package main.java;
 
 public enum MobEnum {
-    PETIT_DRAGON("droppetitdragon",10,10),
-    GRIFFON("dropgriffon",10,10),
-    ORC("droporc",10,10),
-    SERPENT("dropserpent",10,10),
-    GOBLIN("dropgobelin",10,10),
-    SLIME("dropslime",10,10),
-    SQUELETTE("dropsquelette",10,10),
-    DEMON("dropdemon",10,10),
-    GRAND_DRAGON("dropgranddragon",10,10),
-    KRAKEN("dropkraken",10,10),
-    SLIME_GEANT("dropslimegeant",10,10),
-    FOURMI("dropfourmi",10,10);
+    DRAGON(0.15,10,10),
+    AMOGUS(0.15,10,10),
+    ORC(0.15,10,10),
+    SERPENT(0.15,10,10),
+    DIO(0.15,10,10),
+    SLIME(0.15,10,10),
+    SQUELETTE(0.15,10,10),
+    DEMON(0.15,10,10),
+    SHREK(0.15,10,10),
+    KRAKEN(0.15,10,10),
+    SLIME_GEANT(0.15,10,10),
+    FOURMI(0.15,10,10);
 
-    private final String DROP;
+    private final double DROP;
     private final int DROPATK;
     private final int DROPDEF;
 
-    private MobEnum(String drop, int dropAtk, int dropDef) {
+    private MobEnum(double drop, int dropAtk, int dropDef) {
         this.DROP = drop;
         this.DROPATK = dropAtk;
         this.DROPDEF = dropDef;
     }
 
-    public String getDROP() {
+    public double getDROP() {
         return DROP;
     }
 
