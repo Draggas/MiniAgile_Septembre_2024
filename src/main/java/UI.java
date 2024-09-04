@@ -130,7 +130,7 @@ public class UI {
         Joueur joueur = main.getGame().getJoueur();
         String line34 = list.get(34);
         list.remove(34);
-        line34 = "█   " + joueur.getNom() + line34.substring(4 + String.valueOf(joueur.getNom()).length());
+        line34 = "█   " + joueur.getCategorie().getNom() + line34.substring(4 + String.valueOf(joueur.getCategorie().getNom()).length());
         list.add(34, line34);
 
         String line35 = list.get(35);

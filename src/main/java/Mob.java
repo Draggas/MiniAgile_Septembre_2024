@@ -2,7 +2,7 @@ package main.java;
 
 import java.util.Random;
 
-public class Mob extends Entity {
+public class Mob extends Entity implements EntityInterface {
     MobEnum type;
 
     public Mob(MobEnum type) {
