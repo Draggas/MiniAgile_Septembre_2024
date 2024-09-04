@@ -66,7 +66,7 @@ public class UI implements NativeKeyListener {
     public void nativeKeyReleased(NativeKeyEvent e) {
 
 
-        if (e.getKeyCode() == 57416) { // arrow up
+        if (e.getKeyCode() == 57416 || e.getKeyCode() == 57424) { // arrow up
             attack = !attack;
         }
 
