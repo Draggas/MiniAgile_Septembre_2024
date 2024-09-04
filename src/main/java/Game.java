@@ -1,5 +1,6 @@
 package main.java;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
@@ -94,24 +95,31 @@ public class Game {
         joueur.setPv(999999);
     }
 
-    public String clearSpace(String s) {
-        String retour = "";
-        for(int i = 0; i<s.length();i++) {
-            if(s.charAt(i) != ' ') {
-                retour += s.charAt(i);
-            }
+    public String propositions(ArrayList<Competence> li) {
+        String retour = "[";
+        for(int i = 0; i<li.size();i++) {
+            retour += li.get(i).toString() + "(" + (i+1) + "), ";
+        }
+        return retour.substring(0, retour.length()-2) + "]";
+    }
+
+    public int ask() {
+        Scanner scanner = new Scanner(System.in);
+        int retour = 0;
+        while (retour <1 || retour > 3) {
+            System.out.print("Entrez le numéro correspondant à la compétences que vous voulez utiliser : ");
+            retour = scanner.nextInt();
         }
         return retour;
     }
 
     public void capacityPlayer() {
-        Scanner scanner = new Scanner(System.in);
         Turn t = new Turn(joueur, mob);
-        System.out.println(joueur.getCompetences().toString());
-        String capa = scanner.nextLine();
+        System.out.println(propositions(joueur.getCompetences()));
+        int bonne_prop = ask();
         // System.out.println(clearSpace(capa));
         
-        t.applyEffect(joueur, Competence.valueOf(clearSpace(capa)));
+        t.applyEffect(joueur, joueur.getCompetences().get(bonne_prop-1));
         // scanner.nextLine();
     }
 
