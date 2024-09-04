@@ -81,22 +81,18 @@ public enum Item implements EntityInterface{
         this.name = nom;
     }
 
-    @Override
     public int getEsq() {
         return this.ESQ;
     }
 
-    @Override
     public void setEsq(int ESQ) {
         this.ESQ = ESQ;
     }
 
-    @Override
     public int getCrit() {
         return this.CRIT;
     }
 
-    @Override
     public void setCrit(int CRIT) {
         this.CRIT = CRIT;
     }
