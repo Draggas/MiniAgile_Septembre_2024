@@ -20,6 +20,12 @@ public class Game {
     }
 
     public void initGame() {
+
+        for(int i = 0; i < 30; i ++){
+            UI.addLogs("               ");
+        }
+
+
         setState(GameState.MENU);
         UI.update();
         map = new Map();
@@ -56,9 +62,20 @@ public class Game {
     }
 
     public void attackPlayer() {
-        System.out.println(turn.damageSimpleAttaque(joueur, mob));
-        mob.setPv(mob.getPv() - turn.damageSimpleAttaque(joueur, mob));
+
+        int dmg = turn.damageSimpleAttaque(joueur, mob);
+
+        UI.addLogs(joueur.getCategorie().getNom() + " ⚔ " + dmg + " ❤ " + mob.getNom());
+
+        mob.setPv(mob.getPv() - dmg);
         if (mob.getPv() <= 0) { // MORT DU MOB
+
+            UI.addLogs("");
+            UI.addLogs(joueur.getCategorie().getNom() + " a tué " + mob.getNom() + " ☠");
+            UI.addLogs("");
+
+            
+
             this.caseActuel = this.map.getRight(this.caseActuel);
             if(!cheatCodeImmortel && !cheatCodeOneShot){
                 joueur.resetBuff();
