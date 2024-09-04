@@ -101,7 +101,7 @@ public class UI implements NativeKeyListener {
                     }
                 }
 
-                if (e.getKeyCode() == 28) { // enter
+                if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) { // enter
                     main.getGame().startGame();
                 }
 
