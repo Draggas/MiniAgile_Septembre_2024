@@ -7,25 +7,50 @@ public class Game {
     Map map;
     Case caseActuel;
     Joueur joueur;
+    Mob mob;
 
     public Game() {
         this.joueur = new Joueur("", Classe.ASSASSIN);
     }
 
     public  void initGame() {
-        System.out.println("start");
+        setState(GameState.CLASSE);
+        UI.start(joueur);
+        map = new Map();
+        caseActuel = map.getFirstCase();
     }
 
     public  void startGame() {
+        setState(GameState.PLAYING);
+
         System.out.println("start");
+        newMob();
+
     }
 
     public GameState getState() {
         return state;
     }
 
+    public void setState(GameState state) {
+        this.state = state;
+    }
+
     public Joueur getJoueur() {
         return joueur;
     }
+
+    public Mob getMob() {
+        return mob;
+    }
+
+
+    public void newMob() {
+
+        mob = this.caseActuel.mobEncountered();
+        UI.update();
+    
+      }
+    
 
 }

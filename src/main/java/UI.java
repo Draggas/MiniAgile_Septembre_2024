@@ -15,7 +15,6 @@ public class UI implements NativeKeyListener {
 
     static Joueur joueur;
     static boolean attack;
-    static Mob mob;
 
     public static void start(Joueur j) {
 
@@ -49,7 +48,7 @@ public class UI implements NativeKeyListener {
                 List<String> menuLinesA = readFile("res/overlay_bottomrightA.txt");
                 List<String> menuLinesC = readFile("res/overlay_bottomrightC.txt");
                 showPlayer(overlayLines);
-                if (mob != null) {
+                if (main.getGame().getMob() != null) {
                     showMob(overlayLines);
                 }
                 setStats(overlayLines);
@@ -82,7 +81,7 @@ public class UI implements NativeKeyListener {
                 }
                 if (e.getKeyCode() == 28) { // enter
                     main.caseActuel = main.map.getRight(main.caseActuel);
-                    main.newMob();
+                    main.getGame().newMob();
 
                 }
                 break;
@@ -160,7 +159,7 @@ public class UI implements NativeKeyListener {
 
     private static void showMob(List<String> list) {
 
-        List<String> listmage = readFile("res/ascii/" + mob.getNom());
+        List<String> listmage = readFile("res/ascii/" + main.getGame().getMob().getNom());
         for (int i = 2; i < listmage.size() + 2; i++) {
             String line = list.get(i);
             list.remove(i);
@@ -197,6 +196,25 @@ public class UI implements NativeKeyListener {
         list.remove(37);
         line37 = "█   ⛨ : " + joueur.getDef() + line37.substring(8 + String.valueOf(joueur.getDef()).length());
         list.add(37, line37);
+
+
+        // Mob mob = main.getGame().getMob();
+        // String line35 = list.get(35);
+        // list.remove(35);
+        // line35 = line35.substring(0, 50) + "⛨ : " + mob.getDef() + line35.substring(50 + String.valueOf(mob.getDef()).length() );
+        // list.add(35, line35);
+
+        // String line36 = list.get(36);
+        // list.remove(36);
+        // line36 = "█   ⚔ : " + joueur.getAtk() + line36.substring(8 + String.valueOf(joueur.getAtk()).length());
+        // list.add(36, line36);
+
+        // String line37 = list.get(37);
+        // list.remove(37);
+        // line37 = "█   ⛨ : " + joueur.getDef() + line37.substring(8 + String.valueOf(joueur.getDef()).length());
+        // list.add(37, line37);
+
+
 
     }
 
