@@ -37,4 +37,10 @@ public class Turn {
             return (int)(attaquant.getAtk()*((double)defenseur.getDef()/(defenseur.getDef()+100)));
         }
     }
+
+    public void applyEffect(Joueur player, Competence c) {
+        player.setPv(player.getPv()+c.getHealing());
+        player.setDef(player.getDef()+c.getArmor());
+        player.setAtk(player.getAtk()+c.getBoost());
+    }
 }

@@ -54,24 +54,20 @@ public class Game {
     public void attackPlayer() {
         System.out.println(turn.damageSimpleAttaque(joueur, mob));
         mob.setPv(mob.getPv() - turn.damageSimpleAttaque(joueur, mob));
-        if (mob.getPv() < 0) { // MORT DU MOB
+        if (mob.getPv() <= 0) { // MORT DU MOB
             this.caseActuel = this.map.getRight(this.caseActuel);
             newMob();
         }
     }
 
     public void capacityPlayer() {
-        mob.setPv(mob.getPv() - turn.damageCompetence(joueur, mob, Competence.SOINS_MAJEURS)); // A changer pour mettre
-                                                                                               // la bonne compétence
-        if (mob.getPv() < 0) { // MORT DU MOB
-            this.caseActuel = this.map.getRight(this.caseActuel);
-            newMob();
-        }
+        Turn t = new Turn(joueur, mob);
+        t.applyEffect(joueur, Competence.ARMURE_MAGIQUE);
     }
 
     public void attackMob() {
         joueur.setPv(joueur.getPv() - turn.damageSimpleAttaque(mob, joueur));
-        if (joueur.getPv() < 0) {
+        if (joueur.getPv() <= 0) {
             // GAME OVER
         }
     }

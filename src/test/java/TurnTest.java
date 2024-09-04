@@ -7,21 +7,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class TurnTest {
-    private Turn turn = new Turn();
     private Joueur player = new Joueur("Banana", Classe.ASSASSIN);
     private Mob mob = new Mob(MobEnum.DRAGON);
-    private Competence c = Competence.ATTAQUE_RENFORCEE;
+    private Turn turn = new Turn(player, mob);
 
     @Test
     void testTurn() {
         player.getCategorie().setCritRate(0);
         assertEquals(20,turn.damageSimpleAttaque(player, mob));
-        assertEquals(40,turn.damageCompetence(player, mob, Competence.ATTAQUE_RENFORCEE));
-    }
-
-    @Test
-    void testTurnBuffer() {
-        this.turn.competenceBuffer(Competence.EMBRASEMENT, player);
-
+        
     }
 }

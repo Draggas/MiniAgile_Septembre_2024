@@ -5,7 +5,7 @@ public enum Competence {
     /*Explication de chaque stats :
     Healing : nombre de PV rendus/retirés.
     Armor : nombre de points d'armure ajoutés/retirés au lanceur.
-    Boost : nombre de points d'attaque retirés/ajoutés au receveur.
+    Boost : nombre de points d'attaque retirés/ajoutés au lanceur.
     */
 
     //Compétences du barbare.
@@ -16,7 +16,7 @@ public enum Competence {
     //Compétences du mage.
     ARMURE_MAGIQUE(0, 35, 0),
     SOINS_MAJEURS(60, 10, 0),
-    PLUIE_SANGUINE(-60, 400, 40),
+    PLUIE_SANGUINE(-40, 400, 40),
 
 
     //Compétence de l'assassin.
