@@ -35,7 +35,16 @@ public class Map {
         int temp = 0;
         for(Case ca:map) {
             if(ca==c && !(c.getMonde() == Monde.MONDE_3 && c.getNumCase() == Monde.MONDE_3.getNbCases())) {
-                return map.get(temp+1);
+                try {
+                    return map.get(temp+1);
+                } catch (IndexOutOfBoundsException e){
+                    for(int i=0;i<50;i++){
+                        System.out.println("\n");
+                    }
+                    System.out.println("Fin Du Jeu");
+                    System.exit(0);
+                }
+                
             }
             temp++;
         }
