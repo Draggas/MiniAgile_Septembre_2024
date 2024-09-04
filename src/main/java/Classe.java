@@ -1,9 +1,9 @@
 package main.java;
 
 public enum Classe  {
-    ASSASSIN(50,4,1,40,"l'assassin",0.25, 1.5),
-    BARBARE(150,2,2,20,"le barbare",0.25,1.5),
-    MAGE(100,2,3,20,"le grand mage",0.25,1.5);
+    ASSASSIN(100,40,30,40,"l'assassin",0.25, 1.5),
+    BARBARE(200,70,60,20,"le barbare",0.25,1.5),
+    MAGE(150,110,20,20,"le grand mage",0.25,1.5);
 
     public int pv;
     public int atk;
