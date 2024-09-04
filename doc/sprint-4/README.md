@@ -25,7 +25,8 @@ Durant ce sprint, nous avons sur-éstimé nos compétences et avons mis pris tro
 
 ### PDCA
 
-Prendre moins de US que on a fait dans ce sprint.
+* Pour nous améliorer, nous pouvons prendre moins d'US pour le sprint
+* Nous avons donc compté notre vélocité, et avons décider de prendre 20 points d'efforts maximum pour les prochains sprints
 
 # Mémo
 ![presentation](doc/sprint-4/radiateur.jpg)
