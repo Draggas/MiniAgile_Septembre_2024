@@ -8,21 +8,19 @@ public class Joueur extends Entity {
     private int xp;
     private int xpmax;
     private List<Item> inventory = new ArrayList<Item>();
-    private Classe categorie;
+    private Classe categorie = Classe.ASSASSIN;
     private ArrayList<Competence> listeCompetences;
 
     public Joueur(){
-        new Joueur(null,0,0,10,new ArrayList<>(),Classe.ASSASSIN);
+        new Joueur(null,0,0,10,new ArrayList<>());
     };
 
-    public Joueur(String nom, int level, int xp, int xpmax, List<Item> inventory, Classe categorie) {
+    public Joueur(String nom, int level, int xp, int xpmax, List<Item> inventory) {
         this.nom = nom;
         this.level = level;
         this.xp = xp;
         this.xpmax = xpmax;
         this.inventory = inventory;
-        this.categorie = categorie;
-
     }
 
     public void addXp(int valeur) {

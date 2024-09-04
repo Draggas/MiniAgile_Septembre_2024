@@ -17,9 +17,10 @@ public class JoueurTest {
     @BeforeEach
     public void init() {
         j1 = new Joueur();
-        j2 = new Joueur("Maxime", 99, 989, 990, null, Classe.BARBARE);
+        j2 = new Joueur("Maxime", 99, 989, 990, null);
         j3 = new Joueur();
         j1.setCategorie(Classe.ASSASSIN);
+        j2.setCategorie(Classe.BARBARE);
         j3.setCategorie(Classe.MAGE);
     }
 
