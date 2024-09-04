@@ -2,18 +2,43 @@ package main.java;
 
 public enum Item implements EntityInterface{
 
-    GeleeResistante(10, 0, 0),
-    PeauSlime(0,0,5);
+    GeleeResistante(10, 0, 0,0,0),
+    PeauSlime(0,0,5,0,0),
+    BraceletOrc(0,0,10,0,0),
+    AnneauDeForce(0,10,0,0,0),
+    EssenceDeForce(0,20,0,0,0),
+    CouronneDeSlime(20,0,0,0,0),
+    EcailleMineur(0,0,10,0,0),
+    PoisonDuSerpent(0,0,0,0,10),
+    AnneauDeVitalite(20,0,0,0,0),
+    ZaWarudo(0,0,0,20,0),
+    FragmentDeTentacule(0,0,0,0,15),
+    ForceDeKraken(0,30,0,0,0),
+    GriffeDeDragon(0,25,0,0,0),
+    EcailleDeDragon(0,0,20,0,0),
+    CasqueDeSurvie(0,0,0,10,0),
+    GantsImposteur(0,20,0,0,0),
+    ChaussureDeShrek(0,0,0,10,0),
+    MuscleDeShrek(0,40,0,0,0),
+    GantDuDemon(0,40,0,0,0),
+    CorneDuDemon(0,0,0,0,10),
+    EpeeEnOs(0,35,0,0,0),
+    BouclierDuSquelette(0,0,50,0,0);
+
 
     int PV;
     int ATK;
     int DEF;
+    int ESQ;
+    int CRIT;
     String name;
 
-    Item(int PV, int ATK, int DEF) {
+    Item(int PV, int ATK, int DEF, int ESQ, int CRIT) {
         this.PV = PV;
         this.ATK = ATK;
         this.DEF = DEF;
+        this.ESQ = ESQ;
+        this.CRIT = CRIT;
     }
 
     @Override
@@ -56,5 +81,24 @@ public enum Item implements EntityInterface{
         this.name = nom;
     }
 
+    @Override
+    public int getEsq() {
+        return this.ESQ;
+    }
+
+    @Override
+    public void setDef(int ESQ) {
+        this.ESQ = ESQ;
+    }
+
+    @Override
+    public int getCrit() {
+        return this.CRIT;
+    }
+
+    @Override
+    public void setDef(int CRIT) {
+        this.CRIT = CRIT;
+    }
 
 }
