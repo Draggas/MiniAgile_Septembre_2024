@@ -19,11 +19,15 @@
 
 ### Sur quoi avons nous butté ?
 
-Problème de gestion du temps, la demo était séparé sur 2 ordinateurs
+* Problème de gestion du temps, la demo était séparé sur 2 ordinateurs
+* On avait terminé tout ce que nous avions à faire mais la démo n'était pas prête.
 
 ### PDCA
 
-Gérer + le temps, enlever des tâches et garder 10min avant la démo pour tout combiner.
+* Nous pourrions mieux gérer le temps. 
+* Si on est prêt à temps pour la démo à la fin du prochain sprint, l'amélioration sera visible.
+* Désigner quelqu'un qui nous prévient 15 minutes avant la démo
+
 
 # Mémo
 ![radiateur](doc/sprint-2/radiateur.jpg)

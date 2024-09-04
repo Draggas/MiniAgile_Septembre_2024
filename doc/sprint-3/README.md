@@ -19,11 +19,13 @@
 
 ### Sur quoi avons nous butté ?
 
-Beaucoup d'amélioration sur ce print, + efficace et meilleure gestion du temps
+* Beaucoup d'amélioration sur ce print, + efficace et meilleure gestion du temps
+* Seul problème, nos User Stories n'étaient pas assez séparés
 
 ### PDCA
 
-Manque d'issues, rajouter des issues dans les backlogs
+* Pour nous améliorer, nous pouvons diviser chaque US dans plusieurs autres US.
+* Si les prochaines US ont des points d'efforts inférieur avec + d'US disctinct
 
 # Mémo
 ![presentation](doc/sprint-3/PresentationProjet.jpg)
