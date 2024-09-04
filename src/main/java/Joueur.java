@@ -3,38 +3,57 @@ package main.java;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Joueur {
-    private String pseudo;
+public class Joueur extends Entity {
     private int level;
     private int xp;
     private int xpmax;
     private List<Item> inventory = new ArrayList<Item>();
     private Classe categorie;
 
-    public Joueur(String pseudo, int level, int xp, int xpmax, List<Item> inventory, Classe categorie){
-        this.pseudo = pseudo;
+    public Joueur(String nom, int level, int xp, int xpmax, List<Item> inventory, Classe categorie){
+        this.nom = nom;
         this.level = level;
         this.xp = xp;
         this.inventory = inventory;
         this.categorie = categorie;
+        if (categorie == Classe.ASSASSIN){
+            this.pv = 140;
+            this.atk = 40;
+            this.def = 30;
+        } else if(categorie == Classe.BARBARE){
+            this.pv = 200;
+            this.atk = 70;
+            this.def = 60;
+        } else {
+            this.pv = 150;
+            this.atk = 110;
+            this.def = 20;
+        }
     }
 
-    public Joueur(String pseudo, Classe categorie){
-        this(pseudo, 1, 0, 10, null, categorie);
+    public Joueur(String nom, Classe categorie){
+        this(nom, 1, 0, 100, null, categorie);
     }
 
     public void addXp(int valeur){
         xp = xp + valeur;
         if(xp >= xpmax){
-            if(level == 99){
+            if(level == 30){
                 xp = xpmax - 1;
             } else {
-                xp = 0;
-                level++;
-                xpmax = level*10;
+                
             }
 
         }
+    }
+
+    private void lvlUp(){
+        xp = 0;
+        level++;
+        xpmax *= 1.1;
+        pv += 20;
+        def += 5;
+        atk += 10;
     }
 
     public boolean addInventory(Item object){
@@ -43,10 +62,6 @@ public class Joueur {
 
     public boolean removeInventory(Item object){
         return inventory.remove(object);
-    }
-    
-    public String getPseudo() {
-        return pseudo;
     }
 
     public int getLevel() {
@@ -84,8 +99,8 @@ public class Joueur {
         return categorie;
     }
 
-    public void setPseudo(String pseudo) {
-        this.pseudo = pseudo;
+    public void setnom(String nom) {
+        this.nom = nom;
     }
 
     public void setXp(int xp) {
@@ -102,5 +117,9 @@ public class Joueur {
 
     public void setDef(int def) {
         categorie.setDef(def);
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 }
