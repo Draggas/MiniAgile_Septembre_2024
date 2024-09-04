@@ -1,5 +1,7 @@
 package main.java;
 
+import java.util.Scanner;
+
 public class Game {
 
     GameState state = GameState.MENU;
@@ -11,7 +13,8 @@ public class Game {
     Turn turn;
 
     public Game() {
-        this.joueur = new Joueur();
+
+        this.joueur = new Joueur("", Classe.BARBARE);
     }
 
     public void initGame() {
@@ -19,12 +22,6 @@ public class Game {
         UI.update();
         map = new Map();
         caseActuel = map.getFirstCase();
-
-
-        for(int i = 0; i < 30; i ++){
-            UI.addLogs("               ");
-        }
-
     }
 
     public void startGame() {
@@ -57,38 +54,34 @@ public class Game {
     }
 
     public void attackPlayer() {
-        int dmg = turn.damageSimpleAttaque(joueur, mob);
-        mob.setPv(mob.getPv() - dmg);
-        UI.addLogs(joueur.getNom() + " ⚔ " + dmg + "❤ " + mob.getNom());
-
+        System.out.println(turn.damageSimpleAttaque(joueur, mob));
+        mob.setPv(mob.getPv() - turn.damageSimpleAttaque(joueur, mob));
         if (mob.getPv() <= 0) { // MORT DU MOB
-            UI.addLogs("");
-            UI.addLogs(joueur.getNom() + " a tué " + mob.getNom() + " ☠");
-            UI.addLogs("");
             this.caseActuel = this.map.getRight(this.caseActuel);
             joueur.resetBuff();
             newMob();
         }
     }
 
-    public void cheatAttackPlayer() {
-        int dmg = 9999999;
-        mob.setPv(mob.getPv() - dmg);
-        if (mob.getPv() <= 0) { // MORT DU MOB
-            UI.addLogs("");
-            UI.addLogs(joueur.getNom() + "  ☠  " + mob.getNom());
-            UI.addLogs("");
-            this.caseActuel = this.map.getRight(this.caseActuel);
-            newMob();
+    public String clearSpace(String s) {
+        String retour = "";
+        for(int i = 0; i<s.length();i++) {
+            if(s.charAt(i) != ' ') {
+                retour += s.charAt(i);
+            }
         }
-
-        UI.addLogs(joueur.getNom() + " " + dmg +" ⚔ " + mob.getNom() );
-
+        return retour;
     }
 
     public void capacityPlayer() {
+        Scanner scanner = new Scanner(System.in);
         Turn t = new Turn(joueur, mob);
-        t.applyEffect(joueur, Competence.ARMURE_MAGIQUE);
+        System.out.println(joueur.getCompetences().toString());
+        String capa = scanner.nextLine();
+        // System.out.println(clearSpace(capa));
+        
+        t.applyEffect(joueur, Competence.valueOf(clearSpace(capa)));
+        // scanner.nextLine();
     }
 
     public void attackMob() {
@@ -97,4 +90,5 @@ public class Game {
             // GAME OVER
         }
     }
+
 }

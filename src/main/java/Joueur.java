@@ -8,26 +8,41 @@ public class Joueur extends Entity {
     private int xp;
     private int xpmax;
     private List<Item> inventory = new ArrayList<Item>();
-    private Classe categorie = Classe.ASSASSIN;
+    private Classe categorie;
     private ArrayList<Competence> listeCompetences;
 
-    public Joueur(){
-        new Joueur(null,1,1,10,new ArrayList<>());
-    };
 
-    public Joueur(String nom, int level, int xp, int xpmax, List<Item> inventory) {
+    public Joueur(String nom, int level, int xp, int xpmax, List<Item> inventory, Classe categorie){
         this.nom = nom;
         this.level = level;
         this.xp = xp;
         this.xpmax = xpmax;
         this.inventory = inventory;
+        this.categorie = categorie;
+        if (categorie == Classe.ASSASSIN){
+            this.pv = 100;
+            this.atk = 40;
+            this.def = 30;
+        } else if(categorie == Classe.BARBARE){
+            this.pv = 200;
+            this.atk = 70;
+            this.def = 60;
+        } else {
+            this.pv = 150;
+            this.atk = 110;
+            this.def = 20;
+        }
     }
 
-    public void addXp(int valeur) {
-        this.xp = this.xp + valeur;
-        if (this.xp >= this.xpmax) {
-            if (this.level == 30) {
-                this.xp = this.xpmax - 1;
+    public Joueur(String nom, Classe categorie){
+        this(nom, 1, 0, 10, null, categorie);
+    }
+
+    public void addXp(int valeur){
+        xp = xp + valeur;
+        if(xp >= xpmax){
+            if(level == 30){
+                xp = xpmax - 1;
             } else {
                 lvlUp();
             }
@@ -35,7 +50,7 @@ public class Joueur extends Entity {
         }
     }
 
-    private void lvlUp() {
+    private void lvlUp(){
         this.xp = 0;
         this.level++;
         this.xpmax *= 1.1;
@@ -44,17 +59,17 @@ public class Joueur extends Entity {
         this.atk += 10;
     }
 
-    public void resetBuff() {
+    public void resetBuff(){
         this.atk = this.categorie.atk + (10 * this.level);
         this.pv = this.categorie.pv + (20 * this.level);
         this.def = this.categorie.def + (5 * this.level);
     }
 
-    public boolean addInventory(Item object) {
+    public boolean addInventory(Item object){
         return inventory.add(object);
     }
 
-    public boolean removeInventory(Item object) {
+    public boolean removeInventory(Item object){
         return inventory.remove(object);
     }
 
@@ -63,17 +78,16 @@ public class Joueur extends Entity {
     }
 
     public int getXp() {
-        return this.xp;
+        return  this.xp;
     }
 
     public int getXpmax() {
-        return this.xpmax;
+        return  this.xpmax;
     }
 
     public List<Item> getInventory() {
-        return this.inventory;
+        return  this.inventory;
     }
-
     public int getPv() {
         return this.pv;
     }
@@ -86,8 +100,12 @@ public class Joueur extends Entity {
         return this.def;
     }
 
+    public ArrayList<Competence> getCompetences() {
+        return this.listeCompetences;
+    }
+
     public String getNom() {
-        return this.getCategorie().getNom();
+        return this.nom;
     }
 
     public Classe getCategorie() {
@@ -96,41 +114,6 @@ public class Joueur extends Entity {
 
     public void setCategorie(Classe categorie) {
         this.categorie = categorie;
-
-        switch (categorie) {
-            case ASSASSIN:
-                this.pv = 100;
-                this.atk = 40;
-                this.def = 30;
-                this.listeCompetences = new ArrayList<Competence>();
-                this.listeCompetences.add(Competence.COUVERTURE_DE_SANG);
-                this.listeCompetences.add(Competence.VAMPIRISME);
-                this.listeCompetences.add(Competence.EXECUTION);
-                break;
-            case BARBARE:
-                this.pv = 200;
-                this.atk = 70;
-                this.def = 60;
-                this.listeCompetences = new ArrayList<Competence>();
-                this.listeCompetences.add(Competence.INTIMIDATION);
-                this.listeCompetences.add(Competence.SOINS_MINEURS);
-                this.listeCompetences.add(Competence.TOUT_OU_RIEN);
-                break;
-            case MAGE:
-                this.pv = 150;
-                this.atk = 110;
-                this.def = 20;
-                this.listeCompetences = new ArrayList<Competence>();
-                this.listeCompetences.add(Competence.ARMURE_MAGIQUE);
-                this.listeCompetences.add(Competence.SOINS_MAJEURS);
-                this.listeCompetences.add(Competence.PLUIE_SANGUINE);
-
-                break;
-
-            default:
-                break;
-        }
-
     }
 
     public void setnom(String nom) {
@@ -155,5 +138,24 @@ public class Joueur extends Entity {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public void setCompetences(Classe categorie) {
+        if (categorie == Classe.ASSASSIN){
+            this.listeCompetences = new ArrayList<Competence>();
+            this.listeCompetences.add(Competence.COUVERTURE_DE_SANG);
+            this.listeCompetences.add(Competence.VAMPIRISME);
+            this.listeCompetences.add(Competence.EXECUTION);
+        } else if(categorie == Classe.BARBARE){
+            this.listeCompetences = new ArrayList<Competence>();
+            this.listeCompetences.add(Competence.INTIMIDATION);
+            this.listeCompetences.add(Competence.SOINS_MINEURS);
+            this.listeCompetences.add(Competence.TOUT_OU_RIEN);
+        } else {
+            this.listeCompetences = new ArrayList<Competence>();
+            this.listeCompetences.add(Competence.ARMURE_MAGIQUE);
+            this.listeCompetences.add(Competence.SOINS_MAJEURS);
+            this.listeCompetences.add(Competence.PLUIE_SANGUINE);
+        }
     }
 }

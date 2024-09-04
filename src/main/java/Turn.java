@@ -36,7 +36,10 @@ public class Turn {
 
     public void applyEffect(Joueur player, Competence c) {
         player.setPv(player.getPv()+c.getHealing());
+        // System.out.println(c.getHealing());
         player.setDef(player.getDef()+c.getArmor());
+        // System.out.println(c.getArmor());
         player.setAtk(player.getAtk()+c.getBoost());
+        // System.out.println(c.getBoost());
     }
 }

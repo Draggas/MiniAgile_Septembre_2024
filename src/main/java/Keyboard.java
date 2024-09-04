@@ -7,8 +7,6 @@ import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 
 public class Keyboard  implements NativeKeyListener {
 
-    boolean cheatCode = false;
-
     public static void initKeyboard(){
 
          try {
@@ -40,17 +38,11 @@ public class Keyboard  implements NativeKeyListener {
                 if (e.getKeyCode() == 57416 || e.getKeyCode() == 57424) { // arrow up
                     UI.attack = !UI.attack;
                 }
-                if (e.getKeyCode() == 25) { // P
-                    cheatCode = true;
-                }
                 if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) {
-                    if(cheatCode)
-                        main.getGame().cheatAttackPlayer();
-                    else if (UI.attack)
+                    if (UI.attack)
                         main.getGame().attackPlayer();
                     else
                         main.getGame().capacityPlayer();
-                    main.getGame().attackMob();
                 }
                 break;
             case CLASSE:
@@ -74,9 +66,11 @@ public class Keyboard  implements NativeKeyListener {
                 if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) {
                     main.getGame().startGame();
                 }
+
                 break;
 
         }
+
         UI.update();
 
     }

@@ -3,9 +3,9 @@ package main.java;
 import java.util.ArrayList;
 
 public enum Classe  {
-    ASSASSIN(100,40,30,40,"Assassin",0.25, 1.5),
-    BARBARE(200,70,60,20,"Barbare",0.25,1.5),
-    MAGE(150,110,20,20,"Grand Mage",0.25,1.5);
+    ASSASSIN(100,40,30,40,"l'assassin",0.25, 1.5),
+    BARBARE(200,70,60,20,"le barbare",0.25,1.5),
+    MAGE(150,110,20,20,"le grand mage",0.25,1.5);
 
     public int pv;
     public int atk;
