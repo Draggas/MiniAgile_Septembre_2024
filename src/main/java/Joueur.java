@@ -9,6 +9,8 @@ public class Joueur extends Entity {
     private int xpmax;
     private List<Item> inventory = new ArrayList<Item>();
     private Classe categorie;
+    private ArrayList<Competence> listeCompetences;
+
 
     public Joueur(String nom, int level, int xp, int xpmax, List<Item> inventory, Classe categorie){
         this.nom = nom;
@@ -21,14 +23,26 @@ public class Joueur extends Entity {
             this.pv = 100;
             this.atk = 40;
             this.def = 30;
+            this.listeCompetences = new ArrayList<Competence>();
+            this.listeCompetences.add(Competence.COUVERTURE_DE_SANG);
+            this.listeCompetences.add(Competence.VAMPIRISME);
+            this.listeCompetences.add(Competence.EXECUTION);
         } else if(categorie == Classe.BARBARE){
             this.pv = 200;
             this.atk = 70;
             this.def = 60;
+            this.listeCompetences = new ArrayList<Competence>();
+            this.listeCompetences.add(Competence.INTIMIDATION);
+            this.listeCompetences.add(Competence.SOINS_MINEURS);
+            this.listeCompetences.add(Competence.TOUT_OU_RIEN);
         } else {
             this.pv = 150;
             this.atk = 110;
             this.def = 20;
+            this.listeCompetences = new ArrayList<Competence>();
+            this.listeCompetences.add(Competence.ARMURE_MAGIQUE);
+            this.listeCompetences.add(Competence.SOINS_MAJEURS);
+            this.listeCompetences.add(Competence.PLUIE_SANGUINE);
         }
     }
 
@@ -55,6 +69,12 @@ public class Joueur extends Entity {
         this.pv += 20;
         this.def += 5;
         this.atk += 10;
+    }
+
+    public void resetBuff(){
+        this.atk = this.categorie.atk + (10 * this.level);
+        this.pv = this.categorie.pv + (20 * this.level);
+        this.def = this.categorie.def + (5 * this.level);
     }
 
     public boolean addInventory(Item object){

@@ -5,13 +5,9 @@ import java.util.ArrayList;
 public class Turn {
     private Joueur player;
     private Mob mob;
-    private ArrayList<Competence> effectsQueuePlayer;
-    private ArrayList<Competence> effectsQueueMob;
     public Turn(Joueur player, Mob mob) {
         this.player = player;
         this.mob = mob;
-        this.effectsQueuePlayer = new ArrayList<Competence>();
-        this.effectsQueueMob = new ArrayList<Competence>();
     }
 
     public Joueur getJoueur() {

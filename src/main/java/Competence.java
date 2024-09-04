@@ -10,7 +10,7 @@ public enum Competence {
 
     //Compétences du barbare.
     INTIMIDATION(0, 0, 30),
-    SOINS_CONTINUS(25, 0, 0),
+    SOINS_MINEURS(25, 0, 0),
     TOUT_OU_RIEN(0, -50, 150),
 
     //Compétences du mage.

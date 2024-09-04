@@ -26,7 +26,6 @@ public class Game {
 
         System.out.println("start");
         newMob();
-
     }
 
     public GameState getState() {
@@ -56,6 +55,7 @@ public class Game {
         mob.setPv(mob.getPv() - turn.damageSimpleAttaque(joueur, mob));
         if (mob.getPv() <= 0) { // MORT DU MOB
             this.caseActuel = this.map.getRight(this.caseActuel);
+            joueur.resetBuff();
             newMob();
         }
     }
