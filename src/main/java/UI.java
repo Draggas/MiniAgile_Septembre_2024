@@ -37,34 +37,41 @@ public class UI implements NativeKeyListener {
     }
 
     public static void update() {
-        for (int i = 0; i < 50; i++) {
-            System.out.println("\n");
-        }
 
-        List<String> overlayLines = readFile("res/overlay.txt");
-        List<String> menuLinesA = readFile("res/overlay_bottomrightA.txt");
-        List<String> menuLinesC = readFile("res/overlay_bottomrightC.txt");
+        switch (Game.getState()) {
+            case PLAYING:
+                for (int i = 0; i < 50; i++) {
+                    System.out.println("\n");
+                }
+                List<String> overlayLines = readFile("res/overlay.txt");
+                List<String> menuLinesA = readFile("res/overlay_bottomrightA.txt");
+                List<String> menuLinesC = readFile("res/overlay_bottomrightC.txt");
+                showPlayer(overlayLines);
+                if (mob != null) {
+                    showMob(overlayLines);
+                }
+                setStats(overlayLines);
+                for (int i = 0; i < overlayLines.size(); i++) {
+                    if (i > 22) {
+                        System.out.println(
+                                overlayLines.get(i) + (attack ? menuLinesA.get(i - 22) : menuLinesC.get(i - 22)));
+                    } else {
+                        System.out.println(overlayLines.get(i));
+                    }
+                }
+                break;
 
-        showPlayer(overlayLines);
+            case CLASSE:
+                showClasse();
+                break;
 
-        if (mob != null) {
-            showMob(overlayLines);
-        }
-
-        setStats(overlayLines);
-
-        for (int i = 0; i < overlayLines.size(); i++) {
-            if (i > 22) {
-                System.out.println(overlayLines.get(i) + (attack ? menuLinesA.get(i - 22) : menuLinesC.get(i - 22)));
-            } else {
-                System.out.println(overlayLines.get(i));
-            }
+            default:
+                break;
         }
 
     }
 
     public void nativeKeyReleased(NativeKeyEvent e) {
-
 
         if (e.getKeyCode() == 57416) { // arrow up
             attack = !attack;
@@ -77,6 +84,31 @@ public class UI implements NativeKeyListener {
         }
 
         update();
+
+    }
+
+    private static void showClasse() {
+
+        List<String> textLines = readFile("res/classchoice.txt");
+        List<String> classeLines = readFile("res/classe.txt");
+        List<String> underLines = readFile("res/underline.txt");
+
+
+        for (int i = 0; i < textLines.size(); i++)
+            System.out.println(textLines.get(i));
+
+        for (int i = 0; i < classeLines.size(); i++)
+            System.out.println(classeLines.get(i));
+
+        switch (Game.getJoueur()) {
+            case value:
+                
+                break;
+        
+            default:
+                break;
+        }
+
 
     }
 
