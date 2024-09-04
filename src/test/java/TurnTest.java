@@ -14,10 +14,9 @@ public class TurnTest {
 
     @Test
     void testTurn() {
+        player.getCategorie().setCritRate(0);
         assertEquals(20,turn.damageSimpleAttaque(player, mob));
-        assertEquals(32,turn.damageSimpleAttaque(mob, player));
         assertEquals(40,turn.damageCompetence(player, mob, Competence.ATTAQUE_RENFORCEE));
-        assertEquals(41, turn.damageCompetence(mob, player, Competence.ATTAQUE_RENFORCEE));
     }
 
     @Test

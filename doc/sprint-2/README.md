@@ -3,6 +3,7 @@
 ## Démo + Planification du sprint suivant
 
 ### Ce que nous avons fait durant ce sprint
+
 - Class CASE
 - Début de la gestion d'affichage
 - Class Item
@@ -10,14 +11,19 @@
 
 ### Ce que nous allons faire durant le prochain sprint
 
-- Système de combat
-- Compétences des mobs et des joueurs
-- Avancement de l'affichage
+-Présentation du Projet
+-Liste et Stats des compétences
+-Ecriture de sauvegarde
 
 ## Rétrospective
 
 ### Sur quoi avons nous butté ?
+
 Problème de gestion du temps, la demo était séparé sur 2 ordinateurs
+
+### PDCA
+
+Gérer + le temps, enlever des tâches et garder 10min avant la démo pour tout combiner.
 
 # Mémo
 ![radiateur](doc/sprint-2/radiateur.jpg)
