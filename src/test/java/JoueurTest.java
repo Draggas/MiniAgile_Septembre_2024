@@ -40,7 +40,7 @@ public class JoueurTest {
         assertEquals(j2.getCategorie().getAtk(), j2.getAtk());
         j2.setAtk(3);
         assertEquals(3, j2.getAtk());
-        assertEquals(j3.getCategorie().getDef(), j3.getDef());
+        assertEquals(j3.getCategorie().getDef()+10, j3.getDef());
         j3.setDef(0);
         assertEquals(0, j3.getDef());
         assertNotEquals("Baptiste", j3.getNom());

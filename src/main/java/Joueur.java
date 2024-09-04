@@ -49,12 +49,12 @@ public class Joueur extends Entity {
     }
 
     private void lvlUp(){
-        xp = 0;
-        level++;
-        xpmax *= 1.1;
-        pv += 20;
-        def += 5;
-        atk += 10;
+        this.xp = 0;
+        this.level++;
+        this.xpmax *= 1.1;
+        this.pv += 20;
+        this.def += 5;
+        this.atk += 10;
     }
 
     public boolean addInventory(Item object){
@@ -66,19 +66,19 @@ public class Joueur extends Entity {
     }
 
     public int getLevel() {
-        return level;
+        return this.level;
     }
 
     public int getXp() {
-        return xp;
+        return  this.xp;
     }
 
     public int getXpmax() {
-        return xpmax;
+        return  this.xpmax;
     }
 
     public List<Item> getInventory() {
-        return inventory;
+        return  this.inventory;
     }
     public int getPv() {
         return this.pv;
