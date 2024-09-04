@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
@@ -23,7 +24,7 @@ public class Tools {
         return sb.toString();
     }
 
-    public static void writeFile(String path, String content) throws Exception{
+    public static void writeFile(String path, String content) throws Exception {
         FileWriter fw = new FileWriter(path);
         fw.write(content);
         fw.close();
@@ -31,7 +32,7 @@ public class Tools {
 
     public static void printEntity(MobEnum m) {
         try {
-            System.out.println(Tools.readFile("res/ascii/"+m.toString()));
+            System.out.println(Tools.readFile("res/ascii/" + m.toString()));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -45,26 +46,27 @@ public class Tools {
         return name;
     }
 
-    public static void savePlayer(Joueur j) {
-        try {
-            FileOutputStream fos = new FileOutputStream("res/save");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
+    public static void savePlayer(Joueur j) throws IOException {
+        try ( FileOutputStream fos = new FileOutputStream("res/save");
+                ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             oos.writeObject(j);
-            oos.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("Erreur : Impossible de sauvegarder la partie");
-        }    
+        } catch (Exception e) {
+            System.out.println("Erreur non-determiné");
+        }
     }
 
-    public static void loadPlayer() {
-        try {
-            FileInputStream fis = new FileInputStream("res/save");
-            ObjectInputStream ois = new ObjectInputStream(fis);
+    public static void loadPlayer() throws IOException {
+
+        try (FileInputStream fis = new FileInputStream("res/save");
+                ObjectInputStream ois = new ObjectInputStream(fis);) {
             Joueur j = (Joueur) ois.readObject();
-            ois.close();
             System.out.println("Partie chargée");
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("Erreur : Impossible de charger la partie");
+        } catch (Exception e) {
+            System.out.println("Erreur non-determiné");
         }
     }
 

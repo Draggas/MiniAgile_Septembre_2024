@@ -36,7 +36,6 @@ public class JoueurTest {
         assertEquals(3, j3.getDef());
         j3.setDef(0);
         assertEquals(0, j3.getDef());
-        j3.setPseudo("Baptiste");
         assertEquals("Baptiste", j3.getNom());
         assertEquals(Classe.MAGE, j3.getCategorie());
         assertNull(j3.getInventory());

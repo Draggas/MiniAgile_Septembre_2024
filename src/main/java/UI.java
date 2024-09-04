@@ -170,7 +170,7 @@ public class UI implements NativeKeyListener {
     }
 
     private static void showPlayer(List<String> list) {
-        List<String> listmage = readFile("res/ascii/" + joueur.getCategorie().toString() + ".txt");
+        List<String> listmage = readFile("res/ascii/" + joueur.getCategorie().toString());
         for (int i = 2; i < listmage.size() + 2; i++) {
             String line = list.get(i);
             list.remove(i);
@@ -197,25 +197,25 @@ public class UI implements NativeKeyListener {
         line37 = "█   ⛨ : " + joueur.getDef() + line37.substring(8 + String.valueOf(joueur.getDef()).length());
         list.add(37, line37);
 
-
         Mob mob = main.getGame().getMob();
 
         String line35b = list.get(35);
         list.remove(35);
-        line35b = line35b.substring(0, 90) + "❤ : " + mob.getPv() + line35b.substring(94 + String.valueOf(mob.getPv()).length() );
+        line35b = line35b.substring(0, 90) + "❤ : " + mob.getPv()
+                + line35b.substring(94 + String.valueOf(mob.getPv()).length());
         list.add(35, line35b);
 
         String line36b = list.get(36);
         list.remove(36);
-        line36b = line36b.substring(0, 90) + "⚔ : " + mob.getAtk() + line36b.substring(94 + String.valueOf(mob.getAtk()).length() );
+        line36b = line36b.substring(0, 90) + "⚔ : " + mob.getAtk()
+                + line36b.substring(94 + String.valueOf(mob.getAtk()).length());
         list.add(36, line36b);
 
         String line37b = list.get(37);
         list.remove(37);
-        line37b = line37b.substring(0, 90) + "⛨ : " + mob.getDef() + line37b.substring(94 + String.valueOf(mob.getDef()).length() );
+        line37b = line37b.substring(0, 90) + "⛨ : " + mob.getDef()
+                + line37b.substring(94 + String.valueOf(mob.getDef()).length());
         list.add(37, line37b);
-
-
 
     }
 
@@ -231,7 +231,9 @@ public class UI implements NativeKeyListener {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Le fichier est introuvable");
+        } catch (Exception e){
+            System.out.println("Unknown exception");
         }
 
         return lines;
