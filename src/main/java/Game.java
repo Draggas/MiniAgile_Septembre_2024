@@ -71,6 +71,21 @@ public class Game {
         }
     }
 
+    public void cheatAttackPlayer() {
+        int dmg = 9999999;
+        mob.setPv(mob.getPv() - dmg);
+        if (mob.getPv() <= 0) { // MORT DU MOB
+            UI.addLogs("");
+            UI.addLogs(joueur.getNom() + "  ☠  " + mob.getNom());
+            UI.addLogs("");
+            this.caseActuel = this.map.getRight(this.caseActuel);
+            newMob();
+        }
+
+        UI.addLogs(joueur.getNom() + " " + dmg +" ⚔ " + mob.getNom() );
+
+    }
+
     public void capacityPlayer() {
         Turn t = new Turn(joueur, mob);
         t.applyEffect(joueur, Competence.ARMURE_MAGIQUE);
