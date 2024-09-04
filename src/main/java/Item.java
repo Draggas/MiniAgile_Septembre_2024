@@ -87,7 +87,7 @@ public enum Item implements EntityInterface{
     }
 
     @Override
-    public void setDef(int ESQ) {
+    public void setEsq(int ESQ) {
         this.ESQ = ESQ;
     }
 
@@ -97,7 +97,7 @@ public enum Item implements EntityInterface{
     }
 
     @Override
-    public void setDef(int CRIT) {
+    public void setCrit(int CRIT) {
         this.CRIT = CRIT;
     }
 
