@@ -3,6 +3,7 @@
 ## Démo + Planification du sprint suivant
 
 ### Ce que nous avons fait durant ce sprint
+
 - UML
 - Enum MOB / BOSS
 - Enum MONDE
@@ -21,7 +22,12 @@
 ## Rétrospective
 
 ### Sur quoi avons nous butté ?
-Rien
+
+Rien pour l'instant, tout va bien.
+
+### PDCA
+
+Rien à améliorer pour l'instant
 
 # Mémo
 ![UML](doc/sprint-1/UML.jpg)
