@@ -48,7 +48,7 @@ public class Game {
     public void newMob() {
         mob = this.caseActuel.mobEncountered();
         UI.update();
-        turn = new Turn();
+        turn = new Turn(joueur, mob);
     }
 
     public void attackPlayer() {
