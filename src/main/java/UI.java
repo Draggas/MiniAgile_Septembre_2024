@@ -11,25 +11,11 @@ import com.github.kwhat.jnativehook.NativeHookException;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 
-public class UI implements NativeKeyListener {
+public class UI {
 
-    static Joueur joueur;
-    static boolean attack;
+    public static boolean attack;
 
-    public static void start(Joueur j) {
-
-        joueur = j;
-
-        try {
-            GlobalScreen.registerNativeHook();
-        } catch (NativeHookException ex) {
-            System.err.println("There was a problem registering the native hook.");
-            System.err.println(ex.getMessage());
-
-            System.exit(1);
-        }
-
-        GlobalScreen.addNativeKeyListener(new UI());
+    public static void start(Joueur j) {       
 
         update();
 
@@ -72,50 +58,7 @@ public class UI implements NativeKeyListener {
 
     }
 
-    public void nativeKeyReleased(NativeKeyEvent e) {
-
-        switch (main.getGame().getState()) {
-            case PLAYING:
-                if (e.getKeyCode() == 57416 || e.getKeyCode() == 57424) { // arrow up
-                    attack = !attack;
-                }
-                if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) { // enter
-                    if (attack)
-                        main.getGame().attack();
-                    else
-                        main.getGame().capacity();
-
-                }
-                break;
-            case CLASSE:
-
-                Joueur joueur = main.getGame().getJoueur();
-
-                if (e.getKeyCode() == NativeKeyEvent.VC_RIGHT) {
-
-                    if (joueur.getCategorie().ordinal() < 2) {
-                        joueur.setCategorie(Classe.values()[joueur.getCategorie().ordinal() + 1]);
-                    }
-                }
-
-                if (e.getKeyCode() == NativeKeyEvent.VC_LEFT) {
-
-                    if (joueur.getCategorie().ordinal() > 0) {
-                        joueur.setCategorie(Classe.values()[joueur.getCategorie().ordinal() - 1]);
-                    }
-                }
-
-                if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) { // enter
-                    main.getGame().startGame();
-                }
-
-                break;
-
-        }
-
-        update();
-
-    }
+    
 
     private static void showClasse() {
 
@@ -172,7 +115,7 @@ public class UI implements NativeKeyListener {
     }
 
     private static void showPlayer(List<String> list) {
-        List<String> listmage = readFile("res/ascii/" + joueur.getCategorie().toString());
+        List<String> listmage = readFile("res/ascii/" + main.getGame().getJoueur().getCategorie().toString());
         for (int i = 2; i < listmage.size() + 2; i++) {
             String line = list.get(i);
             list.remove(i);
@@ -183,6 +126,8 @@ public class UI implements NativeKeyListener {
     }
 
     private static void setStats(List<String> list) {
+
+        Joueur joueur = main.getGame().getJoueur();
 
         String line35 = list.get(35);
         list.remove(35);
