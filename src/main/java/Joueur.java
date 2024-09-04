@@ -16,6 +16,7 @@ public class Joueur extends Entity {
         this.nom = nom;
         this.level = level;
         this.xp = xp;
+        this.xpmax = xpmax;
         this.inventory = inventory;
         this.categorie = categorie;
         if (categorie == Classe.ASSASSIN){
@@ -34,7 +35,7 @@ public class Joueur extends Entity {
     }
 
     public Joueur(String nom, Classe categorie){
-        this(nom, 1, 0, 100, null, categorie);
+        this(nom, 1, 0, 10, null, categorie);
     }
 
     public void addXp(int valeur){
@@ -93,8 +94,10 @@ public class Joueur extends Entity {
         return categorie.getDef();
     }
 
+
+
     public String getNom() {
-        return categorie.getNom();
+        return this.nom;
     }
 
     public Classe getCategorie() {

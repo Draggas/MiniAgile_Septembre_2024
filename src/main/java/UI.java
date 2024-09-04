@@ -152,7 +152,14 @@ public class UI {
 
         String line34b = list.get(34);
         list.remove(34);
-        line34b = line34b.substring(0, 90) + mob.getNom()
+        String nomMob = "";
+        
+        if(mob.isBoss()){
+            nomMob = "\u001B[31m" + mob.getNom() + "\u001B[0m";
+        } else {
+            nomMob = mob.getNom();
+        }
+        line34b = line34b.substring(0, 90) + nomMob
                 + line34b.substring(90 + String.valueOf(mob.getNom()).length());
         list.add(34, line34b);
 
