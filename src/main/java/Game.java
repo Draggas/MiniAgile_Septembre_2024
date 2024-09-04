@@ -50,7 +50,15 @@ public class Game {
         mob = this.caseActuel.mobEncountered();
         UI.update();
     
-      }
+    }
+
+    public void attack(){
+        mob.setPv(mob.getPv() - joueur.getAtk());
+        if(mob.getPv() <= 0){
+            this.caseActuel = this.map.getRight(this.caseActuel);
+            newMob();
+        }
+    }
     
 
 }

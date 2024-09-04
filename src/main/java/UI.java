@@ -79,10 +79,8 @@ public class UI implements NativeKeyListener {
                 if (e.getKeyCode() == 57416 || e.getKeyCode() == 57424) { // arrow up
                     attack = !attack;
                 }
-                if (e.getKeyCode() == 28) { // enter
-                    main.caseActuel = main.map.getRight(main.caseActuel);
-                    main.getGame().newMob();
-
+                if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) { // enter
+                   main.getGame().attack();
                 }
                 break;
             case CLASSE:
