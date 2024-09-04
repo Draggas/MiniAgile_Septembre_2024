@@ -33,10 +33,9 @@ public class Keyboard  implements NativeKeyListener {
                 }
                 if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) { // enter
                     if (UI.attack)
-                        main.getGame().attack();
+                        main.getGame().attackPlayer();
                     else
-                        main.getGame().capacity();
-
+                        main.getGame().capacityPlayer();
                 }
                 break;
             case CLASSE:
