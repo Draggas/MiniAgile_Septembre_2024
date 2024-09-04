@@ -37,46 +37,124 @@ public class UI implements NativeKeyListener {
     }
 
     public static void update() {
+
         for (int i = 0; i < 50; i++) {
             System.out.println("\n");
         }
 
-        List<String> overlayLines = readFile("res/overlay.txt");
-        List<String> menuLinesA = readFile("res/overlay_bottomrightA.txt");
-        List<String> menuLinesC = readFile("res/overlay_bottomrightC.txt");
+        switch (main.getGame().getState()) {
+            case PLAYING:
 
-        showPlayer(overlayLines);
+                List<String> overlayLines = readFile("res/overlay.txt");
+                List<String> menuLinesA = readFile("res/overlay_bottomrightA.txt");
+                List<String> menuLinesC = readFile("res/overlay_bottomrightC.txt");
+                showPlayer(overlayLines);
+                if (mob != null) {
+                    showMob(overlayLines);
+                }
+                setStats(overlayLines);
+                for (int i = 0; i < overlayLines.size(); i++) {
+                    if (i > 22) {
+                        System.out.println(
+                                overlayLines.get(i) + (attack ? menuLinesA.get(i - 22) : menuLinesC.get(i - 22)));
+                    } else {
+                        System.out.println(overlayLines.get(i));
+                    }
+                }
+                break;
 
-        if (mob != null) {
-            showMob(overlayLines);
-        }
+            case CLASSE:
+                showClasse();
+                break;
 
-        setStats(overlayLines);
-
-        for (int i = 0; i < overlayLines.size(); i++) {
-            if (i > 22) {
-                System.out.println(overlayLines.get(i) + (attack ? menuLinesA.get(i - 22) : menuLinesC.get(i - 22)));
-            } else {
-                System.out.println(overlayLines.get(i));
-            }
+            default:
+                break;
         }
 
     }
 
     public void nativeKeyReleased(NativeKeyEvent e) {
 
+        switch (main.getGame().getState()) {
+            case PLAYING:
+                if (e.getKeyCode() == 57416 || e.getKeyCode() == 57424) { // arrow up
+                    attack = !attack;
+                }
+                if (e.getKeyCode() == 28) { // enter
+                    main.caseActuel = main.map.getRight(main.caseActuel);
+                    main.newMob();
 
-        if (e.getKeyCode() == 57416 || e.getKeyCode() == 57424) { // arrow up
-            attack = !attack;
-        }
+                }
+                break;
+            case CLASSE:
 
-        if (e.getKeyCode() == 28) { // enter
-            main.caseActuel = main.map.getRight(main.caseActuel);
-            main.newMob();
+                Joueur joueur = main.getGame().getJoueur();
+
+                if (e.getKeyCode() == NativeKeyEvent.VC_RIGHT) {
+
+                    if (joueur.getCategorie().ordinal() < 2) {
+                        joueur.setCategorie(Classe.values()[joueur.getCategorie().ordinal() + 1]);
+                    }
+                }
+
+                if (e.getKeyCode() == NativeKeyEvent.VC_LEFT) {
+
+                    if (joueur.getCategorie().ordinal() > 0) {
+                        joueur.setCategorie(Classe.values()[joueur.getCategorie().ordinal() - 1]);
+                    }
+                }
+
+                if (e.getKeyCode() == 28) { // enter
+                    main.getGame().startGame();
+                }
+
+                break;
 
         }
 
         update();
+
+    }
+
+    private static void showClasse() {
+
+        List<String> textLines = readFile("res/classchoice.txt");
+        List<String> classeLines = readFile("res/classe.txt");
+        List<String> arrowLines = readFile("res/arrow.txt");
+
+        for (int i = 0; i < textLines.size(); i++)
+            System.out.println(textLines.get(i));
+
+        for (int i = 0; i < classeLines.size(); i++)
+            System.out.println(classeLines.get(i));
+
+        switch (main.getGame().getJoueur().getCategorie()) {
+            case ASSASSIN:
+
+                String blank = "";
+                for (int i = 0; i < 12; i++)
+                    blank += " ";
+                for (int i = 0; i < arrowLines.size(); i++)
+                    System.out.println(blank + arrowLines.get(i));
+                break;
+            case BARBARE:
+                blank = "";
+                for (int i = 0; i < 77; i++)
+                    blank += " ";
+                for (int i = 0; i < arrowLines.size(); i++)
+                    System.out.println(blank + arrowLines.get(i));
+
+                break;
+            case MAGE:
+                blank = "";
+                for (int i = 0; i < 137; i++)
+                    blank += " ";
+                for (int i = 0; i < arrowLines.size(); i++)
+                    System.out.println(blank + arrowLines.get(i));
+                break;
+            default:
+                break;
+        }
 
     }
 

@@ -2,14 +2,14 @@ package main.java;
 
 public enum Competence {
 
-    /*Explication de chaque stats :
+    /*Explication de chaque stat :
     Healing : nombre de PV rendus/retirés.
     Damage : nombre de dégâts supplémentaires/réduits infligés.
     Armor : nombre de points d'armure ajoutés/retirés au lanceur.
     Boost : nombre de points d'armure retirés/ajoutés au receveur.
     Turn : durée en tours de l'effet.
     Crit_rate : fixation du taux de coups critiques.
-    Crit_damage : fixation du boost de dégâts liés au coups-critiques
+    Crit_damage : fixation du boost de dégâts liés au coups critiques
     */
 
     //Compétences du barbare.
