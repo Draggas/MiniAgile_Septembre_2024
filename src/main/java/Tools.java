@@ -74,7 +74,7 @@ public class Tools {
         try {
             System.out.println(Tools.readFile("res/data/leaderboard.csv"));
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Problème lors de l'affichage du classement");
         }
     }
 
@@ -84,7 +84,7 @@ public class Tools {
             content += name + "," + score + "\n";
             Tools.writeFile("res/data/leaderboard.csv", content);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Problème lors de l'écriture du score dans le classement");
         }
     }
 }
