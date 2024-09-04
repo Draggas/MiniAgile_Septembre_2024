@@ -59,6 +59,14 @@ public class Game {
             newMob();
         }
     }
+
+    public void capacity() {
+        mob.setPv(mob.getPv() - joueur.getAtk()*10);
+        if(mob.getPv() <= 0){
+            this.caseActuel = this.map.getRight(this.caseActuel);
+            newMob();
+        }
+    }
     
 
 }

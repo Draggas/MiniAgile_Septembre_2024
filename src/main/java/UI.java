@@ -80,7 +80,11 @@ public class UI implements NativeKeyListener {
                     attack = !attack;
                 }
                 if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) { // enter
-                   main.getGame().attack();
+                    if (attack)
+                        main.getGame().attack();
+                    else
+                        main.getGame().capacity();
+
                 }
                 break;
             case CLASSE:
@@ -230,7 +234,7 @@ public class UI implements NativeKeyListener {
             }
         } catch (IOException e) {
             System.out.println("Le fichier est introuvable");
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Unknown exception");
         }
 
