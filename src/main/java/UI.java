@@ -9,6 +9,8 @@ import java.util.List;
 public class UI {
 
     public static boolean attack;
+    public static List<String> logs = new ArrayList<>();
+
     public Classe categorie;
 
     public static void update() {
@@ -38,6 +40,7 @@ public class UI {
                     showMob(overlayLines);
                 }
                 setStats(overlayLines);
+                showLogs(overlayLines);
                 for (int i = 0; i < overlayLines.size(); i++) {
                     if (i > 22) {
                         System.out.println(
@@ -54,6 +57,31 @@ public class UI {
 
             default:
                 break;
+        }
+
+    }
+
+
+    public static void addLogs(String str) {
+        logs.add(str);
+        if(logs.size() > 22){
+            logs.remove(0);
+        }
+    }
+
+    private static void showLogs(List<String> list) {
+
+        if (logs.size() == 0)
+            return;
+
+        for (int i = 0; i < logs.size(); i++) {
+            String line = list.get(i);
+            list.remove(i);
+            line = line.substring(0, 120) + logs.get(i);
+            list.add(i, line);
+
+            System.out.println(logs.get(i));
+
         }
 
     }

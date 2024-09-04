@@ -1,6 +1,7 @@
 package main.java;
 
 public enum MobEnum {
+    
     DRAGON(0.15,10,10, Monde.MONDE_2, 600, 100, 140, false, 500),
     AMOGUS(0.15,10,10, Monde.MONDE_2, 700, 110, 150, false, 520),
     ORC(0.15,10,10, Monde.MONDE_0, 210, 40, 40, false, 70),
