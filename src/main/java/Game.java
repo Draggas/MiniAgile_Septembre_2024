@@ -99,7 +99,9 @@ public class Game {
     }
 
     public void attackMob() {
-        joueur.setPv(joueur.getPv() - turn.damageSimpleAttaque(mob, joueur));
+        int degat = turn.damageSimpleAttaque(mob, joueur);
+        System.out.println(this.mob.nom + " inflige " + degat + " dégats");
+        joueur.setPv(joueur.getPv() - degat);
         if (joueur.getPv() <= 0) {
             // GAME OVER
         }
