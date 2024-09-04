@@ -52,12 +52,15 @@ public class Game {
     }
 
     public void attackPlayer() {
-        System.out.println(turn.damageSimpleAttaque(joueur, mob));
-        mob.setPv(mob.getPv() - turn.damageSimpleAttaque(joueur, mob));
+        int dmg = turn.damageSimpleAttaque(joueur, mob);
+        mob.setPv(mob.getPv() - dmg);
         if (mob.getPv() <= 0) { // MORT DU MOB
             this.caseActuel = this.map.getRight(this.caseActuel);
             newMob();
         }
+
+        UI.addLogs(joueur.getNom() + " " + dmg +" ⚔ " + mob.getNom() );
+
     }
 
     public void capacityPlayer() {
@@ -71,5 +74,4 @@ public class Game {
             // GAME OVER
         }
     }
-
 }
