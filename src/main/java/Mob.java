@@ -1,5 +1,7 @@
 package main.java;
 
+import java.util.Random;
+
 public class Mob extends Entity {
     MobEnum type;
 
@@ -53,5 +55,13 @@ public class Mob extends Entity {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public Drop dropMob(){
+        Random random = new Random();
+        if (random.nextDouble() > 0.5){
+            return Drop.valueOf(this.nom);
+        }
+        return null;
     }
 }
