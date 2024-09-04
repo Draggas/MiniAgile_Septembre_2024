@@ -9,6 +9,7 @@ import java.util.List;
 public class UI {
 
     public static boolean attack;
+    public static List<String> logs = new ArrayList<>();
 
     public static void update() {
 
@@ -26,7 +27,6 @@ public class UI {
 
                 break;
 
-
             case PLAYING:
 
                 List<String> overlayLines = readFile("res/overlay.txt");
@@ -37,6 +37,7 @@ public class UI {
                     showMob(overlayLines);
                 }
                 setStats(overlayLines);
+                showLogs(overlayLines);
                 for (int i = 0; i < overlayLines.size(); i++) {
                     if (i > 22) {
                         System.out.println(
@@ -57,7 +58,48 @@ public class UI {
 
     }
 
-    
+    public static void addLogs(String str) {
+        logs.add(str);
+        if(logs.size() > 25){
+            logs.remove(0);
+        }
+    }
+
+    private static void showLogs(List<String> list) {
+
+        if (logs.size() == 0)
+            return;
+
+        for (int i = 0; i < logs.size(); i++) {
+            String line = list.get(i);
+            list.remove(i);
+            line = line.substring(0, 120) + logs.get(i);
+            list.add(i, line);
+        }
+
+    }
+
+    private static void showMob(List<String> list) {
+
+        List<String> listmage = readFile("res/ascii/" + main.getGame().getMob().getNom());
+        for (int i = 2; i < listmage.size() + 2; i++) {
+            String line = list.get(i);
+            list.remove(i);
+            line = line.substring(0, 50) + listmage.get(i - 2) + line.substring(50 + listmage.get(i - 2).length());
+            list.add(i, line);
+        }
+
+    }
+
+    private static void showPlayer(List<String> list) {
+        List<String> listmage = readFile("res/ascii/" + main.getGame().getJoueur().getCategorie().toString());
+        for (int i = 2; i < listmage.size() + 2; i++) {
+            String line = list.get(i);
+            list.remove(i);
+            line = "█ " + listmage.get(i - 2) + line.substring(listmage.get(i - 2).length() + 2);
+            list.add(i, line);
+        }
+    }
 
     private static void showClasse() {
 
@@ -101,35 +143,13 @@ public class UI {
 
     }
 
-    private static void showMob(List<String> list) {
-
-        List<String> listmage = readFile("res/ascii/" + main.getGame().getMob().getNom());
-        for (int i = 2; i < listmage.size() + 2; i++) {
-            String line = list.get(i);
-            list.remove(i);
-            line = line.substring(0, 50) + listmage.get(i - 2) + line.substring(50 + listmage.get(i - 2).length());
-            list.add(i, line);
-        }
-
-    }
-
-    private static void showPlayer(List<String> list) {
-        List<String> listmage = readFile("res/ascii/" + main.getGame().getJoueur().getCategorie().toString());
-        for (int i = 2; i < listmage.size() + 2; i++) {
-            String line = list.get(i);
-            list.remove(i);
-            line = "█ " + listmage.get(i - 2) + line.substring(listmage.get(i - 2).length() + 2);
-            list.add(i, line);
-        }
-
-    }
-
     private static void setStats(List<String> list) {
 
         Joueur joueur = main.getGame().getJoueur();
         String line34 = list.get(34);
         list.remove(34);
-        line34 = "█   " + joueur.getCategorie().getNom() + line34.substring(4 + String.valueOf(joueur.getCategorie().getNom()).length());
+        line34 = "█   " + joueur.getCategorie().getNom()
+                + line34.substring(4 + String.valueOf(joueur.getCategorie().getNom()).length());
         list.add(34, line34);
 
         String line35 = list.get(35);
@@ -152,8 +172,8 @@ public class UI {
         String line34b = list.get(34);
         list.remove(34);
         String nomMob = "";
-        
-        if(mob.isBoss()){
+
+        if (mob.isBoss()) {
             nomMob = "\u001B[31m" + mob.getNom() + "\u001B[0m";
         } else {
             nomMob = mob.getNom();
