@@ -10,33 +10,33 @@ public class Turn {
 
     public int damageSimpleAttaque(Joueur attaquant, Mob defenseur) {
         if(Math.random()<attaquant.getCategorie().getCritRate()) {
-            return (int)(attaquant.getAtk()*attaquant.getCategorie().getCritDamage()*(defenseur.getDef()/(defenseur.getDef()+100)));
+            return (int)(attaquant.getAtk()*attaquant.getCategorie().getCritDamage()*((double)defenseur.getDef()/(defenseur.getDef()+100)));
         } else {
-            return (int)(attaquant.getAtk()*(defenseur.getDef()/(defenseur.getDef()+100)));
+            return (int)(attaquant.getAtk()*((double)defenseur.getDef()/(defenseur.getDef()+100)));
         }
     }
 
     public int damageSimpleAttaque(Mob attaquant, Joueur defenseur) {
         if(Math.random()<0.25) {
-            return (int)(attaquant.getAtk()*1.5*(defenseur.getDef()/(defenseur.getDef()+100)));
+            return (int)(attaquant.getAtk()*1.5*((double)defenseur.getDef()/(defenseur.getDef()+100)));
         } else {
-            return (int)(attaquant.getAtk()*(defenseur.getDef()/(defenseur.getDef()+100)));
+            return (int)(attaquant.getAtk()*((double)defenseur.getDef()/(defenseur.getDef()+100)));
         }
     }
 
     public int damageCompetence(Joueur attaquant, Mob defenseur, Competence competence) {
         if(Math.random()<attaquant.getCategorie().getCritRate()) {
-            return (int)((attaquant.getAtk() + competence.getDamage())*attaquant.getCategorie().getCritDamage()*(defenseur.getDef()/(defenseur.getDef()+100)));
+            return (int)((attaquant.getAtk() + competence.getDamage())*attaquant.getCategorie().getCritDamage()*((double)defenseur.getDef()/(defenseur.getDef()+100)));
         } else {
-            return (int)((attaquant.getAtk() + competence.getDamage())*(defenseur.getDef()/(defenseur.getDef()+100)));
+            return (int)((attaquant.getAtk() + competence.getDamage())*((double)defenseur.getDef()/(defenseur.getDef()+100)));
         }
     }
 
     public int damageCompetence(Mob attaquant, Joueur defenseur, Competence competence) {
         if(Math.random()<0.25) {
-            return (int)((attaquant.getAtk() + competence.getDamage())*1.5*(defenseur.getDef()/(defenseur.getDef()+100)));
+            return (int)((attaquant.getAtk() + competence.getDamage())*1.5*((double)defenseur.getDef()/(defenseur.getDef()+100)));
         } else {
-            return (int)((attaquant.getAtk() + competence.getDamage())*(defenseur.getDef()/(defenseur.getDef()+100)));
+            return (int)((attaquant.getAtk() + competence.getDamage())*((double)defenseur.getDef()/(defenseur.getDef()+100)));
         }
     }
 
