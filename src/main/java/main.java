@@ -7,7 +7,13 @@ public class main {
   static Map map = new Map();
   static Case caseActuel;
 
+  static Game game;
+
+
   public static void main(String[] args) throws InterruptedException {
+
+    game = new Game();
+
 
     System.out.print("\033[H\033[2J");  
     System.out.flush();  
@@ -43,7 +49,14 @@ public class main {
     caseActuel = map.getFirstCase();
     newMob();
 
+
   }
+
+
+  public static Game getGame() {
+      return game;
+  }
+  
 
   public static void newMob() {
 

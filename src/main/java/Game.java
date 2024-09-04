@@ -2,17 +2,25 @@ package main.java;
 
 public class Game {
 
-    static GameState state = GameState.CLASSE;
+    GameState state = GameState.CLASSE;
 
     Map map;
     Case caseActuel;
     Joueur joueur;
 
-    public static void startGame() {
+    public Game() {
+        this.joueur = new Joueur("", Classe.ASSASSIN);
+    }
+
+    public  void initGame() {
         System.out.println("start");
     }
 
-    public static GameState getState() {
+    public  void startGame() {
+        System.out.println("start");
+    }
+
+    public GameState getState() {
         return state;
     }
 

@@ -3,6 +3,8 @@ package main.java;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.experimental.categories.Categories;
+
 public class Joueur extends Entity {
     private int level;
     private int xp;
@@ -97,6 +99,10 @@ public class Joueur extends Entity {
 
     public Classe getCategorie() {
         return categorie;
+    }
+
+    public void setCategorie(Classe categorie) {
+        this.categorie = categorie;
     }
 
     public void setnom(String nom) {

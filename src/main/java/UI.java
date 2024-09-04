@@ -38,11 +38,13 @@ public class UI implements NativeKeyListener {
 
     public static void update() {
 
-        switch (Game.getState()) {
+        for (int i = 0; i < 50; i++) {
+            System.out.println("\n");
+        }
+
+        switch (main.getGame().getState()) {
             case PLAYING:
-                for (int i = 0; i < 50; i++) {
-                    System.out.println("\n");
-                }
+
                 List<String> overlayLines = readFile("res/overlay.txt");
                 List<String> menuLinesA = readFile("res/overlay_bottomrightA.txt");
                 List<String> menuLinesC = readFile("res/overlay_bottomrightC.txt");
@@ -73,14 +75,40 @@ public class UI implements NativeKeyListener {
 
     public void nativeKeyReleased(NativeKeyEvent e) {
 
+        switch (main.getGame().getState()) {
+            case PLAYING:
+                if (e.getKeyCode() == 57416 || e.getKeyCode() == 57424) { // arrow up
+                    attack = !attack;
+                }
+                if (e.getKeyCode() == 28) { // enter
+                    main.caseActuel = main.map.getRight(main.caseActuel);
+                    main.newMob();
 
-        if (e.getKeyCode() == 57416 || e.getKeyCode() == 57424) { // arrow up
-            attack = !attack;
-        }
+                }
+                break;
+            case CLASSE:
 
-        if (e.getKeyCode() == 28) { // enter
-            main.caseActuel = main.map.getRight(main.caseActuel);
-            main.newMob();
+                Joueur joueur = main.getGame().getJoueur();
+
+                if (e.getKeyCode() == NativeKeyEvent.VC_RIGHT) {
+
+                    if (joueur.getCategorie().ordinal() < 2) {
+                        joueur.setCategorie(Classe.values()[joueur.getCategorie().ordinal() + 1]);
+                    }
+                }
+
+                if (e.getKeyCode() == NativeKeyEvent.VC_LEFT) {
+
+                    if (joueur.getCategorie().ordinal() > 0) {
+                        joueur.setCategorie(Classe.values()[joueur.getCategorie().ordinal() - 1]);
+                    }
+                }
+
+                if (e.getKeyCode() == 28) { // enter
+                    main.getGame().startGame();
+                }
+
+                break;
 
         }
 
@@ -92,8 +120,7 @@ public class UI implements NativeKeyListener {
 
         List<String> textLines = readFile("res/classchoice.txt");
         List<String> classeLines = readFile("res/classe.txt");
-        List<String> underLines = readFile("res/underline.txt");
-
+        List<String> arrowLines = readFile("res/arrow.txt");
 
         for (int i = 0; i < textLines.size(); i++)
             System.out.println(textLines.get(i));
@@ -101,15 +128,33 @@ public class UI implements NativeKeyListener {
         for (int i = 0; i < classeLines.size(); i++)
             System.out.println(classeLines.get(i));
 
-        switch (Game.getJoueur()) {
-            case value:
-                
+        switch (main.getGame().getJoueur().getCategorie()) {
+            case ASSASSIN:
+
+                String blank = "";
+                for (int i = 0; i < 12; i++)
+                    blank += " ";
+                for (int i = 0; i < arrowLines.size(); i++)
+                    System.out.println(blank + arrowLines.get(i));
                 break;
-        
+            case BARBARE:
+                blank = "";
+                for (int i = 0; i < 77; i++)
+                    blank += " ";
+                for (int i = 0; i < arrowLines.size(); i++)
+                    System.out.println(blank + arrowLines.get(i));
+
+                break;
+            case MAGE:
+                blank = "";
+                for (int i = 0; i < 137; i++)
+                    blank += " ";
+                for (int i = 0; i < arrowLines.size(); i++)
+                    System.out.println(blank + arrowLines.get(i));
+                break;
             default:
                 break;
         }
-
 
     }
 
