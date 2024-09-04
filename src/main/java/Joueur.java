@@ -23,26 +23,14 @@ public class Joueur extends Entity {
             this.pv = 100;
             this.atk = 40;
             this.def = 30;
-            this.listeCompetences = new ArrayList<Competence>();
-            this.listeCompetences.add(Competence.COUVERTURE_DE_SANG);
-            this.listeCompetences.add(Competence.VAMPIRISME);
-            this.listeCompetences.add(Competence.EXECUTION);
         } else if(categorie == Classe.BARBARE){
             this.pv = 200;
             this.atk = 70;
             this.def = 60;
-            this.listeCompetences = new ArrayList<Competence>();
-            this.listeCompetences.add(Competence.INTIMIDATION);
-            this.listeCompetences.add(Competence.SOINS_MINEURS);
-            this.listeCompetences.add(Competence.TOUT_OU_RIEN);
         } else {
             this.pv = 150;
             this.atk = 110;
             this.def = 20;
-            this.listeCompetences = new ArrayList<Competence>();
-            this.listeCompetences.add(Competence.ARMURE_MAGIQUE);
-            this.listeCompetences.add(Competence.SOINS_MAJEURS);
-            this.listeCompetences.add(Competence.PLUIE_SANGUINE);
         }
     }
 
@@ -112,7 +100,9 @@ public class Joueur extends Entity {
         return this.def;
     }
 
-
+    public ArrayList<Competence> getCompetences() {
+        return this.listeCompetences;
+    }
 
     public String getNom() {
         return this.nom;
@@ -148,5 +138,24 @@ public class Joueur extends Entity {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public void setCompetences(Classe categorie) {
+        if (categorie == Classe.ASSASSIN){
+            this.listeCompetences = new ArrayList<Competence>();
+            this.listeCompetences.add(Competence.COUVERTURE_DE_SANG);
+            this.listeCompetences.add(Competence.VAMPIRISME);
+            this.listeCompetences.add(Competence.EXECUTION);
+        } else if(categorie == Classe.BARBARE){
+            this.listeCompetences = new ArrayList<Competence>();
+            this.listeCompetences.add(Competence.INTIMIDATION);
+            this.listeCompetences.add(Competence.SOINS_MINEURS);
+            this.listeCompetences.add(Competence.TOUT_OU_RIEN);
+        } else {
+            this.listeCompetences = new ArrayList<Competence>();
+            this.listeCompetences.add(Competence.ARMURE_MAGIQUE);
+            this.listeCompetences.add(Competence.SOINS_MAJEURS);
+            this.listeCompetences.add(Competence.PLUIE_SANGUINE);
+        }
     }
 }

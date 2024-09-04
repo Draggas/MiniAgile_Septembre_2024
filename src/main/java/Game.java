@@ -1,5 +1,7 @@
 package main.java;
 
+import java.util.Scanner;
+
 public class Game {
 
     GameState state = GameState.MENU;
@@ -9,9 +11,12 @@ public class Game {
     Joueur joueur;
     Mob mob;
     Turn turn;
+    boolean cheatCodeImmortel = false;
+    boolean cheatCodeOneShot = false;
 
     public Game() {
-        this.joueur = new Joueur("", Classe.ASSASSIN);
+
+        this.joueur = new Joueur("", Classe.BARBARE);
     }
 
     public void initGame() {
@@ -51,21 +56,46 @@ public class Game {
     }
 
     public void attackPlayer() {
-        int dmg = turn.damageSimpleAttaque(joueur, mob);
-        mob.setPv(mob.getPv() - dmg);
+        System.out.println(turn.damageSimpleAttaque(joueur, mob));
+        mob.setPv(mob.getPv() - turn.damageSimpleAttaque(joueur, mob));
         if (mob.getPv() <= 0) { // MORT DU MOB
             this.caseActuel = this.map.getRight(this.caseActuel);
-            joueur.resetBuff();
+            if(!cheatCodeImmortel && !cheatCodeOneShot){
+                joueur.resetBuff();
+            }
             newMob();
         }
+    }
 
-        UI.addLogs(joueur.getNom() + " " + dmg +" ⚔ " + mob.getNom() );
+    public void cheatAttackPlayer() {
+        cheatCodeOneShot = true;
+        joueur.setAtk(999999);
+    }
+    public void cheatCapacityPlayer() {
+        cheatCodeImmortel = true;
+        joueur.setDef(999999);
+        joueur.setPv(999999);
+    }
 
+    public String clearSpace(String s) {
+        String retour = "";
+        for(int i = 0; i<s.length();i++) {
+            if(s.charAt(i) != ' ') {
+                retour += s.charAt(i);
+            }
+        }
+        return retour;
     }
 
     public void capacityPlayer() {
+        Scanner scanner = new Scanner(System.in);
         Turn t = new Turn(joueur, mob);
-        t.applyEffect(joueur, Competence.ARMURE_MAGIQUE);
+        System.out.println(joueur.getCompetences().toString());
+        String capa = scanner.nextLine();
+        // System.out.println(clearSpace(capa));
+        
+        t.applyEffect(joueur, Competence.valueOf(clearSpace(capa)));
+        // scanner.nextLine();
     }
 
     public void attackMob() {
@@ -74,4 +104,5 @@ public class Game {
             // GAME OVER
         }
     }
+
 }

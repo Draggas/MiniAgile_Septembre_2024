@@ -16,14 +16,18 @@ public class JoueurTest {
 
     @BeforeEach
     public void init() {
-        j1 = new Joueur("Lucas", Classe.ASSASSIN);
-        j2 = new Joueur("Maxime", 99, 989, 990, null, Classe.BARBARE);
-        j3 = new Joueur("Kylian", Classe.MAGE);
+        j1 = new Joueur();
+        j2 = new Joueur("Maxime", 99, 989, 990, null);
+        j3 = new Joueur();
+        j1.setCategorie(Classe.ASSASSIN);
+        j2.setCategorie(Classe.BARBARE);
+        j3.setCategorie(Classe.MAGE);
     }
 
     @Test
     void testJoueur() {
         j3.addXp(10);
+
         assertEquals(2, j3.getLevel());
         j3.addXp(999999);
         assertEquals(3, j3.getLevel());
@@ -43,7 +47,6 @@ public class JoueurTest {
         assertEquals(j3.getCategorie().getDef()+10, j3.getDef());
         j3.setDef(0);
         assertEquals(0, j3.getDef());
-        assertNotEquals("Baptiste", j3.getNom());
         assertEquals(Classe.MAGE, j3.getCategorie());
         assertNull(j3.getInventory());
     }
