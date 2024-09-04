@@ -20,6 +20,7 @@ public class main {
 
 
     game.initGame();
+    Keyboard.initKeyboard();
 
 
   }

@@ -127,14 +127,11 @@ public class UI {
 
     private static void setStats(List<String> list) {
 
-<<<<<<< HEAD
         Joueur joueur = main.getGame().getJoueur();
-=======
         String line34 = list.get(34);
         list.remove(34);
         line34 = "█   " + joueur.getNom() + line34.substring(4 + String.valueOf(joueur.getNom()).length());
         list.add(34, line34);
->>>>>>> b49f15036091a97b15a36ec506fc2afd0d9ea8db
 
         String line35 = list.get(35);
         list.remove(35);
