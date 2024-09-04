@@ -13,8 +13,8 @@ public class MobTest {
 
     @Test
     void testMob() {
-        assertEquals(10, mob1.getAtk());
-        assertEquals(5, mob1.getDef());
+        assertEquals(30, mob1.getAtk());
+        assertEquals(20, mob1.getDef());
         assertEquals("SLIME", mob1.getNom());
     }
 }

@@ -62,6 +62,4 @@ public enum Classe  {
     public void setCritDamage(double critDamage) {
         this.critDamage = critDamage;
     }
-
-
 }
