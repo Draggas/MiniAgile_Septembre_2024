@@ -2,14 +2,14 @@ package main.java;
 
 public enum Competence {
 
-    /*Explication de chaque stat :
+    /*Explication de chaque stats :
     Healing : nombre de PV rendus/retirés.
     Damage : nombre de dégâts supplémentaires/réduits infligés.
     Armor : nombre de points d'armure ajoutés/retirés au lanceur.
     Boost : nombre de points d'armure retirés/ajoutés au receveur.
     Turn : durée en tours de l'effet.
     Crit_rate : fixation du taux de coups critiques.
-    Crit_damage : fixation du boost de dégâts liés au coups critiques
+    Crit_damage : fixation du boost de dégâts liés au coups-critiques
     */
 
     //Compétences du barbare.
@@ -25,7 +25,7 @@ public enum Competence {
     ECLAIR(0,35,0,0,1),
     MALEDICTION(0,35,0,0,3),
     SOINS_MAJEURS(60,0,10,0,1),
-    EMBRASEMENT(0,65,5,0,3),
+    EMBRASEMENT(0,65,10,0,3),
     COMETE(0,200,0,0,1),
     BOOST_MAGIQUE(0,0,10,20,4),
     PLUIE_SANGUINE(-60,400,0,0,1),
@@ -47,7 +47,6 @@ public enum Competence {
     private int turn;
     private double crit_rate;
     private double crit_damage;
-    private boolean special;
 
     Competence(int healing, int damage, int armor, int boost, int turn) {
         this.healing = healing;
@@ -105,6 +104,62 @@ public enum Competence {
         if(Math.random()<execut_rate) {
             this.damage = 9999;
         }
+    }
+
+    public int getHealing() {
+        return this.healing;
+    }
+
+    public int getDamage() {
+        return this.damage;
+    }
+
+    public int getArmor() {
+        return this.armor;
+    }
+
+    public int getBoost() {
+        return this.boost;
+    }
+
+    public int getTurn() {
+        return this.turn;
+    }
+
+    public double getCritRate() {
+        return this.crit_rate;
+    }
+
+    public double getCritDamage() {
+        return this.crit_damage;
+    }
+
+    public void setHealing(int healing) {
+        this.healing = healing;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public void setArmor(int armor) {
+        this.armor = armor;
+    }
+
+    public void setBoost(int boost) {
+        this.boost = boost;
+    }
+
+    public void setTurn(int turn) {
+        this.turn = turn;
+    }
+
+    public void setCritRate(double crit_rate) {
+        this.crit_rate = crit_rate;
+    }
+
+    public void setCritDamage(double crit_damage) {
+        this.crit_damage = crit_damage;
     }
 
     public void turnPast() {

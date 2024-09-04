@@ -1,22 +1,26 @@
 package main.java;
 
 public enum Classe  {
-    ASSASSIN(50,4,1,"L'assassin"),
-    BARBARE(150,2,2,"Le barbare"),
-    MAGE(100,2,3,"Le grand mage");
+    ASSASSIN(50,4,1,40,"l'assassin",0.25, 1.5),
+    BARBARE(150,2,2,20,"le barbare",0.25,1.5),
+    MAGE(100,2,3,20,"le grand mage",0.25,1.5);
 
     public int pv;
     public int atk;
     public int def;
+    public int esquive;
     public String nom;
     public double critRate;
     public double critDamage;
 
-    Classe(int pv, int atk, int def, String nom){
+    Classe(int pv, int atk, int def, int esquive, String nom, double critRate, double critDamage){
         this.pv = pv;
         this.atk = atk;
         this.def = def;
+        this.esquive = esquive;
         this.nom = nom;
+        this.critRate = critRate;
+        this.critDamage = critDamage;
     }
 
     public int getPv() {
@@ -29,6 +33,10 @@ public enum Classe  {
 
     public int getDef() {
         return def;
+    }
+
+    public int getEsquive() {
+        return this.esquive;
     }
     
     public String getNom() {
@@ -55,6 +63,10 @@ public enum Classe  {
         this.def = def;
     }
 
+    public void setEsquive(int esquive) {
+        this.esquive = esquive;
+    }
+
     public void setCritRate(double critRate) {
         this.critRate = critRate;
     }
@@ -62,4 +74,6 @@ public enum Classe  {
     public void setCritDamage(double critDamage) {
         this.critDamage = critDamage;
     }
+
+
 }
