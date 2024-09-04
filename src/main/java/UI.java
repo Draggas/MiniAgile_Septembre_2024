@@ -184,6 +184,11 @@ public class UI implements NativeKeyListener {
 
     private static void setStats(List<String> list) {
 
+        String line34 = list.get(34);
+        list.remove(34);
+        line34 = "█   " + joueur.getNom() + line34.substring(4 + String.valueOf(joueur.getNom()).length());
+        list.add(34, line34);
+
         String line35 = list.get(35);
         list.remove(35);
         line35 = "█   ❤ : " + joueur.getPv() + line35.substring(8 + String.valueOf(joueur.getPv()).length());
@@ -200,6 +205,12 @@ public class UI implements NativeKeyListener {
         list.add(37, line37);
 
         Mob mob = main.getGame().getMob();
+
+        String line34b = list.get(34);
+        list.remove(34);
+        line34b = line34b.substring(0, 90) + mob.getNom()
+                + line34b.substring(90 + String.valueOf(mob.getNom()).length());
+        list.add(34, line34b);
 
         String line35b = list.get(35);
         list.remove(35);
