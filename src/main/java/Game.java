@@ -11,7 +11,7 @@ public class Game {
     Turn turn;
 
     public Game() {
-        this.joueur = new Joueur("", Classe.ASSASSIN);
+        this.joueur = new Joueur();
     }
 
     public void initGame() {
@@ -59,18 +59,16 @@ public class Game {
     public void attackPlayer() {
         int dmg = turn.damageSimpleAttaque(joueur, mob);
         mob.setPv(mob.getPv() - dmg);
+        UI.addLogs(joueur.getNom() + " ⚔ " + dmg + "❤ " + mob.getNom());
+
         if (mob.getPv() <= 0) { // MORT DU MOB
             UI.addLogs("");
-            UI.addLogs(joueur.getNom() + "  ☠  " + mob.getNom());
+            UI.addLogs(joueur.getNom() + " killed " + mob.getNom() + " ☠");
             UI.addLogs("");
             this.caseActuel = this.map.getRight(this.caseActuel);
             joueur.resetBuff();
             newMob();
-
         }
-
-        UI.addLogs(joueur.getNom() + " " + dmg +" ⚔ " + mob.getNom() );
-
     }
 
     public void capacityPlayer() {
