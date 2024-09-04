@@ -41,7 +41,7 @@ public class UI {
                 for (int i = 0; i < overlayLines.size(); i++) {
                     if (i > 22) {
                         System.out.println(
-                                overlayLines.get(i) + (attack ? menuLinesA.get(i - 22) : menuLinesC.get(i - 22)));
+                                overlayLines.get(i) +  (attack ? menuLinesA.get(i - 22) : menuLinesC.get(i - 22)));
                     } else {
                         System.out.println(overlayLines.get(i));
                     }

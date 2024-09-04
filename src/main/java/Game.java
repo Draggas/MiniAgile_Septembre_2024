@@ -19,6 +19,12 @@ public class Game {
         UI.update();
         map = new Map();
         caseActuel = map.getFirstCase();
+
+
+        for(int i = 0; i < 30; i ++){
+            UI.addLogs("               ");
+        }
+
     }
 
     public void startGame() {
@@ -54,9 +60,13 @@ public class Game {
         int dmg = turn.damageSimpleAttaque(joueur, mob);
         mob.setPv(mob.getPv() - dmg);
         if (mob.getPv() <= 0) { // MORT DU MOB
+            UI.addLogs("");
+            UI.addLogs(joueur.getNom() + "  ☠  " + mob.getNom());
+            UI.addLogs("");
             this.caseActuel = this.map.getRight(this.caseActuel);
             joueur.resetBuff();
             newMob();
+
         }
 
         UI.addLogs(joueur.getNom() + " " + dmg +" ⚔ " + mob.getNom() );
