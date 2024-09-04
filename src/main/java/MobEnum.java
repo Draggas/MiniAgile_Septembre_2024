@@ -11,8 +11,8 @@ public enum MobEnum {
     DEMON(0.15,10,10, Monde.MONDE_3, 1200, 120, 150, false, 1500),
     SHREK(0.15,10,10, Monde.MONDE_2, 800, 120, 200, true, 1020),
     KRAKEN(0.15,10,10, Monde.MONDE_1, 500, 100, 150, true, 520),
-    SLIME_GEANT(0.15,10,10, Monde.MONDE_0, 380, 80, 50, true, 300),
-    FOURMI(0.15,10,10, Monde.MONDE_3, 2000, 170, 200, true, 0);
+    BIG_SLIME(0.15,10,10, Monde.MONDE_0, 380, 80, 50, true, 300),
+    REINE_DE_LA_FOURMILLIERE(0.15,10,10, Monde.MONDE_3, 2000, 170, 200, true, 0);
 
     private final double DROP;
     private final int DROPATK;
