@@ -6,20 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.kwhat.jnativehook.GlobalScreen;
-import com.github.kwhat.jnativehook.NativeHookException;
-import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
-import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
-
 public class UI {
 
     public static boolean attack;
-
-    public static void start(Joueur j) {       
-
-        update();
-
-    }
 
     public static void update() {
 
@@ -28,6 +17,16 @@ public class UI {
         }
 
         switch (main.getGame().getState()) {
+
+            case MENU:
+                List<String> menuLine = readFile("res/titre");
+
+                for (int i = 0; i < menuLine.size(); i++)
+                    System.out.println(menuLine.get(i));
+
+                break;
+
+
             case PLAYING:
 
                 List<String> overlayLines = readFile("res/overlay.txt");

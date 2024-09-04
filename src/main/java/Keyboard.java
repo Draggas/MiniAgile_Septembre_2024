@@ -27,11 +27,18 @@ public class Keyboard  implements NativeKeyListener {
     public void nativeKeyReleased(NativeKeyEvent e) {
 
         switch (main.getGame().getState()) {
+            case MENU:
+
+                if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) {
+                    main.getGame().setState(GameState.CLASSE);
+                }
+                break;
+
             case PLAYING:
                 if (e.getKeyCode() == 57416 || e.getKeyCode() == 57424) { // arrow up
                     UI.attack = !UI.attack;
                 }
-                if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) { // enter
+                if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) {
                     if (UI.attack)
                         main.getGame().attackPlayer();
                     else
@@ -56,7 +63,7 @@ public class Keyboard  implements NativeKeyListener {
                     }
                 }
 
-                if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) { // enter
+                if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) {
                     main.getGame().startGame();
                 }
 

@@ -2,7 +2,7 @@ package main.java;
 
 public class Game {
 
-    GameState state = GameState.CLASSE;
+    GameState state = GameState.MENU;
 
     Map map;
     Case caseActuel;
@@ -15,8 +15,8 @@ public class Game {
     }
 
     public void initGame() {
-        setState(GameState.CLASSE);
-        UI.start(joueur);
+        setState(GameState.MENU);
+        UI.update();
         map = new Map();
         caseActuel = map.getFirstCase();
     }
