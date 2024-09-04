@@ -53,6 +53,10 @@ public class Mob extends Entity {
         return this.nom;
     }
 
+    public boolean isBoss() {
+        return type.isBoss();
+    }
+
     public void setNom(String nom) {
         this.nom = nom;
     }
