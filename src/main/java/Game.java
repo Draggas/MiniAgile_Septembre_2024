@@ -11,6 +11,8 @@ public class Game {
     Joueur joueur;
     Mob mob;
     Turn turn;
+    boolean cheatCodeImmortel = false;
+    boolean cheatCodeOneShot = false;
 
     public Game() {
 
@@ -58,9 +60,21 @@ public class Game {
         mob.setPv(mob.getPv() - turn.damageSimpleAttaque(joueur, mob));
         if (mob.getPv() <= 0) { // MORT DU MOB
             this.caseActuel = this.map.getRight(this.caseActuel);
-            joueur.resetBuff();
+            if(!cheatCodeImmortel && !cheatCodeOneShot){
+                joueur.resetBuff();
+            }
             newMob();
         }
+    }
+
+    public void cheatAttackPlayer() {
+        cheatCodeOneShot = true;
+        joueur.setAtk(999999);
+    }
+    public void cheatCapacityPlayer() {
+        cheatCodeImmortel = true;
+        joueur.setDef(999999);
+        joueur.setPv(999999);
     }
 
     public String clearSpace(String s) {
