@@ -83,15 +83,15 @@ public class Joueur extends Entity {
         return inventory;
     }
     public int getPv() {
-        return categorie.getPv();
+        return this.pv;
     }
 
     public int getAtk() {
-        return categorie.getAtk();
+        return this.atk;
     }
 
     public int getDef() {
-        return categorie.getDef();
+        return this.def;
     }
 
 
@@ -117,15 +117,15 @@ public class Joueur extends Entity {
     }
 
     public void setPv(int pv) {
-        categorie.setPv(pv);
+        this.pv = pv;
     }
 
     public void setAtk(int atk) {
-        categorie.setAtk(atk);
+        this.atk = atk;
     }
 
     public void setDef(int def) {
-        categorie.setDef(def);
+        this.def = def;
     }
 
     public void setNom(String nom) {
