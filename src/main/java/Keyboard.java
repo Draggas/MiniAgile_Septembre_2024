@@ -50,6 +50,7 @@ public class Keyboard  implements NativeKeyListener {
                         main.getGame().attackPlayer();
                     else
                         main.getGame().capacityPlayer();
+                    main.getGame().attackMob();
                 }
                 break;
             case CLASSE:
@@ -73,11 +74,9 @@ public class Keyboard  implements NativeKeyListener {
                 if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) {
                     main.getGame().startGame();
                 }
-
                 break;
 
         }
-
         UI.update();
 
     }
