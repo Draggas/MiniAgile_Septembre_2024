@@ -8,7 +8,7 @@ public class Joueur extends Entity {
     private int xp;
     private int xpmax;
     private List<Item> inventory = new ArrayList<Item>();
-    private Classe categorie;
+    private Classe categorie = Classe.ASSASSIN;
     private ArrayList<Competence> listeCompetences;
 
 
