@@ -12,30 +12,16 @@ public class Joueur extends Entity {
     private ArrayList<Competence> listeCompetences;
 
 
-    public Joueur(String nom, int level, int xp, int xpmax, List<Item> inventory, Classe categorie){
+    public Joueur(){
+        new Joueur(null,1,0,10,new ArrayList<>());
+    }
+
+    public Joueur(String nom, int level, int xp, int xpmax, List<Item> inventory){
         this.nom = nom;
         this.level = level;
         this.xp = xp;
         this.xpmax = xpmax;
         this.inventory = inventory;
-        this.categorie = categorie;
-        if (categorie == Classe.ASSASSIN){
-            this.pv = 100;
-            this.atk = 40;
-            this.def = 30;
-        } else if(categorie == Classe.BARBARE){
-            this.pv = 200;
-            this.atk = 70;
-            this.def = 60;
-        } else {
-            this.pv = 150;
-            this.atk = 110;
-            this.def = 20;
-        }
-    }
-
-    public Joueur(String nom, Classe categorie){
-        this(nom, 1, 0, 10, null, categorie);
     }
 
     public void addXp(int valeur){
@@ -114,6 +100,28 @@ public class Joueur extends Entity {
 
     public void setCategorie(Classe categorie) {
         this.categorie = categorie;
+
+        switch (categorie) {
+            case ASSASSIN:
+            this.pv = 100;
+            this.atk = 40;
+            this.def = 30;
+                break;
+                case BARBARE:
+            this.pv = 200;
+            this.atk = 70;
+            this.def = 60;
+                break;
+                case MAGE:
+            this.pv = 160;
+            this.atk = 110;
+            this.def = 20;
+                break;
+        
+            default:
+                break;
+        }
+
     }
 
     public void setnom(String nom) {

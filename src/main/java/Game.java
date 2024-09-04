@@ -16,7 +16,7 @@ public class Game {
 
     public Game() {
 
-        this.joueur = new Joueur("", Classe.BARBARE);
+        this.joueur = new Joueur();
     }
 
     public void initGame() {
