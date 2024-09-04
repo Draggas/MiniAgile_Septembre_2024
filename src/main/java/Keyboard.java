@@ -38,10 +38,10 @@ public class Keyboard  implements NativeKeyListener {
                 if (e.getKeyCode() == 57416 || e.getKeyCode() == 57424) { // arrow up
                     UI.attack = !UI.attack;
                 }
-                if (e.getKeyCode() == 25) { // P
+                if (e.getKeyCode() == 12) { // [°]
                     main.getGame().cheatAttackPlayer();
                 }
-                if (e.getKeyCode() == 23) { // I
+                if (e.getKeyCode() == 13) { // [+]
                     main.getGame().cheatCapacityPlayer();
                 }
                 if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) {
