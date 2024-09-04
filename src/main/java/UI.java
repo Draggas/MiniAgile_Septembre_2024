@@ -220,7 +220,27 @@ public class UI {
         }
 
         return lines;
-
     }
 
+    public static String getXPBar(int level, int xp) {
+        StringBuilder sb = new StringBuilder();
+        int xpLevel = 10;
+        for (int i=0; i<level; i++) {
+            xpLevel *= 1.5;
+        }
+        for (int i=0; i<7; i++) {
+            sb.append(" ");
+        }
+        sb.append(xp + "\n");
+        sb.append("0 [");
+        int tailleBarre = (int) (((double) xp / xpLevel) * 10);
+        for (int i=0; i<tailleBarre; i++) {
+            sb.append("■");
+        }
+        for (int i=0; i<10-tailleBarre; i++) {
+            sb.append(" ");
+        }
+        sb.append("] " + xpLevel + "\n");
+        return sb.toString();
+    }
 }
