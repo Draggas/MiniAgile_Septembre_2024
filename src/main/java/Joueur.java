@@ -41,7 +41,7 @@ public class Joueur extends Entity {
             if(level == 30){
                 xp = xpmax - 1;
             } else {
-                
+                lvlUp();
             }
 
         }
