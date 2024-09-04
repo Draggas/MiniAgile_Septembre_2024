@@ -19,7 +19,7 @@ public class Joueur extends Entity {
         this.inventory = inventory;
         this.categorie = categorie;
         if (categorie == Classe.ASSASSIN){
-            this.pv = 140;
+            this.pv = 100;
             this.atk = 40;
             this.def = 30;
         } else if(categorie == Classe.BARBARE){

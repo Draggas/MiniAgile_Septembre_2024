@@ -16,13 +16,13 @@ public enum Competence {
     ATTAQUE_RENFORCEE(0,40,0,0,1),
     INTIMIDATION(0,0,0,25,3),
     SOINS_CONTINUS(25,0,0,0,5),
-    RENFORCEMENT(0,0,35,35,3),
+    RENFORCEMENT(10,0,40,0,3),
     BRISE_ARMURE(0,30,0,40,3),
     UPPERCUT(0,150,0,0,1,0.2),
     TOUT_OU_RIEN(0,0,-50,150,10),
 
     //Compétences du mage.
-    ECLAIR(0,35,0,0,1),
+    ECLAIR(0,50,0,0,1),
     MALEDICTION(0,35,0,0,3),
     SOINS_MAJEURS(60,0,10,0,1),
     EMBRASEMENT(0,65,10,0,3),
