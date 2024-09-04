@@ -27,6 +27,7 @@ public class JoueurTest {
     @Test
     void testJoueur() {
         j3.addXp(10);
+
         assertEquals(2, j3.getLevel());
         j3.addXp(999999);
         assertEquals(3, j3.getLevel());

@@ -12,7 +12,7 @@ public class Joueur extends Entity {
     private ArrayList<Competence> listeCompetences;
 
     public Joueur(){
-        new Joueur(null,0,0,10,new ArrayList<>());
+        new Joueur(null,1,1,10,new ArrayList<>());
     };
 
     public Joueur(String nom, int level, int xp, int xpmax, List<Item> inventory) {
@@ -24,10 +24,10 @@ public class Joueur extends Entity {
     }
 
     public void addXp(int valeur) {
-        xp = xp + valeur;
-        if (xp >= xpmax) {
-            if (level == 30) {
-                xp = xpmax - 1;
+        this.xp = this.xp + valeur;
+        if (this.xp >= this.xpmax) {
+            if (this.level == 30) {
+                this.xp = this.xpmax - 1;
             } else {
                 lvlUp();
             }

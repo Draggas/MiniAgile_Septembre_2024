@@ -63,7 +63,7 @@ public class Game {
 
         if (mob.getPv() <= 0) { // MORT DU MOB
             UI.addLogs("");
-            UI.addLogs(joueur.getNom() + " killed " + mob.getNom() + " ☠");
+            UI.addLogs(joueur.getNom() + " a tué " + mob.getNom() + " ☠");
             UI.addLogs("");
             this.caseActuel = this.map.getRight(this.caseActuel);
             joueur.resetBuff();
