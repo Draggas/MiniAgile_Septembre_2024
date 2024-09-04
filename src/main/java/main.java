@@ -13,11 +13,11 @@ public class main {
     System.out.flush();  
 
     System.out.printf("Choississez votre classe :");
-    System.out.printf("\n1 : %s (%d d'attaque, %d de défense, %d points de vies", Classe.ASSASSIN.nom,
+    System.out.printf("\n1 : %s (%d d'attaque, %d de défense, %d points de vie", Classe.ASSASSIN.nom,
         Classe.ASSASSIN.atk, Classe.ASSASSIN.def, Classe.ASSASSIN.pv);
-    System.out.printf("\n2 : %s (%d d'attaque, %d de défense, %d points de vies", Classe.BARBARE.nom,
+    System.out.printf("\n2 : %s (%d d'attaque, %d de défense, %d points de vie", Classe.BARBARE.nom,
         Classe.BARBARE.atk, Classe.BARBARE.def, Classe.BARBARE.pv);
-    System.out.printf("\n3 : %s (%d d'attaque, %d de défense, %d points de vies\n", Classe.MAGE.nom, Classe.MAGE.atk,
+    System.out.printf("\n3 : %s (%d d'attaque, %d de défense, %d points de vie\n", Classe.MAGE.nom, Classe.MAGE.atk,
         Classe.MAGE.def, Classe.MAGE.pv);
 
     int i = 0;
