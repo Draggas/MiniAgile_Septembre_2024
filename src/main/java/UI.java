@@ -198,21 +198,22 @@ public class UI implements NativeKeyListener {
         list.add(37, line37);
 
 
-        // Mob mob = main.getGame().getMob();
-        // String line35 = list.get(35);
-        // list.remove(35);
-        // line35 = line35.substring(0, 50) + "⛨ : " + mob.getDef() + line35.substring(50 + String.valueOf(mob.getDef()).length() );
-        // list.add(35, line35);
+        Mob mob = main.getGame().getMob();
 
-        // String line36 = list.get(36);
-        // list.remove(36);
-        // line36 = "█   ⚔ : " + joueur.getAtk() + line36.substring(8 + String.valueOf(joueur.getAtk()).length());
-        // list.add(36, line36);
+        String line35b = list.get(35);
+        list.remove(35);
+        line35b = line35b.substring(0, 90) + "❤ : " + mob.getPv() + line35b.substring(94 + String.valueOf(mob.getPv()).length() );
+        list.add(35, line35b);
 
-        // String line37 = list.get(37);
-        // list.remove(37);
-        // line37 = "█   ⛨ : " + joueur.getDef() + line37.substring(8 + String.valueOf(joueur.getDef()).length());
-        // list.add(37, line37);
+        String line36b = list.get(36);
+        list.remove(36);
+        line36b = line36b.substring(0, 90) + "⚔ : " + mob.getAtk() + line36b.substring(94 + String.valueOf(mob.getAtk()).length() );
+        list.add(36, line36b);
+
+        String line37b = list.get(37);
+        list.remove(37);
+        line37b = line37b.substring(0, 90) + "⛨ : " + mob.getDef() + line37b.substring(94 + String.valueOf(mob.getDef()).length() );
+        list.add(37, line37b);
 
 
 
