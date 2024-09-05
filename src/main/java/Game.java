@@ -119,6 +119,7 @@ public class Game {
         }
     }
 
+<<<<<<< HEAD
 
     // public void attackMob() {
     //     int degat = turn.damageSimpleAttaque(mob, joueur);
@@ -128,6 +129,8 @@ public class Game {
     //         this.setState(GameState.GAME_OVER);
     //     }
     // }
+=======
+>>>>>>> ca66c1e29e860f972428f2625e0e05aafce4e214
     
     public void cheatAttackPlayer() {
         cheatCodeOneShot = true;
