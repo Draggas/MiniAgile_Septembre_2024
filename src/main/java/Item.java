@@ -24,7 +24,9 @@ public enum Item implements EntityInterface {
     EpeeEnOs(0, 35, 0, 0, 0),
     BouclierDuSquelette(0, 0, 50, 0, 0),
     L(1, 1, 1, 1, 1),
-    D(1, 1, 1, 1, 1);
+    D(1, 1, 1, 1, 1),
+    s(1, 1, 1, 1, 1),
+    v(1, 1, 1, 1, 1);
 
     int PV;
     int ATK;
