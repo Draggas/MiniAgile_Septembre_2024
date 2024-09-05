@@ -10,6 +10,7 @@ import main.java.Classe;
 
 public class JoueurTest {
 
+
     private Joueur j1;
     private Joueur j2;
     private Joueur j3;
@@ -44,7 +45,7 @@ public class JoueurTest {
         assertEquals(j2.getCategorie().getAtk(), j2.getAtk());
         j2.setAtk(3);
         assertEquals(3, j2.getAtk());
-        assertEquals(j3.getCategorie().getDef()+10, j3.getDef());
+        assertEquals(j3.getCategorie().getDef()+20, j3.getDef());
         j3.setDef(0);
         assertEquals(0, j3.getDef());
         assertEquals(Classe.MAGE, j3.getCategorie());
