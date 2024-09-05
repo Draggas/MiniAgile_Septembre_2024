@@ -94,6 +94,11 @@ public class Game {
             
 
             this.caseActuel = this.map.getRight(this.caseActuel);
+            if (this.caseActuel == null) {
+                    this.setState(GameState.END);
+                    UI.update();
+                    System.exit(0);
+                }
             if(!cheatCodeImmortel && !cheatCodeOneShot){
                 joueur.resetBuff();
             }
