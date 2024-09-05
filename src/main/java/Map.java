@@ -18,6 +18,15 @@ public class Map {
         return map.get(0);
     }
 
+    public Case getCase(int numCase, Monde monde) {
+        for(Case c:map) {
+            if(c.getNumCase() == numCase && c.getMonde() == monde) {
+                return c;
+            }
+        }
+        return null;
+    }
+
     public Case getLeft(Case c) {
         if(c.getNumCase() == 0) {
             return c;
@@ -41,8 +50,7 @@ public class Map {
                     for(int i=0;i<50;i++){
                         System.out.println("\n");
                     }
-                    System.out.println("Fin Du Jeu");
-                    System.exit(0);
+                    return null;
                 }
                 
             }

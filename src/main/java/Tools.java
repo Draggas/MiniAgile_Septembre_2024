@@ -1,5 +1,4 @@
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -47,27 +46,32 @@ public class Tools {
     }
 
     public static void savePlayer(Joueur j) throws IOException {
-        try ( FileOutputStream fos = new FileOutputStream("res/save");
-                ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+        try (FileOutputStream fos = new FileOutputStream("res/save");
+                ObjectOutputStream oos = new ObjectOutputStream(fos);) {
             oos.writeObject(j);
+            System.out.println("Partie sauvegardée");
         } catch (IOException e) {
             System.out.println("Erreur : Impossible de sauvegarder la partie");
+            e.printStackTrace();
         } catch (Exception e) {
             System.out.println("Erreur non-determiné");
+            e.printStackTrace();
         }
     }
 
-    public static void loadPlayer() throws IOException {
+    public static Joueur loadPlayer() throws IOException {
 
         try (FileInputStream fis = new FileInputStream("res/save");
                 ObjectInputStream ois = new ObjectInputStream(fis);) {
             Joueur j = (Joueur) ois.readObject();
             System.out.println("Partie chargée");
+            return j;
         } catch (IOException e) {
             System.out.println("Erreur : Impossible de charger la partie");
         } catch (Exception e) {
             System.out.println("Erreur non-determiné");
         }
+        return null;
     }
 
     public static void printLeaderboard() {

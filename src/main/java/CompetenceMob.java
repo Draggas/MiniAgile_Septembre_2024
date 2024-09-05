@@ -1,6 +1,6 @@
+import java.io.Serializable;
 
-
-public class CompetenceMob {
+public class CompetenceMob implements Serializable {
     private String name;            //Nom de la compétence.
     private int damage;             //Nombre des dégâts infligés par la compétence.
     private int bonusAttack;        //Nombre de points d'attaque ajoutés au mob.

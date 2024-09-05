@@ -1,8 +1,9 @@
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Case {
+public class Case implements Serializable {
     private Monde monde;
     private int numCase;
     private ArrayList<Mob> mobs;

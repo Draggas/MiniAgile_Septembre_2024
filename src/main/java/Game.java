@@ -2,6 +2,7 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.IOException;
 import java.lang.Thread;
 
 public class Game {
@@ -15,10 +16,15 @@ public class Game {
     Turn turn;
     boolean cheatCodeImmortel = false;
     boolean cheatCodeOneShot = false;
+    boolean resume = false;
 
-    public Game() {
-
-        this.joueur = new Joueur();
+    public Game(boolean reprise) throws IOException {
+        if (reprise) {
+            this.joueur = Tools.loadPlayer();
+            this.resume = true;
+        } else {
+            this.joueur = new Joueur();
+        }
     }
 
     public void initGame() {
@@ -31,7 +37,11 @@ public class Game {
         setState(GameState.MENU);
         UI.update();
         map = new Map();
-        caseActuel = map.getFirstCase();
+        if (resume) {
+            this.caseActuel = map.getCase(joueur.getPosition().getNumCase(), joueur.getPosition().getMonde());
+        } else {
+            this.caseActuel = map.getFirstCase();
+        }
     }
 
     public void startGame() {
@@ -39,6 +49,11 @@ public class Game {
 
         System.out.println("start");
         newMob();
+    }
+
+    public void leaveGame() throws IOException {
+        Tools.savePlayer(joueur);
+        System.exit(0);
     }
 
     public GameState getState() {
@@ -79,6 +94,11 @@ public class Game {
             
 
             this.caseActuel = this.map.getRight(this.caseActuel);
+            if (this.caseActuel == null) {
+                    this.setState(GameState.END);
+                    UI.update();
+                    System.exit(0);
+                }
             if(!cheatCodeImmortel && !cheatCodeOneShot){
                 joueur.resetBuff();
             }
