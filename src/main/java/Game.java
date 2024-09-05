@@ -114,20 +114,6 @@ public class Game {
             this.attackMob();
         }
     }
-
-<<<<<<< HEAD
-
-    // public void attackMob() {
-    //     int degat = turn.damageSimpleAttaque(mob, joueur);
-    //     UI.addLogs(this.mob.nom + " inflige " + degat + " dégats");
-    //     joueur.setPv(joueur.getPv() - degat);
-    //     if (joueur.getPv() <= 0) {
-    //         this.setState(GameState.GAME_OVER);
-    //     }
-    // }
-=======
->>>>>>> ca66c1e29e860f972428f2625e0e05aafce4e214
-    
     public void cheatAttackPlayer() {
         cheatCodeOneShot = true;
         joueur.setAtk(999999);
