@@ -2,6 +2,7 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.IOException;
 import java.lang.Thread;
 
 public class Game {
@@ -15,10 +16,15 @@ public class Game {
     Turn turn;
     boolean cheatCodeImmortel = false;
     boolean cheatCodeOneShot = false;
+    boolean resume = false;
 
-    public Game() {
-
-        this.joueur = new Joueur();
+    public Game(boolean reprise) throws IOException {
+        if (reprise) {
+            this.joueur = Tools.loadPlayer();
+            this.resume = true;
+        } else {
+            this.joueur = new Joueur();
+        }
     }
 
     public void initGame() {
@@ -31,7 +37,11 @@ public class Game {
         setState(GameState.MENU);
         UI.update();
         map = new Map();
-        caseActuel = map.getFirstCase();
+        if (resume) {
+            this.caseActuel = map.getCase(joueur.getPosition().getNumCase(), joueur.getPosition().getMonde());
+        } else {
+            this.caseActuel = map.getFirstCase();
+        }
     }
 
     public void startGame() {
@@ -39,6 +49,11 @@ public class Game {
 
         System.out.println("start");
         newMob();
+    }
+
+    public void leaveGame() throws IOException {
+        Tools.savePlayer(joueur);
+        System.exit(0);
     }
 
     public GameState getState() {
@@ -74,9 +89,25 @@ public class Game {
 
             UI.addLogs("");
             UI.addLogs(joueur.getCategorie().getNom() + " a tué " + mob.getNom() + " ☠");
-            UI.addLogs("");            
+            UI.addLogs("");
+            Item item = mob.dropMob();
+            if(item != null){
+                UI.addLogs(mob.getNom() + " drop " + item.name());
+                UI.addLogs("");
+                joueur.setAtk(joueur.getAtk() + item.getAtk());
+                joueur.setDef(joueur.getDef() + item.getDef());
+                joueur.setPv(joueur.getPv() + item.getPv());
+                joueur.setDef(joueur.getAtk() + item.getCrit());
+                joueur.setAtk(joueur.getAtk() + item.getEsq());
+            }
+            
 
             this.caseActuel = this.map.getRight(this.caseActuel);
+            if (this.caseActuel == null) {
+                    this.setState(GameState.END);
+                    UI.update();
+                    System.exit(0);
+                }
             if(!cheatCodeImmortel && !cheatCodeOneShot){
                 joueur.resetBuff();
             }
@@ -97,7 +128,7 @@ public class Game {
             this.setState(GameState.GAME_OVER);
         }
     }
-
+    
     public void cheatAttackPlayer() {
         cheatCodeOneShot = true;
         joueur.setAtk(999999);
@@ -135,5 +166,17 @@ public class Game {
         this.attackMob();
     }
 
+    public void attackMob() {
+        if(Math.random()<mob.getCompetenceMob().getProba()) {
+            turn.applyMobCompetence(joueur, mob, mob.getCompetenceMob());
+        } else {
+            int degat = turn.damageSimpleAttaque(mob, joueur);
+            UI.addLogs(this.mob.nom + " inflige " + degat + " dégats");
+            joueur.setPv(joueur.getPv() - degat);
+        }
+        if (joueur.getPv() <= 0) {
+            this.setState(GameState.GAME_OVER);
+        }
+    }
 
 }

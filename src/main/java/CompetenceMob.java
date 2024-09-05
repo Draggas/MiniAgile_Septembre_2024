@@ -1,6 +1,6 @@
+import java.io.Serializable;
 
-
-public class CompetenceMob {
+public class CompetenceMob implements Serializable {
     private String name;            //Nom de la compétence.
     private int damage;             //Nombre des dégâts infligés par la compétence.
     private int bonusAttack;        //Nombre de points d'attaque ajoutés au mob.
@@ -15,7 +15,7 @@ public class CompetenceMob {
         this.damage = damage;
         this.bonusAttack = bonusAttack;
         this.bonusArmor = bonusArmor;
-        this.dropAttack = bonusAttack;
+        this.dropAttack = dropAttack;
         this.dropArmor = dropArmor;
         this.healing = healing;
         this.proba = proba;
@@ -47,5 +47,9 @@ public class CompetenceMob {
 
     public int getHealing() {
         return this.healing;
+    }
+
+    public double getProba() {
+        return this.proba;
     }
 }

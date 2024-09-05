@@ -1,8 +1,9 @@
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Case {
+public class Case implements Serializable {
     private Monde monde;
     private int numCase;
     private ArrayList<Mob> mobs;
@@ -37,7 +38,11 @@ public class Case {
 
     public Mob mobEncountered() {
         if (this.numCase == this.monde.getNbCases()-1){
-            return this.mobs.get(2);
+            if(this.monde == Monde.MONDE_4) {
+                return this.mobs.get(0);
+            } else {
+                return this.mobs.get(2);
+            }
         }
         if(Math.random()<0.5) {
             return this.mobs.get(0);

@@ -1,8 +1,9 @@
 
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Mob extends Entity implements EntityInterface {
+public class Mob extends Entity implements EntityInterface, Serializable {
     MobEnum type;
     CompetenceMob competence;
 
@@ -67,10 +68,10 @@ public class Mob extends Entity implements EntityInterface {
         this.nom = nom;
     }
 
-    public Drop dropMob(){
+    public Item dropMob(){
         Random random = new Random();
-        if (random.nextDouble() > 0.8){
-            return Drop.valueOf(this.nom);
+        if (random.nextDouble() > 0.5){
+            return type.getLOOT();
         }
         return null;
     }

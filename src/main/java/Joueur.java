@@ -1,26 +1,29 @@
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Joueur extends Entity implements EntityInterface{
+public class Joueur extends Entity implements EntityInterface, Serializable{
     private int level;
     private int xp;
     private int xpmax;
     private List<Item> inventory = new ArrayList<Item>();
     private Classe categorie = Classe.ASSASSIN;
     private ArrayList<Competence> listeCompetences;
+    private Case position;
 
     public Joueur() {
-        this(null, 1, 0, 10, null);
+        this(null, 1, 0, 10, null, new Case(Monde.MONDE_0, 0));
     }
 
-    public Joueur(String nom, int lvl, int xp, int xpmax, List<Item> inventory) {
+    public Joueur(String nom, int lvl, int xp, int xpmax, List<Item> inventory, Case position) {
         this.nom = nom;
         this.level = lvl;
         this.xp = xp;
         this.xpmax = xpmax;
         this.inventory = inventory;
+        this.position = position;
         setCategorie(Classe.ASSASSIN);
 
     }
@@ -48,8 +51,8 @@ public class Joueur extends Entity implements EntityInterface{
 
     public void resetBuff() {
         this.atk = this.categorie.atk + (10 * this.level);
-        this.pv = this.categorie.pv + (20 * this.level);
-        this.def = this.categorie.def + (5 * this.level);
+        this.pv = this.categorie.pv + (35 * this.level);
+        this.def = this.categorie.def + (3 * this.level);
     }
 
     public boolean addInventory(Item object) {
@@ -145,6 +148,10 @@ public class Joueur extends Entity implements EntityInterface{
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public Case getPosition() {
+        return position;
     }
 
     public void setCompetences(Classe categorie) {
