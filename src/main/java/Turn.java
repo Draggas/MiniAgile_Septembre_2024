@@ -64,5 +64,32 @@ public class Turn {
         mob.setPv(mob.getPv()+c.getHealing());
         mob.setDef(mob.getDef()+c.getBonusArmor());
         mob.setAtk(mob.getAtk()+c.getBonusAttack());
+        mobCapacityMessage(mob, c);
+    }
+
+    public void mobCapacityMessage(Mob mob, CompetenceMob c) {
+        String message = mob.getNom() + " utilise la compétence : " + c.getName() + ".";
+        String message2 = mob.getNom();
+        if(c.getDamage()>0) {
+            message2 += " inflige " + c.getDamage() + " dégâts,";
+        }
+        if(c.getBonusArmor()>0) {
+            message2 += " augmente son armure de " + c.getBonusArmor() + " points,";
+        }
+        if(c.getBonusAttack()>0) {
+            message2 += " augmente son attaque de " + c.getBonusAttack() + " points,";
+        }
+        if(c.getDropArmor()>0) {
+            message2 += " baisse votre armure de " + c.getDropArmor() + " points,";
+        }
+        if(c.getDropAttack()>0) {
+            message2 += " baisse votre attaque de " + c.getDropAttack() + " points,";
+        }
+        if(c.getHealing()>0) {
+            message2 += " se soigne de " + c.getHealing() + " PV.";
+        }
+        message2 = message2.substring(0, message2.length()-1) + '.';
+        UI.addLogs(message);
+        UI.addLogs(message2);
     }
 }

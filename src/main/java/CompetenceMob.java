@@ -48,4 +48,8 @@ public class CompetenceMob {
     public int getHealing() {
         return this.healing;
     }
+
+    public double getProba() {
+        return this.proba;
+    }
 }

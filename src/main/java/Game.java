@@ -135,9 +135,13 @@ public class Game {
     }
 
     public void attackMob() {
-        int degat = turn.damageSimpleAttaque(mob, joueur);
-        UI.addLogs(this.mob.nom + " inflige " + degat + " dégats");
-        joueur.setPv(joueur.getPv() - degat);
+        if(Math.random()<mob.getCompetenceMob().getProba()) {
+            turn.applyMobCompetence(joueur, mob, mob.getCompetenceMob());
+        } else {
+            int degat = turn.damageSimpleAttaque(mob, joueur);
+            UI.addLogs(this.mob.nom + " inflige " + degat + " dégats");
+            joueur.setPv(joueur.getPv() - degat);
+        }
         if (joueur.getPv() <= 0) {
             this.setState(GameState.GAME_OVER);
         }
