@@ -32,7 +32,8 @@ public enum MobEnum {
     private final boolean BOSS;
     private final int XP;
     private final CompetenceMob competence;
-    private final Item LOOT;
+    private final Item LOOT1;
+    private final Item LOOT2;
 
     private MobEnum(double drop, int dropAtk, int dropDef, Monde monde, int pv, int def, int atk, boolean boss, int xp,
             CompetenceMob comp) {
@@ -46,15 +47,8 @@ public enum MobEnum {
         this.BOSS = boss;
         this.XP = xp;
         this.competence = comp;
-        double rdm = Math.random();
-        int valeur = 0;
-        if (rdm > 0.5) {
-            valeur = 1;
-        }
-        this.LOOT = Item.values()[this.ordinal() * 2 + valeur];
-        if (this.LOOT == null) {
-            System.exit(-1);
-        }
+        this.LOOT1 = Item.values()[this.ordinal()*2];
+        this.LOOT2 = Item.values()[this.ordinal()*2 + 1];
     }
 
     public int getPV() {
@@ -77,8 +71,12 @@ public enum MobEnum {
         return DROPATK;
     }
 
-    public Item getLOOT() {
-        return LOOT;
+    public Item getLOOT1() {
+        return LOOT1;
+    }
+
+    public Item getLOOT2() {
+        return LOOT2;
     }
 
     public int getDROPDEF() {

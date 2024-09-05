@@ -70,8 +70,11 @@ public class Mob extends Entity implements EntityInterface, Serializable {
 
     public Item dropMob(){
         Random random = new Random();
-        if (random.nextDouble() > 0.5){
-            return type.getLOOT();
+        double rdm = random.nextDouble();
+        if (rdm > 0.8){
+            return type.getLOOT1();
+        } else if (rdm > 0.6){
+            return type.getLOOT2();
         }
         return null;
     }
