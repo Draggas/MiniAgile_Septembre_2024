@@ -55,6 +55,14 @@ public class UI {
                 showClasse();
                 break;
 
+            case GAME_OVER:
+                List<String> menuGameOver = readFile("res/GameOver");
+
+                for (int i = 0; i < menuGameOver.size(); i++)
+                    System.out.println(menuGameOver.get(i));
+
+                break;
+
             default:
                 break;
         }

@@ -145,7 +145,7 @@ public class Game {
         System.out.println(this.mob.nom + " inflige " + degat + " dégats");
         joueur.setPv(joueur.getPv() - degat);
         if (joueur.getPv() <= 0) {
-            // GAME OVER
+            this.setState(GameState.GAME_OVER);
         }
     }
 
