@@ -33,11 +33,7 @@ public class Keyboard implements NativeKeyListener {
 
             case PLAYING:
                 if (e.getKeyCode() == NativeKeyEvent.VC_ESCAPE) {
-                    try {
-                        LegendOfWar.getGame().leaveGame();
-                    } catch (Exception e1) {
-                        e1.printStackTrace();
-                    }
+                    LegendOfWar.getGame().leaveGame();
                 }
                 if (e.getKeyCode() == 57416 || e.getKeyCode() == 57424) { // arrow up
                     UI.attack = !UI.attack;

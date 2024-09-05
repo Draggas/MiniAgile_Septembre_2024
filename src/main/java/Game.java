@@ -43,8 +43,8 @@ public class Game {
         newMob();
     }
 
-    public void leaveGame() throws IOException {
-        Tools.savePlayer(joueur);
+    public void leaveGame() {
+        System.out.println("Fin de la partie.");
         System.exit(0);
     }
 
