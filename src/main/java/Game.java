@@ -90,7 +90,16 @@ public class Game {
             UI.addLogs("");
             UI.addLogs(joueur.getCategorie().getNom() + " a tué " + mob.getNom() + " ☠");
             UI.addLogs("");
-
+            Item item = mob.dropMob();
+            if(item != null){
+                UI.addLogs(mob.getNom() + " drop " + item.name());
+                UI.addLogs("");
+                joueur.setAtk(joueur.getAtk() + item.getAtk());
+                joueur.setDef(joueur.getDef() + item.getDef());
+                joueur.setPv(joueur.getPv() + item.getPv());
+                joueur.setDef(joueur.getAtk() + item.getCrit());
+                joueur.setAtk(joueur.getAtk() + item.getEsq());
+            }
             
 
             this.caseActuel = this.map.getRight(this.caseActuel);
@@ -111,7 +120,7 @@ public class Game {
             Thread.sleep(500);
         }
     }
-
+    
     public void cheatAttackPlayer() {
         cheatCodeOneShot = true;
         joueur.setAtk(999999);
