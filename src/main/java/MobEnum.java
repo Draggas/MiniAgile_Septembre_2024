@@ -1,28 +1,19 @@
 
 public enum MobEnum {
-
-    SLIME(0.15, 10, 10, Monde.MONDE_0, 100, 30, 30, false, 50,
-            new CompetenceMob("Gélaine collante", 0, 0, 0, 10, 0, 0, 0.2)),
-    ORC(0.15, 10, 10, Monde.MONDE_0, 210, 40, 40, false, 70,
-            new CompetenceMob("Coup écrasant", 60, 0, 0, 0, 0, 0, 0.15)),
-    BIG_SLIME(0.15, 10, 10, Monde.MONDE_0, 380, 60, 50, true, 300,
-            new CompetenceMob("Décharge d'acide", 100, 0, 0, 10, 0, 0, 0.2)),
-    SERPENT(0.15, 10, 10, Monde.MONDE_1, 250, 55, 80, false, 280, new CompetenceMob("Mue", 0, 25, -5, 0, 0, 0, 0.2)),
-    VAMPIRE(0.15, 10, 10, Monde.MONDE_1, 350, 55, 90, false, 300, new CompetenceMob("Saignée", 30, 0, 0, 0, 0, 0, 70)),
-    KRAKEN(0.15, 10, 10, Monde.MONDE_1, 500, 70, 150, true, 520,
-            new CompetenceMob("Tentation des profondeurs", 180, 0, 0, 20, 0, 0, 0)),
-    DRAGON(0.15, 10, 10, Monde.MONDE_2, 600, 70, 140, false, 500,
-            new CompetenceMob("Souffle du dragon", 170, 0, 0, 10, 0, 0, 0.2)),
-    AMOGUS(0.15, 10, 10, Monde.MONDE_2, 700, 75, 150, false, 520,
-            new CompetenceMob("Renforcement", 0, 20, 0, 0, 0, 0, 0.3)),
-    SHREK(0.15, 10, 10, Monde.MONDE_2, 800, 80, 200, true, 1020,
-            new CompetenceMob("Cri effrayant", 150, 0, 0, 0, 30, 0, 0.2)),
-    DEMON(0.15, 10, 10, Monde.MONDE_3, 1200, 80, 150, false, 1500,
-            new CompetenceMob("Flammes infernales", 180, 0, 0, 10, 0, 120, 0.35)),
-    SQUELETTE(0.15, 10, 10, Monde.MONDE_3, 1300, 75, 150, false, 1500,
-            new CompetenceMob("Armée des morts", 180, 0, 0, 10, 0, 0, 0.4)),
-    REINE_DE_LA_FOURMILLIERE(0.15, 10, 10, Monde.MONDE_3, 2000, 100, 200, true, 0,
-            new CompetenceMob("Piège Mortel", 300, 0, 0, 0, 20, 0, 0.1));
+    DRAGON(0.15,10,10, Monde.MONDE_2, 800, 60, 180, false, 500, new CompetenceMob("Souffle du dragon",200,0,0,10,0,0,0.3)),
+    AMOGUS(0.15,10,10, Monde.MONDE_2, 900, 55, 150, false, 520, new CompetenceMob("Renforcement",0,30,0,0,0,0,0.4)),
+    ORC(0.15,10,10, Monde.MONDE_0, 210, 20, 40, false, 70, new CompetenceMob("Coup écrasant",60,0,0,0,0,0,0.3)),
+    SERPENT(0.15,10,10, Monde.MONDE_1, 500, 35, 100, false, 280, new CompetenceMob("Mue",0,25,-5,0,0,0,0.4)),
+    VAMPIRE(0.15,10,10, Monde.MONDE_1, 700, 40, 100, false, 300, new CompetenceMob("Saignée",30,0,0,0,0,70,0.4)),
+    SLIME(0.15,10,10, Monde.MONDE_0, 100, 20, 40, false, 50, new CompetenceMob("Gélaine collante",0,0,0,10,0,0,0.4)),
+    SQUELETTE(0.15,10,10, Monde.MONDE_3, 1800, 70, 170, false, 1500, new CompetenceMob("Armée des morts",200,0,0,10,0,0,0.5)),
+    DEMON(0.15,10,10, Monde.MONDE_3, 1750, 60, 150, false, 1500, new CompetenceMob("Flammes infernales",180,0,0,10,0,120,0.5)),
+    SHREK(0.15,10,10, Monde.MONDE_2, 1200, 60, 200, true, 1020, new CompetenceMob("Cri effrayant", 160,0,0,0,30,0,0.3)),
+    KRAKEN(0.15,10,10, Monde.MONDE_1, 1000, 50, 150, true, 520, new CompetenceMob("Tentation des profondeurs", 180,0,0,20,0,0,0.3)),
+    BIG_SLIME(0.15,10,10, Monde.MONDE_0, 500, 50, 80, true, 300, new CompetenceMob("Décharge d'acide",100,0,0,10,0,0,0.35)),
+    REINE_DE_LA_FOURMILLIERE(0.15,10,10, Monde.MONDE_3, 2500, 85, 220, true, 0, new CompetenceMob("Piège Mortel",300,0,0,0,20,0,0.35)),
+    MERUEM(0.15,10,10, Monde.MONDE_4, 4000, 100, 250, true, 0, new CompetenceMob("Force immense",400,30,0,0,0,0,0.2));
+    // Attaque de meruem = "Meruem donne un coup de queue, inflige 400 de dégat et augmente son attaque de 30"
 
     private final double DROP;
     private final int DROPATK;
@@ -32,7 +23,8 @@ public enum MobEnum {
     private final boolean BOSS;
     private final int XP;
     private final CompetenceMob competence;
-    private final Item LOOT;
+    private final Item LOOT1;
+    private final Item LOOT2;
 
     private MobEnum(double drop, int dropAtk, int dropDef, Monde monde, int pv, int def, int atk, boolean boss, int xp,
             CompetenceMob comp) {
@@ -46,15 +38,8 @@ public enum MobEnum {
         this.BOSS = boss;
         this.XP = xp;
         this.competence = comp;
-        double rdm = Math.random();
-        int valeur = 0;
-        if (rdm > 0.5) {
-            valeur = 1;
-        }
-        this.LOOT = Item.values()[this.ordinal() * 2 + valeur];
-        if (this.LOOT == null) {
-            System.exit(-1);
-        }
+        this.LOOT1 = Item.values()[this.ordinal()*2];
+        this.LOOT2 = Item.values()[this.ordinal()*2 + 1];
     }
 
     public int getPV() {
@@ -77,8 +62,12 @@ public enum MobEnum {
         return DROPATK;
     }
 
-    public Item getLOOT() {
-        return LOOT;
+    public Item getLOOT1() {
+        return LOOT1;
+    }
+
+    public Item getLOOT2() {
+        return LOOT2;
     }
 
     public int getDROPDEF() {
