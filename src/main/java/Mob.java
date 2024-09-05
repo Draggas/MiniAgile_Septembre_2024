@@ -1,8 +1,9 @@
 
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Mob extends Entity implements EntityInterface {
+public class Mob extends Entity implements EntityInterface, Serializable {
     MobEnum type;
     CompetenceMob competence;
 
