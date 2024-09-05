@@ -66,7 +66,6 @@ public class Turn {
     public void mobCapacityMessage(Mob mob, CompetenceMob c) {
         String message = mob.getNom() + " utilise la compétence : " + c.getName() + ".";
         String message2 = mob.getNom();
-        UI.addLogs("" + c.getBonusArmor() + " " + c.getBonusAttack() + " " + c.getDamage() + " " + c.getDropArmor() + " " + c.getDropAttack() + " " + c.getHealing());
         if(c.getDamage()>0) {
             message2 += " inflige " + c.getDamage() + " dégâts,";
         }
