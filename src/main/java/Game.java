@@ -145,7 +145,7 @@ public class Game {
         UI.addLogs(mob.getNom() + " ⚔ " + degat + " ❤ " + joueur.getCategorie().getNom());
         joueur.setPv(joueur.getPv() - degat);
         if (joueur.getPv() <= 0) {
-            // GAME OVER
+            this.setState(GameState.GAME_OVER);
         }
     }
 
