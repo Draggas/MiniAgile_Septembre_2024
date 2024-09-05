@@ -83,32 +83,49 @@ public class Game {
 
         mob.setPv(mob.getPv() - dmg);
         if (mob.getPv() <= 0) { // MORT DU MOB
-
-            UI.addLogs("");
-            UI.addLogs(joueur.getCategorie().getNom() + " a tué " + mob.getNom() + " ☠");
-            UI.addLogs("");
-            Item item = mob.dropMob();
-            if (item != null) {
-                UI.addLogs(mob.getNom() + " drop " + item.name());
+            if(mob.type.ordinal() != 11){
                 UI.addLogs("");
-                joueur.setAtk(joueur.getAtk() + item.getAtk());
-                joueur.setDef(joueur.getDef() + item.getDef());
-                joueur.setPv(joueur.getPv() + item.getPv());
-                joueur.setDef(joueur.getAtk() + item.getCrit());
-                joueur.setAtk(joueur.getAtk() + item.getEsq());
+                UI.addLogs(joueur.getCategorie().getNom() + " a tué " + mob.getNom() + " ☠");
+                UI.addLogs("");
+                Item item = mob.dropMob();
+                if (item != null) {
+                    UI.addLogs(mob.getNom() + " drop " + item.name());
+                    UI.addLogs("");
+                    joueur.setAtk(joueur.getAtk() + item.getAtk());
+                    joueur.setDef(joueur.getDef() + item.getDef());
+                    joueur.setPv(joueur.getPv() + item.getPv());
+                    joueur.setDef(joueur.getAtk() + item.getCrit());
+                    joueur.setAtk(joueur.getAtk() + item.getEsq());
+                }
+    
+                this.caseActuel = this.map.getRight(this.caseActuel);
+                if (this.caseActuel == null) {
+                    this.setState(GameState.END);
+                    UI.update();
+                    System.exit(0);
+                }
+                if (!cheatCodeImmortel && !cheatCodeOneShot) {
+                    joueur.resetBuff();
+                }
+                joueur.addXp(mob.getType().getXP());
+                newMob();
+            } else {
+                UI.addLogs("La fourmi n'a pas dis son dernier mot");
+                UI.update();
+                UI.addLogs("Fourmi : \"tu croyais vrm que jt aussi faible minable\"");
+                UI.update();
+                UI.addLogs("\" PREPARES TOI A MOURIR \"");
+                UI.update();
+                UI.addLogs("*La fourmi se transforme en MERUEM*");
+                UI.update();
+                UI.addLogs("MERUEM veut se battre");
+                UI.update();
+                UI.addLogs("Il utilise son Nen");
+                mob = new Mob(MobEnum.MERUEM);
+                UI.update();
+                turn = new Turn(joueur, mob);
             }
 
-            this.caseActuel = this.map.getRight(this.caseActuel);
-            if (this.caseActuel == null) {
-                this.setState(GameState.END);
-                UI.update();
-                System.exit(0);
-            }
-            if (!cheatCodeImmortel && !cheatCodeOneShot) {
-                joueur.resetBuff();
-            }
-            joueur.addXp(mob.getType().getXP());
-            newMob();
         } else {
             UI.update();
             this.attackMob();
