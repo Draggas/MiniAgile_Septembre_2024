@@ -1,4 +1,4 @@
-package main.java;
+
 
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.NativeHookException;
@@ -26,11 +26,11 @@ public class Keyboard  implements NativeKeyListener {
 
     public void nativeKeyReleased(NativeKeyEvent e) {
 
-        switch (main.getGame().getState()) {
+        switch (LegendOfWar.getGame().getState()) {
             case MENU:
 
                 if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) {
-                    main.getGame().setState(GameState.CLASSE);
+                    LegendOfWar.getGame().setState(GameState.CLASSE);
                 }
                 break;
 
@@ -39,22 +39,22 @@ public class Keyboard  implements NativeKeyListener {
                     UI.attack = !UI.attack;
                 }
                 if (e.getKeyCode() == 12) { // [°]
-                    main.getGame().cheatAttackPlayer();
+                    LegendOfWar.getGame().cheatAttackPlayer();
                 }
                 if (e.getKeyCode() == 13) { // [+]
-                    main.getGame().cheatCapacityPlayer();
+                    LegendOfWar.getGame().cheatCapacityPlayer();
                 }
                 if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) {
                     if (UI.attack){
                         try {
-                            main.getGame().attackPlayer();
+                            LegendOfWar.getGame().attackPlayer();
                         } catch (InterruptedException e1) {
                             e1.printStackTrace();
                         }
                     }
                     else{
                         try {
-                            main.getGame().capacityPlayer();
+                            LegendOfWar.getGame().capacityPlayer();
                         } catch (InterruptedException e1) {
                             // TODO Auto-generated catch block
                             e1.printStackTrace();
@@ -64,7 +64,7 @@ public class Keyboard  implements NativeKeyListener {
                 break;
             case CLASSE:
 
-                Joueur joueur = main.getGame().getJoueur();
+                Joueur joueur = LegendOfWar.getGame().getJoueur();
 
                 if (e.getKeyCode() == NativeKeyEvent.VC_RIGHT) {
 
@@ -81,7 +81,7 @@ public class Keyboard  implements NativeKeyListener {
                 }
 
                 if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) {
-                    main.getGame().startGame();
+                    LegendOfWar.getGame().startGame();
                 }
 
                 break;

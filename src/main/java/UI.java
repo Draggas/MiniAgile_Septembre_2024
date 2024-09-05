@@ -1,4 +1,4 @@
-package main.java;
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -19,7 +19,7 @@ public class UI {
             System.out.println("\n");
         }
 
-        switch (main.getGame().getState()) {
+        switch (LegendOfWar.getGame().getState()) {
 
             case MENU:
                 List<String> menuLine = readFile("res/titre");
@@ -36,7 +36,7 @@ public class UI {
                 List<String> menuLinesA = readFile("res/overlay_bottomrightA.txt");
                 List<String> menuLinesC = readFile("res/overlay_bottomrightC.txt");
                 showPlayer(overlayLines);
-                if (main.getGame().getMob() != null) {
+                if (LegendOfWar.getGame().getMob() != null) {
                     showMob(overlayLines);
                 }
                 setStats(overlayLines);
@@ -106,7 +106,7 @@ public class UI {
         for (int i = 0; i < classeLines.size(); i++)
             System.out.println(classeLines.get(i));
 
-        switch (main.getGame().getJoueur().getCategorie()) {
+        switch (LegendOfWar.getGame().getJoueur().getCategorie()) {
             case ASSASSIN:
                 String blank = "";
                 for (int i = 0; i < 12; i++)
@@ -137,7 +137,7 @@ public class UI {
 
     private static void showMob(List<String> list) {
 
-        List<String> listmage = readFile("res/ascii/" + main.getGame().getMob().getNom());
+        List<String> listmage = readFile("res/ascii/" + LegendOfWar.getGame().getMob().getNom());
         for (int i = 2; i < listmage.size() + 2; i++) {
             String line = list.get(i);
             list.remove(i);
@@ -148,7 +148,7 @@ public class UI {
     }
 
     private static void showPlayer(List<String> list) {
-        List<String> listmage = readFile("res/ascii/" + main.getGame().getJoueur().getCategorie().toString());
+        List<String> listmage = readFile("res/ascii/" + LegendOfWar.getGame().getJoueur().getCategorie().toString());
         for (int i = 2; i < listmage.size() + 2; i++) {
             String line = list.get(i);
             list.remove(i);
@@ -179,7 +179,7 @@ public class UI {
 
     private static void setStats(List<String> list) {
 
-        Joueur joueur = main.getGame().getJoueur();
+        Joueur joueur = LegendOfWar.getGame().getJoueur();
         joueur.setCompetences(joueur.getCategorie());
         String line34 = list.get(34);
         list.remove(34);
@@ -207,7 +207,7 @@ public class UI {
         line38 = "█   " + xpBar + line38.substring(4 + xpBar.length());
         list.add(38, line38);
 
-        Mob mob = main.getGame().getMob();
+        Mob mob = LegendOfWar.getGame().getMob();
 
         String line34b = list.get(34);
         list.remove(34);

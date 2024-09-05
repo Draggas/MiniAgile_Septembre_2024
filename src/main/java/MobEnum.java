@@ -1,4 +1,4 @@
-package main.java;
+
 
 public enum MobEnum {
     DRAGON(0.15,10,10, Monde.MONDE_2, 600, 50, 140, false, 500, new CompetenceMob("Souffle du dragon",170,0,0,10,0,0,0.2)),
