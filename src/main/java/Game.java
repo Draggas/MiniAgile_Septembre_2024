@@ -110,7 +110,7 @@ public class Game {
             System.out.print("Entrez le numéro correspondant à la compétences que vous voulez utiliser : ");
             retour = scanner.nextInt();
         }
-        return retour;
+        return retour;  
     }
 
     public void capacityPlayer() {
@@ -124,7 +124,7 @@ public class Game {
     }
 
     public void attackMob() {
-        int degat = turn.damageSimpleAttaque(mob, joueur);
+        int degat = turn.damageSimpleAttaque((EntityInterface) mob, joueur);
         System.out.println(this.mob.nom + " inflige " + degat + " dégats");
         joueur.setPv(joueur.getPv() - degat);
         if (joueur.getPv() <= 0) {

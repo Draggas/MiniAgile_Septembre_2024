@@ -34,6 +34,18 @@ public class Turn {
         }
     }
 
+
+    public int damageSimpleAttaque(EntityInterface attaquant, EntityInterface defenseur) {
+        if(Math.random()<0.25) {
+            return (int)(attaquant.getAtk()*1.5*((double)defenseur.getDef()/(defenseur.getDef()+100)));
+        } else {
+            return (int)(attaquant.getAtk()*((double)defenseur.getDef()/(defenseur.getDef()+100)));
+        }
+    }
+
+
+
+
     public void applyEffect(Joueur player, Competence c) {
         player.setPv(player.getPv()+c.getHealing());
         // System.out.println(c.getHealing());
