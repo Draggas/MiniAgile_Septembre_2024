@@ -75,6 +75,7 @@ public class Game {
             UI.addLogs("");
             UI.addLogs(joueur.getCategorie().getNom() + " a tué " + mob.getNom() + " ☠");
             UI.addLogs("");
+            joueur.addXp(mob.getType().getXP());
 
             
 
@@ -82,7 +83,6 @@ public class Game {
             if(!cheatCodeImmortel && !cheatCodeOneShot){
                 joueur.resetBuff();
             }
-            joueur.addXp(mob.getType().getXP());
             newMob();
         } else {
             UI.update();

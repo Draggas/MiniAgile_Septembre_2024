@@ -40,7 +40,7 @@ public class Joueur extends Entity implements EntityInterface{
     private void lvlUp() {
         this.xp = 0;
         this.level++;
-        this.xpmax *= 1.1;
+        this.xpmax *= 1.5;
         this.pv += 20;
         this.def += 5;
         this.atk += 10;

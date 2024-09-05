@@ -158,6 +158,25 @@ public class UI {
 
     }
 
+
+    public static String getXPBar(int level, int xp) {
+        StringBuilder sb = new StringBuilder();
+        int xpLevel = 10;
+        for (int i=0; i<level; i++) {
+            xpLevel *= 1.5;
+        }
+        sb.append(xp + " [");
+        int tailleBarre = (int) (((double) xp / xpLevel) * 10);
+        for (int i=0; i<tailleBarre; i++) {
+            sb.append("■");
+        }
+        for (int i=0; i<10-tailleBarre; i++) {
+            sb.append(" ");
+        }
+        sb.append("] " + xpLevel + " (Lvl " + level + ")");
+        return sb.toString();
+    }
+
     private static void setStats(List<String> list) {
 
         Joueur joueur = main.getGame().getJoueur();
@@ -181,6 +200,12 @@ public class UI {
         list.remove(37);
         line37 = "█   ⛨ : " + joueur.getDef() + line37.substring(8 + String.valueOf(joueur.getDef()).length());
         list.add(37, line37);
+
+        String line38 = list.get(38);
+        list.remove(38);
+        String xpBar = UI.getXPBar(joueur.getLevel(), joueur.getXp());
+        line38 = "█   " + xpBar + line38.substring(4 + xpBar.length());
+        list.add(38, line38);
 
         Mob mob = main.getGame().getMob();
 
@@ -235,27 +260,5 @@ public class UI {
         }
 
         return lines;
-    }
-
-    public static String getXPBar(int level, int xp) {
-        StringBuilder sb = new StringBuilder();
-        int xpLevel = 10;
-        for (int i=0; i<level; i++) {
-            xpLevel *= 1.5;
-        }
-        for (int i=0; i<7; i++) {
-            sb.append(" ");
-        }
-        sb.append(xp + "\n");
-        sb.append("0 [");
-        int tailleBarre = (int) (((double) xp / xpLevel) * 10);
-        for (int i=0; i<tailleBarre; i++) {
-            sb.append("■");
-        }
-        for (int i=0; i<10-tailleBarre; i++) {
-            sb.append(" ");
-        }
-        sb.append("] " + xpLevel + "\n");
-        return sb.toString();
     }
 }
