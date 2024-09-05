@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 public class JoueurTest {
 
-
     private Joueur j1;
     private Joueur j2;
     private Joueur j3;
@@ -13,7 +12,7 @@ public class JoueurTest {
     @BeforeEach
     public void init() {
         j1 = new Joueur();
-        j2 = new Joueur("Maxime", 99, 989, 990, null);
+        j2 = new Joueur("Maxime", 99, 989, 990, null, new Case(Monde.MONDE_0, 0));
         j3 = new Joueur();
         j1.setCategorie(Classe.ASSASSIN);
         j2.setCategorie(Classe.BARBARE);
@@ -21,7 +20,7 @@ public class JoueurTest {
     }
 
     @Test
-    void testXpLow(){
+    void testXpLow() {
         j3.addXp(10);
         assertEquals(2, j3.getLevel());
 
@@ -32,8 +31,8 @@ public class JoueurTest {
         assertEquals(0, j3.getXp());
     }
 
-    @Test 
-    void textXpHigh(){
+    @Test
+    void textXpHigh() {
         assertEquals(1, j1.getLevel());
         j2.setXp(2);
         assertEquals(2, j2.getXp());
@@ -43,7 +42,7 @@ public class JoueurTest {
     }
 
     @Test
-    void testClasseStats() {     
+    void testClasseStats() {
 
         assertEquals(j1.getCategorie().getPv(), j1.getPv());
         j1.setPv(75);
@@ -51,7 +50,7 @@ public class JoueurTest {
         assertEquals(j2.getCategorie().getAtk(), j2.getAtk());
         j2.setAtk(3);
         assertEquals(3, j2.getAtk());
-        assertEquals(j3.getCategorie().getDef()+10, j3.getDef());
+        assertEquals(j3.getCategorie().getDef() + 10, j3.getDef());
         j3.setDef(0);
         assertEquals(0, j3.getDef());
         assertEquals(Classe.MAGE, j3.getCategorie());

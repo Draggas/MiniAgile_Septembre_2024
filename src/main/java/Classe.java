@@ -1,11 +1,8 @@
 
-
-import java.util.ArrayList;
-
-public enum Classe  {
-    ASSASSIN(100,40,15,40,"l'assassin",0.5, 1.5),
-    BARBARE(200,70,30,20,"le barbare",0.1,1.5),
-    MAGE(150,110,10,20,"le grand mage",0,1.5);
+public enum Classe {
+    ASSASSIN(100, 40, 15, 40, "l'assassin", 0.5, 1.5),
+    BARBARE(200, 70, 30, 20, "le barbare", 0.1, 1.5),
+    MAGE(150, 110, 10, 20, "le grand mage", 0, 1.5);
 
     public int pv;
     public int atk;
@@ -15,7 +12,7 @@ public enum Classe  {
     public double critRate;
     public double critDamage;
 
-    Classe(int pv, int atk, int def, int esquive, String nom, double critRate, double critDamage){
+    Classe(int pv, int atk, int def, int esquive, String nom, double critRate, double critDamage) {
         this.pv = pv;
         this.atk = atk;
         this.def = def;
@@ -40,7 +37,7 @@ public enum Classe  {
     public int getEsquive() {
         return this.esquive;
     }
-    
+
     public String getNom() {
         return nom;
     }
@@ -76,6 +73,5 @@ public enum Classe  {
     public void setCritDamage(double critDamage) {
         this.critDamage = critDamage;
     }
-
 
 }

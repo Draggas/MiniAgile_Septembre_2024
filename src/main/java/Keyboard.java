@@ -55,9 +55,10 @@ public class Keyboard implements NativeKeyListener {
                         LegendOfWar.getGame().attackPlayer();
 
                     } else {
-                        if(UI.capa != 0){
-                        LegendOfWar.getGame()
-                                .capacityPlayer(LegendOfWar.getGame().getJoueur().getCompetences().get(UI.capa-1));
+                        if (UI.capa != 0) {
+                            LegendOfWar.getGame()
+                                    .capacityPlayer(
+                                            LegendOfWar.getGame().getJoueur().getCompetences().get(UI.capa - 1));
                         } else {
                             UI.capa = 1;
                         }

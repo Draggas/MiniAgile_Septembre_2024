@@ -1,32 +1,30 @@
 
+public enum Item implements EntityInterface {
 
-public enum Item implements EntityInterface{
-
-    GeleeResistante(10, 0, 0,0,0),
-    PeauSlime(0,0,5,0,0),
-    BraceletOrc(0,0,10,0,0),
-    AnneauDeForce(0,10,0,0,0),
-    EssenceDeForce(0,20,0,0,0),
-    CouronneDeSlime(20,0,0,0,0),
-    EcailleMineur(0,0,10,0,0),
-    PoisonDuSerpent(0,0,0,0,10),
-    AnneauDeVitalite(20,0,0,0,0),
-    ZaWarudo(0,0,0,20,0),
-    FragmentDeTentacule(0,0,0,0,15),
-    ForceDeKraken(0,30,0,0,0),
-    GriffeDeDragon(0,25,0,0,0),
-    EcailleDeDragon(0,0,20,0,0),
-    CasqueDeSurvie(0,0,0,10,0),
-    GantsImposteur(0,20,0,0,0),
-    ChaussureDeShrek(0,0,0,10,0),
-    MuscleDeShrek(0,40,0,0,0),
-    GantDuDemon(0,40,0,0,0),
-    CorneDuDemon(0,0,0,0,10),
-    EpeeEnOs(0,35,0,0,0),
-    BouclierDuSquelette(0,0,50,0,0),
-    L(1,1,1,1,1),
-    D(1,1,1,1,1);
-
+    GeleeResistante(10, 0, 0, 0, 0),
+    PeauSlime(0, 0, 5, 0, 0),
+    BraceletOrc(0, 0, 10, 0, 0),
+    AnneauDeForce(0, 10, 0, 0, 0),
+    EssenceDeForce(0, 20, 0, 0, 0),
+    CouronneDeSlime(20, 0, 0, 0, 0),
+    EcailleMineur(0, 0, 10, 0, 0),
+    PoisonDuSerpent(0, 0, 0, 0, 10),
+    AnneauDeVitalite(20, 0, 0, 0, 0),
+    ZaWarudo(0, 0, 0, 20, 0),
+    FragmentDeTentacule(0, 0, 0, 0, 15),
+    ForceDeKraken(0, 30, 0, 0, 0),
+    GriffeDeDragon(0, 25, 0, 0, 0),
+    EcailleDeDragon(0, 0, 20, 0, 0),
+    CasqueDeSurvie(0, 0, 0, 10, 0),
+    GantsImposteur(0, 20, 0, 0, 0),
+    ChaussureDeShrek(0, 0, 0, 10, 0),
+    MuscleDeShrek(0, 40, 0, 0, 0),
+    GantDuDemon(0, 40, 0, 0, 0),
+    CorneDuDemon(0, 0, 0, 0, 10),
+    EpeeEnOs(0, 35, 0, 0, 0),
+    BouclierDuSquelette(0, 0, 50, 0, 0),
+    L(1, 1, 1, 1, 1),
+    D(1, 1, 1, 1, 1);
 
     int PV;
     int ATK;
@@ -79,7 +77,7 @@ public enum Item implements EntityInterface{
     }
 
     @Override
-    public void setNom(String nom){
+    public void setNom(String nom) {
         this.name = nom;
     }
 

@@ -1,5 +1,4 @@
 
-
 public enum Monde {
     MONDE_0(15),
     MONDE_1(12),

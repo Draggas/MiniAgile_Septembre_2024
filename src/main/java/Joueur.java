@@ -1,10 +1,9 @@
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Joueur extends Entity implements EntityInterface, Serializable{
+public class Joueur extends Entity implements EntityInterface, Serializable {
     private int level;
     private int xp;
     private int xpmax;

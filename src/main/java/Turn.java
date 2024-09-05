@@ -1,7 +1,3 @@
-
-
-import java.util.ArrayList;
-
 public class Turn {
     private Joueur player;
     private Mob mob;
