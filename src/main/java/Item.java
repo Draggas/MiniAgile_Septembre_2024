@@ -23,7 +23,9 @@ public enum Item implements EntityInterface{
     GantDuDemon(0,40,0,0,0),
     CorneDuDemon(0,0,0,0,10),
     EpeeEnOs(0,35,0,0,0),
-    BouclierDuSquelette(0,0,50,0,0);
+    BouclierDuSquelette(0,0,50,0,0),
+    L(1,1,1,1,1),
+    D(1,1,1,1,1);
 
 
     int PV;

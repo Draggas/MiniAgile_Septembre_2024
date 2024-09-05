@@ -10,7 +10,7 @@ public class LegendOfWar {
 
 
   public static void main(String[] args) throws InterruptedException, IOException {
-    System.out.println("Voulez vous reprendre une partie ?");
+    System.out.println("Voulez vous reprendre une partie ? (oui / appuyez sur une touche)");
 
     Scanner sc = new Scanner(System.in);
     String reponse = sc.nextLine();
