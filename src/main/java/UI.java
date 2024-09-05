@@ -88,8 +88,6 @@ public class UI {
             line = line.substring(0, 120) + logs.get(i);
             list.add(i, line);
 
-            System.out.println(logs.get(i));
-
         }
 
     }

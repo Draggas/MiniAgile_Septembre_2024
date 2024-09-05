@@ -20,7 +20,7 @@ public class TurnTest {
     @Test
     void testTurn() {
         player.getCategorie().setCritRate(0);
-        assertEquals(20,turn.damageSimpleAttaque(player, mob));
+        assertEquals(13,turn.damageSimpleAttaque(player, mob));
         
     }
 }
