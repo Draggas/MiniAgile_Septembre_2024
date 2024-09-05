@@ -103,18 +103,18 @@ public class Game {
     }
 
     public String propositions(ArrayList<Competence> li) {
-        String retour = "[";
+        String retour = "[ ";
         for(int i = 0; i<li.size();i++) {
-            retour += li.get(i).toString() + "(" + (i+1) + "), ";
+            retour += Tools.cleanText(li.get(i).toString()) + " (" + (i+1) + "), ";
         }
-        return retour.substring(0, retour.length()-2) + "]";
+        return retour.substring(0, retour.length()-2) + " ]";
     }
 
     public int ask() {
         Scanner scanner = new Scanner(System.in);
         int retour = 0;
         while (retour <1 || retour > 3) {
-            System.out.print("Entrez le numéro correspondant à la compétences que vous voulez utiliser : ");
+            System.out.print("Entrez le numéro correspondant à la compétence que vous souhaitez utiliser : ");
             String ligne = scanner.nextLine();
             try {
                 retour = Integer.parseInt(ligne);
