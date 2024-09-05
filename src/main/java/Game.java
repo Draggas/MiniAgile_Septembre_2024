@@ -2,6 +2,7 @@ package main.java;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.lang.Thread;
 
 public class Game {
 
@@ -62,7 +63,7 @@ public class Game {
         turn = new Turn(joueur, mob);
     }
 
-    public void attackPlayer() {
+    public void attackPlayer() throws InterruptedException {
 
         int dmg = turn.damageSimpleAttaque(joueur, mob);
 
@@ -81,7 +82,13 @@ public class Game {
             if(!cheatCodeImmortel && !cheatCodeOneShot){
                 joueur.resetBuff();
             }
+            joueur.addXp(mob.getType().getXP());
             newMob();
+        } else {
+            UI.update();
+            Thread.sleep(500);
+            this.attackMob();
+            Thread.sleep(500);
         }
     }
 
@@ -108,23 +115,33 @@ public class Game {
         int retour = 0;
         while (retour <1 || retour > 3) {
             System.out.print("Entrez le numéro correspondant à la compétences que vous voulez utiliser : ");
-            retour = scanner.nextInt();
+            String ligne = scanner.nextLine();
+            try {
+                retour = Integer.parseInt(ligne);
+                
+            } catch (Exception e) {
+                retour = 0;
+            }
         }
-        return retour;  
+        scanner.close();
+        return retour;
     }
 
-    public void capacityPlayer() {
+    public void capacityPlayer() throws InterruptedException {
         Turn t = new Turn(joueur, mob);
         System.out.println(propositions(joueur.getCompetences()));
         int bonne_prop = ask();
         // System.out.println(clearSpace(capa));
         
         t.applyEffect(joueur, joueur.getCompetences().get(bonne_prop-1));
-        // scanner.nextLine();
+        UI.addLogs(joueur.getCategorie().getNom() + " utilise " + joueur.getCompetences().get(bonne_prop-1));
+        Thread.sleep(500);
+        this.attackMob();
+        Thread.sleep(500);
     }
 
     public void attackMob() {
-        int degat = turn.damageSimpleAttaque((EntityInterface) mob, joueur);
+        int degat = turn.damageSimpleAttaque(mob, joueur);
         System.out.println(this.mob.nom + " inflige " + degat + " dégats");
         joueur.setPv(joueur.getPv() - degat);
         if (joueur.getPv() <= 0) {
