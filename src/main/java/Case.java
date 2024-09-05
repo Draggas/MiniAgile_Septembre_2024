@@ -13,7 +13,6 @@ public class Case implements Serializable {
         this.monde = monde;
         this.numCase = numCase;
         this.mobs = new ArrayList<Mob>();
-        this.mobs.remove(this.mobs.size() - 1);
         for (MobEnum mob:MobEnum.values()) {
             if(mob.getMonde() == this.monde) {
                 this.mobs.add(new Mob(mob));
