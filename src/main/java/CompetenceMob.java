@@ -15,7 +15,7 @@ public class CompetenceMob implements Serializable {
         this.damage = damage;
         this.bonusAttack = bonusAttack;
         this.bonusArmor = bonusArmor;
-        this.dropAttack = bonusAttack;
+        this.dropAttack = dropAttack;
         this.dropArmor = dropArmor;
         this.healing = healing;
         this.proba = proba;
