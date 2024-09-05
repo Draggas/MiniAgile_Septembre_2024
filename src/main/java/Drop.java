@@ -1,4 +1,4 @@
-package main.java;
+
 
 public enum Drop {
     SLIME("Gelée Résistante",3,10,"Peau Slime",2,5),

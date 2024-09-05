@@ -1,6 +1,3 @@
-package test.java;
-
-import main.java.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,7 +17,7 @@ public class TurnTest {
     @Test
     void testTurn() {
         player.getCategorie().setCritRate(0);
-        assertEquals(13,turn.damageSimpleAttaque(player, mob));
+        assertEquals(26,turn.damageSimpleAttaque(player, mob));
         
     }
 }

@@ -1,4 +1,4 @@
-package main.java;
+
 
 public enum Monde {
     MONDE_0(15),

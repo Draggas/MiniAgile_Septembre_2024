@@ -3,5 +3,9 @@
         "lib/**/*.jar",
         "lib/jnativehook-2.2.2.jar"
     ],
-    "java.debug.settings.onBuildFailureProceed": true
+    "java.debug.settings.onBuildFailureProceed": true,
+        "java.project.sourcePaths": [
+        "src/main/java",
+        "src/test/java"
+    ]
 }

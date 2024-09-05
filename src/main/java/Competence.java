@@ -1,4 +1,3 @@
-package main.java;
 
 public enum Competence {
 
@@ -22,8 +21,7 @@ public enum Competence {
     //Compétence de l'assassin.
     COUVERTURE_DE_SANG(0, 30, 0),
     VAMPIRISME(40, 20, 0),
-    EXECUTION(0, -30, 0.1);
-
+    EXECUTION(0, -30, 0.3);
 
     private int healing;
     private int armor;
