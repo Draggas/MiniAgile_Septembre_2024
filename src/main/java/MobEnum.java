@@ -3,15 +3,15 @@
 public enum MobEnum {
     DRAGON(0.15,10,10, Monde.MONDE_2, 600, 50, 140, false, 500, new CompetenceMob("Souffle du dragon",170,0,0,10,0,0,0.2)),
     AMOGUS(0.15,10,10, Monde.MONDE_2, 700, 55, 150, false, 520, new CompetenceMob("Renforcement",0,20,0,0,0,0,0.3)),
-    ORC(0.15,10,10, Monde.MONDE_0, 210, 20, 40, false, 70, new CompetenceMob("Coup écrasant",60,0,0,0,0,0,0)),
-    SERPENT(0.15,10,10, Monde.MONDE_1, 250, 35, 80, false, 280, new CompetenceMob("Mue",0,25,-5,0,0,0,0)),
+    ORC(0.15,10,10, Monde.MONDE_0, 210, 20, 40, false, 70, new CompetenceMob("Coup écrasant",60,0,0,0,0,0,0.15)),
+    SERPENT(0.15,10,10, Monde.MONDE_1, 250, 35, 80, false, 280, new CompetenceMob("Mue",0,25,-5,0,0,0,0.2)),
     VAMPIRE(0.15,10,10, Monde.MONDE_1, 350, 35, 90, false, 300, new CompetenceMob("Saignée",30,0,0,0,0,0,70)),
-    SLIME(0.15,10,10, Monde.MONDE_0, 100, 10, 30, false, 50, new CompetenceMob("Gélaine collante",0,0,0,10,0,0,0)),
+    SLIME(0.15,10,10, Monde.MONDE_0, 100, 10, 30, false, 50, new CompetenceMob("Gélaine collante",0,0,0,10,0,0,0.2)),
     SQUELETTE(0.15,10,10, Monde.MONDE_3, 1300, 55, 150, false, 1500, new CompetenceMob("Armée des morts",180,0,0,10,0,0,0.4)),
     DEMON(0.15,10,10, Monde.MONDE_3, 1200, 60, 150, false, 1500, new CompetenceMob("Flammes infernales",180,0,0,10,0,120,0.35)),
     SHREK(0.15,10,10, Monde.MONDE_2, 800, 60, 200, true, 1020, new CompetenceMob("Cri effrayant", 150,0,0,0,30,0,0.2)),
     KRAKEN(0.15,10,10, Monde.MONDE_1, 500, 50, 150, true, 520, new CompetenceMob("Tentation des profondeurs", 180,0,0,20,0,0,0)),
-    BIG_SLIME(0.15,10,10, Monde.MONDE_0, 380, 40, 50, true, 300, new CompetenceMob("Décharge d'acide",100,0,0,10,0,0,0)),
+    BIG_SLIME(0.15,10,10, Monde.MONDE_0, 380, 40, 50, true, 300, new CompetenceMob("Décharge d'acide",100,0,0,10,0,0,0.2)),
     REINE_DE_LA_FOURMILLIERE(0.15,10,10, Monde.MONDE_3, 2000, 85, 200, true, 0, new CompetenceMob("Piège Mortel",300,0,0,0,20,0,0.1));
 
     private final double DROP;

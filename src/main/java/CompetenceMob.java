@@ -21,6 +21,10 @@ public class CompetenceMob {
         this.proba = proba;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public int getDamage() {
         return this.damage;
     }
