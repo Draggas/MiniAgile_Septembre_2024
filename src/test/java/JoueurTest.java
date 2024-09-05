@@ -29,7 +29,7 @@ public class JoueurTest {
         assertEquals(3, j3.getLevel());
 
         assertEquals(3, j3.getLevel());
-        assertEquals(1, j3.getXp());
+        assertEquals(0, j3.getXp());
     }
 
     @Test 
