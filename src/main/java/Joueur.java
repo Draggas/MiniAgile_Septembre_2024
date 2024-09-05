@@ -3,7 +3,7 @@ package main.java;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Joueur extends Entity {
+public class Joueur extends Entity implements EntityInterface{
     private int level;
     private int xp;
     private int xpmax;
@@ -11,24 +11,24 @@ public class Joueur extends Entity {
     private Classe categorie = Classe.ASSASSIN;
     private ArrayList<Competence> listeCompetences;
 
-
-    public Joueur(){
-        new Joueur(null,1,0,10,new ArrayList<>());
+    public Joueur() {
+        this(null, 1, 0, 10, null);
     }
 
-    public Joueur(String nom, int level, int xp, int xpmax, List<Item> inventory){
+    public Joueur(String nom, int lvl, int xp, int xpmax, List<Item> inventory) {
         this.nom = nom;
-        this.level = level;
+        this.level = lvl;
         this.xp = xp;
         this.xpmax = xpmax;
         this.inventory = inventory;
         setCategorie(Classe.ASSASSIN);
+
     }
 
-    public void addXp(int valeur){
+    public void addXp(int valeur) {
         xp = xp + valeur;
-        if(xp >= xpmax){
-            if(level == 30){
+        if (xp >= xpmax) {
+            if (level == 30) {
                 xp = xpmax - 1;
             } else {
                 lvlUp();
@@ -37,7 +37,7 @@ public class Joueur extends Entity {
         }
     }
 
-    private void lvlUp(){
+    private void lvlUp() {
         this.xp = 0;
         this.level++;
         this.xpmax *= 1.1;
@@ -46,17 +46,17 @@ public class Joueur extends Entity {
         this.atk += 10;
     }
 
-    public void resetBuff(){
+    public void resetBuff() {
         this.atk = this.categorie.atk + (10 * this.level);
         this.pv = this.categorie.pv + (20 * this.level);
         this.def = this.categorie.def + (5 * this.level);
     }
 
-    public boolean addInventory(Item object){
+    public boolean addInventory(Item object) {
         return inventory.add(object);
     }
 
-    public boolean removeInventory(Item object){
+    public boolean removeInventory(Item object) {
         return inventory.remove(object);
     }
 
@@ -65,16 +65,17 @@ public class Joueur extends Entity {
     }
 
     public int getXp() {
-        return  this.xp;
+        return this.xp;
     }
 
     public int getXpmax() {
-        return  this.xpmax;
+        return this.xpmax;
     }
 
     public List<Item> getInventory() {
-        return  this.inventory;
+        return this.inventory;
     }
+
     public int getPv() {
         return this.pv;
     }
@@ -104,22 +105,19 @@ public class Joueur extends Entity {
 
         switch (categorie) {
             case ASSASSIN:
-            this.pv = 100;
-            this.atk = 40;
-            this.def = 30;
+                this.pv = 100;
+                this.atk = 40;
+                this.def = 30;
                 break;
-                case BARBARE:
-            this.pv = 200;
-            this.atk = 70;
-            this.def = 60;
+            case BARBARE:
+                this.pv = 200;
+                this.atk = 70;
+                this.def = 60;
                 break;
-                case MAGE:
-            this.pv = 160;
-            this.atk = 110;
-            this.def = 20;
-                break;
-        
-            default:
+            case MAGE:
+                this.pv = 160;
+                this.atk = 110;
+                this.def = 20;
                 break;
         }
 
@@ -150,12 +148,12 @@ public class Joueur extends Entity {
     }
 
     public void setCompetences(Classe categorie) {
-        if (categorie == Classe.ASSASSIN){
+        if (categorie == Classe.ASSASSIN) {
             this.listeCompetences = new ArrayList<Competence>();
             this.listeCompetences.add(Competence.COUVERTURE_DE_SANG);
             this.listeCompetences.add(Competence.VAMPIRISME);
             this.listeCompetences.add(Competence.EXECUTION);
-        } else if(categorie == Classe.BARBARE){
+        } else if (categorie == Classe.BARBARE) {
             this.listeCompetences = new ArrayList<Competence>();
             this.listeCompetences.add(Competence.INTIMIDATION);
             this.listeCompetences.add(Competence.SOINS_MINEURS);
