@@ -63,6 +63,13 @@ public class UI {
 
                 break;
 
+            case END:
+                List<String> menuEnd = readFile("res/EcranFin");
+
+                for (int i = 0; i < menuEnd.size(); i++)
+                    System.out.println(menuEnd.get(i));
+
+                break;
             default:
                 break;
         }

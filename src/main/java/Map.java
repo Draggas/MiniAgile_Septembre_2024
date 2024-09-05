@@ -41,8 +41,7 @@ public class Map {
                     for(int i=0;i<50;i++){
                         System.out.println("\n");
                     }
-                    System.out.println("Fin Du Jeu");
-                    System.exit(0);
+                    return null;
                 }
                 
             }
