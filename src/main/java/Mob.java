@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class Mob extends Entity implements EntityInterface {
     MobEnum type;
+    CompetenceMob competence;
 
     public Mob(MobEnum type) {
         this.type = type;
@@ -11,6 +12,7 @@ public class Mob extends Entity implements EntityInterface {
         this.pv = type.getPV();
         this.atk = type.getATK();
         this.def = type.getDEF();
+        this.competence = type.getCompetence();
     }
 
     public String toString(){
@@ -51,6 +53,10 @@ public class Mob extends Entity implements EntityInterface {
 
     public String getNom() {
         return this.nom;
+    }
+
+    public CompetenceMob getCompetenceMob() {
+        return this.competence;
     }
 
     public boolean isBoss() {

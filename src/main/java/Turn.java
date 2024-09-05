@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class Turn {
     private Joueur player;
     private Mob mob;
+
+
     public Turn(Joueur player, Mob mob) {
         this.player = player;
         this.mob = mob;
@@ -41,5 +43,14 @@ public class Turn {
         // System.out.println(c.getArmor());
         player.setAtk(player.getAtk()+c.getBoost());
         // System.out.println(c.getBoost());
+    }
+
+    public void applyMobCompetence(Joueur player, Mob mob, CompetenceMob c) {
+        player.setPv(player.getPv()-c.getDamage());
+        player.setDef(player.getDef()-c.getDropArmor());
+        player.setAtk(player.getAtk()-c.getDropAttack());
+        mob.setPv(mob.getPv()+c.getHealing());
+        mob.setDef(mob.getDef()+c.getBonusArmor());
+        mob.setAtk(mob.getAtk()+c.getBonusAttack());
     }
 }
