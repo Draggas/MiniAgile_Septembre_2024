@@ -8,7 +8,7 @@ public class LegendOfWar {
   static Game game;
 
 
-  public static void main(String[] args) throws InterruptedException {
+  public static void main(String[] args)  {
 
     game = new Game();
 

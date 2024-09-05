@@ -1,15 +1,14 @@
 
-
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.NativeHookException;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 
-public class Keyboard  implements NativeKeyListener {
+public class Keyboard implements NativeKeyListener {
 
-    public static void initKeyboard(){
+    public static void initKeyboard() {
 
-         try {
+        try {
             GlobalScreen.registerNativeHook();
         } catch (NativeHookException ex) {
             System.err.println("There was a problem registering the native hook.");
@@ -21,8 +20,6 @@ public class Keyboard  implements NativeKeyListener {
         GlobalScreen.addNativeKeyListener(new Keyboard());
 
     }
-
-
 
     public void nativeKeyReleased(NativeKeyEvent e) {
 
@@ -37,6 +34,8 @@ public class Keyboard  implements NativeKeyListener {
             case PLAYING:
                 if (e.getKeyCode() == 57416 || e.getKeyCode() == 57424) { // arrow up
                     UI.attack = !UI.attack;
+                    if (UI.attack)
+                        UI.capa = 0;
                 }
                 if (e.getKeyCode() == 12) { // [°]
                     LegendOfWar.getGame().cheatAttackPlayer();
@@ -45,22 +44,29 @@ public class Keyboard  implements NativeKeyListener {
                     LegendOfWar.getGame().cheatCapacityPlayer();
                 }
                 if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) {
-                    if (UI.attack){
-                        try {
-                            LegendOfWar.getGame().attackPlayer();
-                        } catch (InterruptedException e1) {
-                            e1.printStackTrace();
-                        }
-                    }
-                    else{
-                        try {
-                            LegendOfWar.getGame().capacityPlayer();
-                        } catch (InterruptedException e1) {
-                            // TODO Auto-generated catch block
-                            e1.printStackTrace();
+                    if (UI.attack) {
+                        LegendOfWar.getGame().attackPlayer();
+
+                    } else {
+                        if(UI.capa != 0){
+                        LegendOfWar.getGame()
+                                .capacityPlayer(LegendOfWar.getGame().getJoueur().getCompetences().get(UI.capa-1));
+                        } else {
+                            UI.capa = 1;
                         }
                     }
                 }
+
+                if (UI.capa != 0) {
+                    if (e.getKeyCode() == NativeKeyEvent.VC_LEFT)
+                        if (UI.capa > 1)
+                            UI.capa--;
+                    if (e.getKeyCode() == NativeKeyEvent.VC_RIGHT)
+                        if (UI.capa < 3)
+                            UI.capa++;
+
+                }
+
                 break;
             case CLASSE:
 
@@ -91,5 +97,5 @@ public class Keyboard  implements NativeKeyListener {
         UI.update();
 
     }
-    
+
 }

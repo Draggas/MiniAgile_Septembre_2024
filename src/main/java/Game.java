@@ -63,20 +63,18 @@ public class Game {
         turn = new Turn(joueur, mob);
     }
 
-    public void attackPlayer() throws InterruptedException {
+    public void attackPlayer() {
 
         int dmg = turn.damageSimpleAttaque(joueur, mob);
 
-        UI.addLogs(joueur.getCategorie().getNom() + " ⚔ " + dmg + " ❤ " + mob.getNom());
+        UI.addLogs(joueur.getCategorie().getNom() + " inflige " + dmg + " dégats ");
 
         mob.setPv(mob.getPv() - dmg);
         if (mob.getPv() <= 0) { // MORT DU MOB
 
             UI.addLogs("");
             UI.addLogs(joueur.getCategorie().getNom() + " a tué " + mob.getNom() + " ☠");
-            UI.addLogs("");
-
-            
+            UI.addLogs("");            
 
             this.caseActuel = this.map.getRight(this.caseActuel);
             if(!cheatCodeImmortel && !cheatCodeOneShot){
@@ -86,9 +84,17 @@ public class Game {
             newMob();
         } else {
             UI.update();
-            Thread.sleep(500);
             this.attackMob();
-            Thread.sleep(500);
+        }
+    }
+
+
+    public void attackMob() {
+        int degat = turn.damageSimpleAttaque(mob, joueur);
+        UI.addLogs(this.mob.nom + " inflige " + degat + " dégats");
+        joueur.setPv(joueur.getPv() - degat);
+        if (joueur.getPv() <= 0) {
+            this.setState(GameState.GAME_OVER);
         }
     }
 
@@ -121,26 +127,13 @@ public class Game {
         return retour;
         }
 
-    public void capacityPlayer() throws InterruptedException {
+    public void capacityPlayer(Competence competence){
         Turn t = new Turn(joueur, mob);
-        System.out.println(propositions(joueur.getCompetences()));
-        int bonne_prop = ask();
-        // System.out.println(clearSpace(capa));
         
-        t.applyEffect(joueur, joueur.getCompetences().get(bonne_prop-1));
-        UI.addLogs(joueur.getCategorie().getNom() + " utilise " + joueur.getCompetences().get(bonne_prop-1));
-        Thread.sleep(500);
+        t.applyEffect(joueur, competence);
+        UI.addLogs(joueur.getCategorie().getNom() + " utilise " + competence.toString());
         this.attackMob();
-        Thread.sleep(500);
     }
 
-    public void attackMob() {
-        int degat = turn.damageSimpleAttaque(mob, joueur);
-        UI.addLogs(this.mob.nom + " inflige " + degat + " dégats");
-        joueur.setPv(joueur.getPv() - degat);
-        if (joueur.getPv() <= 0) {
-            this.setState(GameState.GAME_OVER);
-        }
-    }
 
 }

@@ -1,5 +1,4 @@
 
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,6 +8,7 @@ import java.util.List;
 public class UI {
 
     public static boolean attack;
+    public static int capa = 0;
     public static List<String> logs = new ArrayList<>();
 
     public Classe categorie;
@@ -29,7 +29,6 @@ public class UI {
 
                 break;
 
-
             case PLAYING:
 
                 List<String> overlayLines = readFile("res/overlay.txt");
@@ -41,6 +40,9 @@ public class UI {
                 }
                 setStats(overlayLines);
                 showLogs(overlayLines);
+                if (capa != 0) {
+                    showCapa(menuLinesC);
+                }
                 for (int i = 0; i < overlayLines.size(); i++) {
                     if (i > 22) {
                         System.out.println(
@@ -69,10 +71,9 @@ public class UI {
 
     }
 
-
     public static void addLogs(String str) {
         logs.add(str);
-        if(logs.size() > 22){
+        if (logs.size() > 22) {
             logs.remove(0);
         }
     }
@@ -91,8 +92,6 @@ public class UI {
         }
 
     }
-
-    
 
     private static void showClasse() {
 
@@ -144,6 +143,44 @@ public class UI {
             line = line.substring(0, 50) + listmage.get(i - 2) + line.substring(50 + listmage.get(i - 2).length());
             list.add(i, line);
         }
+    }
+
+    private static void showCapa(List<String> list) {
+
+        for (int i = 10; i < 19; i++) {
+            String line = list.remove(i);
+            list.add(i, line.substring(0, 15));
+        }
+
+        String line = list.remove(13);
+        line = "       " + LegendOfWar.getGame().getJoueur().getCompetences().get(0);
+        line += "       " + LegendOfWar.getGame().getJoueur().getCompetences().get(1);
+        line += "       " + LegendOfWar.getGame().getJoueur().getCompetences().get(2);
+
+        String underline = list.remove(14);
+        int lenght = LegendOfWar.getGame().getJoueur().getCompetences().get(capa - 1).toString().length();
+        switch (capa) {
+            case 1:
+                underline = " ".repeat(7) + ("_".repeat(lenght));
+                break;
+            case 2:
+                underline = " "
+                        .repeat(LegendOfWar.getGame().getJoueur().getCompetences().get(0).toString().length() + 14)
+                        + ("_".repeat(lenght));
+                break;
+            case 3:
+                underline = " "
+                        .repeat(LegendOfWar.getGame().getJoueur().getCompetences().get(0).toString().length()
+                                + LegendOfWar.getGame().getJoueur().getCompetences().get(1).toString().length() + 21)
+                        + ("_".repeat(lenght));
+                break;
+
+            default:
+                break;
+        }
+
+        list.add(14, underline);
+        list.add(13, line);
 
     }
 
@@ -155,22 +192,20 @@ public class UI {
             line = "█ " + listmage.get(i - 2) + line.substring(listmage.get(i - 2).length() + 2);
             list.add(i, line);
         }
-
     }
-
 
     public static String getXPBar(int level, int xp) {
         StringBuilder sb = new StringBuilder();
         int xpLevel = 10;
-        for (int i=0; i<level; i++) {
+        for (int i = 0; i < level; i++) {
             xpLevel *= 1.5;
         }
         sb.append(xp + " [");
         int tailleBarre = (int) (((double) xp / xpLevel) * 10);
-        for (int i=0; i<tailleBarre; i++) {
+        for (int i = 0; i < tailleBarre; i++) {
             sb.append("■");
         }
-        for (int i=0; i<10-tailleBarre; i++) {
+        for (int i = 0; i < 10 - tailleBarre; i++) {
             sb.append(" ");
         }
         sb.append("] " + xpLevel + " (Lvl " + level + ")");
@@ -183,7 +218,8 @@ public class UI {
         joueur.setCompetences(joueur.getCategorie());
         String line34 = list.get(34);
         list.remove(34);
-        line34 = "█   " + joueur.getCategorie().getNom() + line34.substring(4 + String.valueOf(joueur.getCategorie().getNom()).length());
+        line34 = "█   " + joueur.getCategorie().getNom()
+                + line34.substring(4 + String.valueOf(joueur.getCategorie().getNom()).length());
         list.add(34, line34);
 
         String line35 = list.get(35);
@@ -204,7 +240,12 @@ public class UI {
         String line38 = list.get(38);
         list.remove(38);
         String xpBar = UI.getXPBar(joueur.getLevel(), joueur.getXp());
-        line38 = "█   " + xpBar + line38.substring(4 + xpBar.length());
+
+        String blank = "█";
+        for (int x = 0; x < 35; x++) {
+            blank += " ";
+        }
+        line38 = (blank + xpBar + line38.substring(36 + xpBar.length()));
         list.add(38, line38);
 
         Mob mob = LegendOfWar.getGame().getMob();
@@ -212,8 +253,8 @@ public class UI {
         String line34b = list.get(34);
         list.remove(34);
         String nomMob = "";
-        
-        if(mob.isBoss()){
+
+        if (mob.isBoss()) {
             nomMob = "\u001B[31m" + mob.getNom() + "\u001B[0m";
         } else {
             nomMob = mob.getNom();
