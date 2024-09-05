@@ -48,8 +48,8 @@ public class Joueur extends Entity implements EntityInterface{
 
     public void resetBuff() {
         this.atk = this.categorie.atk + (10 * this.level);
-        this.pv = this.categorie.pv + (20 * this.level);
-        this.def = this.categorie.def + (5 * this.level);
+        this.pv = this.categorie.pv + (35 * this.level);
+        this.def = this.categorie.def + (3 * this.level);
     }
 
     public boolean addInventory(Item object) {
