@@ -22,6 +22,7 @@ public class Joueur extends Entity {
         this.xp = xp;
         this.xpmax = xpmax;
         this.inventory = inventory;
+        setCategorie(Classe.ASSASSIN);
     }
 
     public void addXp(int valeur){

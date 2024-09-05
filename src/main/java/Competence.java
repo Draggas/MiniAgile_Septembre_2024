@@ -22,7 +22,7 @@ public enum Competence {
     //Compétence de l'assassin.
     COUVERTURE_DE_SANG(0, 30, 0),
     VAMPIRISME(40, 20, 0),
-    EXECUTION(0, -30, 0.90);
+    EXECUTION(0, -30, 0.1);
 
 
     private int healing;
