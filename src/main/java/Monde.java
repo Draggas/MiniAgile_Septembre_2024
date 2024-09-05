@@ -3,8 +3,7 @@ public enum Monde {
     MONDE_0(15),
     MONDE_1(12),
     MONDE_2(9),
-    MONDE_3(6),
-    MONDE_4(1);
+    MONDE_3(6);
 
     private int nbCases;
 

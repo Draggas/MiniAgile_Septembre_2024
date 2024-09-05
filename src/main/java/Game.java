@@ -16,13 +16,8 @@ public class Game {
     boolean cheatCodeOneShot = false;
     boolean resume = false;
 
-    public Game(boolean reprise) throws IOException {
-        if (reprise) {
-            this.joueur = Tools.loadPlayer();
-            this.resume = true;
-        } else {
-            this.joueur = new Joueur();
-        }
+    public Game() {
+        this.joueur = new Joueur();
     }
 
     public void initGame() {
@@ -114,6 +109,7 @@ public class Game {
             this.attackMob();
         }
     }
+
     public void cheatAttackPlayer() {
         cheatCodeOneShot = true;
         joueur.setAtk(999999);

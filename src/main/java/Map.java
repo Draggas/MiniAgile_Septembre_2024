@@ -42,7 +42,7 @@ public class Map {
     public Case getRight(Case c) {
         int temp = 0;
         for (Case ca : map) {
-            if (ca == c && !(c.getMonde() == Monde.MONDE_4 && c.getNumCase() == Monde.MONDE_4.getNbCases())) {
+            if (ca == c && !(c.getMonde() == Monde.MONDE_3 && c.getNumCase() == Monde.MONDE_3.getNbCases())) {
                 try {
                     return map.get(temp + 1);
                 } catch (IndexOutOfBoundsException e) {

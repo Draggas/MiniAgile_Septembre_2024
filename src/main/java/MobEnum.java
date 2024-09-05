@@ -11,9 +11,7 @@ public enum MobEnum {
     SHREK(0.15,10,10, Monde.MONDE_2, 1200, 60, 200, true, 1020, new CompetenceMob("Cri effrayant", 160,0,0,0,30,0,0.3)),
     KRAKEN(0.15,10,10, Monde.MONDE_1, 1000, 50, 150, true, 520, new CompetenceMob("Tentation des profondeurs", 180,0,0,20,0,0,0.3)),
     BIG_SLIME(0.15,10,10, Monde.MONDE_0, 500, 50, 80, true, 300, new CompetenceMob("Décharge d'acide",100,0,0,10,0,0,0.35)),
-    REINE_DE_LA_FOURMILLIERE(0.15,10,10, Monde.MONDE_3, 2500, 85, 220, true, 0, new CompetenceMob("Piège Mortel",300,0,0,0,20,0,0.35)),
-    MERUEM(0.15,10,10, Monde.MONDE_4, 4000, 100, 250, true, 0, new CompetenceMob("Force immense",400,30,0,0,0,0,0.2));
-    // Attaque de meruem = "Meruem donne un coup de queue, inflige 400 de dégat et augmente son attaque de 30"
+    REINE_DE_LA_FOURMILLIERE(0.15,10,10, Monde.MONDE_3, 2500, 85, 220, true, 0, new CompetenceMob("Piège Mortel",300,0,0,0,20,0,0.35));
 
     private final double DROP;
     private final int DROPATK;
