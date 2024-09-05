@@ -87,4 +87,9 @@ public class Tools {
             System.out.println("Problème lors de l'écriture du score dans le classement");
         }
     }
+
+    public static String cleanText(String text) {
+        String str = text.replaceAll("[^a-zA-Z0-9]", " ").toLowerCase();
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
 }

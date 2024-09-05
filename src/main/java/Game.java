@@ -2,6 +2,7 @@ package main.java;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.lang.Thread;
 
 public class Game {
 
@@ -62,7 +63,7 @@ public class Game {
         turn = new Turn(joueur, mob);
     }
 
-    public void attackPlayer() {
+    public void attackPlayer() throws InterruptedException {
 
         int dmg = turn.damageSimpleAttaque(joueur, mob);
 
@@ -74,6 +75,7 @@ public class Game {
             UI.addLogs("");
             UI.addLogs(joueur.getCategorie().getNom() + " a tué " + mob.getNom() + " ☠");
             UI.addLogs("");
+            joueur.addXp(mob.getType().getXP());
 
             
 
@@ -82,6 +84,11 @@ public class Game {
                 joueur.resetBuff();
             }
             newMob();
+        } else {
+            UI.update();
+            Thread.sleep(500);
+            this.attackMob();
+            Thread.sleep(500);
         }
     }
 
@@ -96,31 +103,41 @@ public class Game {
     }
 
     public String propositions(ArrayList<Competence> li) {
-        String retour = "[";
+        String retour = "[ ";
         for(int i = 0; i<li.size();i++) {
-            retour += li.get(i).toString() + "(" + (i+1) + "), ";
+            retour += Tools.cleanText(li.get(i).toString()) + " (" + (i+1) + "), ";
         }
-        return retour.substring(0, retour.length()-2) + "]";
+        return retour.substring(0, retour.length()-2) + " ]";
     }
 
     public int ask() {
         Scanner scanner = new Scanner(System.in);
         int retour = 0;
         while (retour <1 || retour > 3) {
-            System.out.print("Entrez le numéro correspondant à la compétences que vous voulez utiliser : ");
-            retour = scanner.nextInt();
+            System.out.print("Entrez le numéro correspondant à la compétence que vous souhaitez utiliser : ");
+            String ligne = scanner.nextLine();
+            try {
+                retour = Integer.parseInt(ligne);
+                
+            } catch (Exception e) {
+                retour = 0;
+            }
         }
+        scanner.close();
         return retour;
     }
 
-    public void capacityPlayer() {
+    public void capacityPlayer() throws InterruptedException {
         Turn t = new Turn(joueur, mob);
         System.out.println(propositions(joueur.getCompetences()));
         int bonne_prop = ask();
         // System.out.println(clearSpace(capa));
         
         t.applyEffect(joueur, joueur.getCompetences().get(bonne_prop-1));
-        // scanner.nextLine();
+        UI.addLogs(joueur.getCategorie().getNom() + " utilise " + joueur.getCompetences().get(bonne_prop-1));
+        Thread.sleep(500);
+        this.attackMob();
+        Thread.sleep(500);
     }
 
     public void attackMob() {
@@ -128,7 +145,7 @@ public class Game {
         System.out.println(this.mob.nom + " inflige " + degat + " dégats");
         joueur.setPv(joueur.getPv() - degat);
         if (joueur.getPv() <= 0) {
-            // GAME OVER
+            this.setState(GameState.GAME_OVER);
         }
     }
 

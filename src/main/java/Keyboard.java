@@ -46,10 +46,19 @@ public class Keyboard  implements NativeKeyListener {
                 }
                 if (e.getKeyCode() == NativeKeyEvent.VC_SPACE) {
                     if (UI.attack){
-                        main.getGame().attackPlayer();
+                        try {
+                            main.getGame().attackPlayer();
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                     else{
-                        main.getGame().capacityPlayer();
+                        try {
+                            main.getGame().capacityPlayer();
+                        } catch (InterruptedException e1) {
+                            // TODO Auto-generated catch block
+                            e1.printStackTrace();
+                        }
                     }
                 }
                 break;

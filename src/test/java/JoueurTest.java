@@ -10,6 +10,7 @@ import main.java.Classe;
 
 public class JoueurTest {
 
+
     private Joueur j1;
     private Joueur j2;
     private Joueur j3;
@@ -25,19 +26,30 @@ public class JoueurTest {
     }
 
     @Test
-    void testJoueur() {
+    void testXpLow(){
         j3.addXp(10);
-
         assertEquals(2, j3.getLevel());
+
         j3.addXp(999999);
         assertEquals(3, j3.getLevel());
+
+        assertEquals(3, j3.getLevel());
+        assertEquals(1, j3.getXp());
+    }
+
+    @Test 
+    void textXpHigh(){
         assertEquals(1, j1.getLevel());
         j2.setXp(2);
         assertEquals(2, j2.getXp());
         assertEquals(990, j2.getXpmax());
         j3.addXp(1);
-        assertEquals(3, j3.getLevel());
-        assertEquals(1, j3.getXp());
+
+    }
+
+    @Test
+    void testClasseStats() {     
+
         assertEquals(j1.getCategorie().getPv(), j1.getPv());
         j1.setPv(75);
         assertEquals(75, j1.getPv());
