@@ -1,4 +1,4 @@
-package main.java;
+
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -75,7 +75,6 @@ public class Game {
             UI.addLogs("");
             UI.addLogs(joueur.getCategorie().getNom() + " a tué " + mob.getNom() + " ☠");
             UI.addLogs("");
-            joueur.addXp(mob.getType().getXP());
 
             
 
@@ -83,6 +82,7 @@ public class Game {
             if(!cheatCodeImmortel && !cheatCodeOneShot){
                 joueur.resetBuff();
             }
+            joueur.addXp(mob.getType().getXP());
             newMob();
         } else {
             UI.update();
@@ -114,18 +114,12 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         int retour = 0;
         while (retour <1 || retour > 3) {
-            System.out.print("Entrez le numéro correspondant à la compétence que vous souhaitez utiliser : ");
-            String ligne = scanner.nextLine();
-            try {
-                retour = Integer.parseInt(ligne);
-                
-            } catch (Exception e) {
-                retour = 0;
-            }
+            System.out.print("Entrez le numéro correspondant à la compétences que vous voulez utiliser : ");
+            retour = scanner.nextInt();
         }
         scanner.close();
         return retour;
-    }
+        }
 
     public void capacityPlayer() throws InterruptedException {
         Turn t = new Turn(joueur, mob);
@@ -142,7 +136,7 @@ public class Game {
 
     public void attackMob() {
         int degat = turn.damageSimpleAttaque(mob, joueur);
-        System.out.println(this.mob.nom + " inflige " + degat + " dégats");
+        UI.addLogs(this.mob.nom + " inflige " + degat + " dégats");
         joueur.setPv(joueur.getPv() - degat);
         if (joueur.getPv() <= 0) {
             this.setState(GameState.GAME_OVER);

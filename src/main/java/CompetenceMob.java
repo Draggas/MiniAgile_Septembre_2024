@@ -1,4 +1,4 @@
-package main.java;
+
 
 public class CompetenceMob {
     private String name;            //Nom de la compétence.

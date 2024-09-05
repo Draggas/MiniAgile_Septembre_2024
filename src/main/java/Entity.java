@@ -1,4 +1,4 @@
-package main.java;
+
 
 abstract class Entity {
 

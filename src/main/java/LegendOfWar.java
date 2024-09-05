@@ -1,6 +1,6 @@
-  package main.java;
 
-public class main {
+
+public class LegendOfWar {
 
   static Map map = new Map();
   static Case caseActuel;
